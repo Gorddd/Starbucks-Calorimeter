@@ -7,4 +7,13 @@
     <RootNamespace>Starbucks_Calorimeter</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Shared\Food.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Drinks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Drinks\" />
+  </ItemGroup>
 </Project>

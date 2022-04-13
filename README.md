@@ -1,4 +1,4 @@
 # Starbucks-Calorimeter
-Hello there! <br>
-We are making a website that allows you to configure an order and see the energy value, proteins, fats and carbohydrates. 
+Здарова народ
+мы тут сайт делаем <br>
 Asp.net core mvc; .net 6.0; C# 10
