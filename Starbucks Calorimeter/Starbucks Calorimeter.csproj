@@ -7,4 +7,20 @@
     <RootNamespace>Starbucks_Calorimeter</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Drinks\" />
+    <None Remove="Views\Pastry\" />
+    <None Remove="Views\Desserts\" />
+    <None Remove="Views\LunchAndBreakfast\" />
+    <None Remove="Views\FoodInPackage\" />
+    <None Remove="Views\BottledDrinks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Drinks\" />
+    <Folder Include="Views\Pastry\" />
+    <Folder Include="Views\Desserts\" />
+    <Folder Include="Views\LunchAndBreakfast\" />
+    <Folder Include="Views\FoodInPackage\" />
+    <Folder Include="Views\BottledDrinks\" />
+  </ItemGroup>
 </Project>
