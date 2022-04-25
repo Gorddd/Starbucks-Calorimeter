@@ -65,7 +65,7 @@ body {
 
 .top_img {
     margin-top: 94px;
-    height: 256px;
+   
     background-image: url(img/MX-Master\ 1.png);
     background-size: contain;
     margin-bottom: 41px;
@@ -225,24 +225,18 @@ body {
     margin-bottom: 20px;
 }
 
-.mouse_text {
-    padding-top: 70px;
-    padding-bottom: 20px;
+
+
+
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height 150px:;
+    margin-top: 8px;
+    vertical-align: middle;
 }
 
-.mouse_img_1 {
-    background-image: url(img/img1.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-.mouse_img_2 {
-    background-image: url(img/image\ 2.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
 
 .mouse_img {
     height: 310px;
@@ -258,6 +252,8 @@ body {
     text-align: center;
     color: #C7C8C8;
     padding-top: 22px;
+    padding-bottom: 0px;
+
 }
 
 
@@ -268,7 +264,7 @@ body {
 
     .top_img {
         margin-top: 150px;
-        height: 514px;
+       
         margin-bottom: 124px;
     }
 
@@ -459,6 +455,16 @@ body {
         height: 150px;
         padding-top: 47px;
     }
+
+    .row {
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        height 50px:;
+        margin-top: 8px;
+        vertical-align: middle;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -471,6 +477,8 @@ body {
         font-size: 36px;
         line-height: 42px;
         margin-bottom: 35px;
+        
+
     }
 
     .text {
@@ -557,7 +565,6 @@ body {
 
     .top_img {
         margin-top: 20px;
-        height: 671px;
         padding-top: 80px;
         background-image: url(img/MX-Master\ 1.png);
         margin-bottom: 8px;
@@ -591,5 +598,37 @@ body {
     .menu-desctop {
         margin-right: 147px;
     }
+
+    .first_bottle_img {
+        height: 250px;
+        margin-left: 25px;
+        margin-right: 19px;
+        top: -20px;
+    }
+
+    .row1 {
+       display:flex;
+       flex-direction: row;
+       flex-wrap: nowrap;
+       justify-content: space-around;
+    }
+
+
+    .column1 {
+        display: flex;
+        flex-direction:column;
+    }
+
+
+    .column1 img {
+         margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height 50px;
+    
+    margin-top: 8px;
+    vertical-align: middle;
+
+        }
 }
 
