@@ -4,7 +4,7 @@
 
 namespace Starbucks_Calorimeter.Migrations
 {
-    public partial class create : Migration
+    public partial class add_size : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace Starbucks_Calorimeter.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Calories = table.Column<int>(type: "int", nullable: false)
+                    Volume = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

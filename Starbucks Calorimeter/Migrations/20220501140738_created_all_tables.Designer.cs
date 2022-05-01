@@ -11,8 +11,8 @@ using Starbucks_Calorimeter.Models;
 namespace Starbucks_Calorimeter.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220427191848_create")]
-    partial class create
+    [Migration("20220501140738_created_all_tables")]
+    partial class created_all_tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,12 +31,12 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Calories")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Volume")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
