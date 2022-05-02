@@ -256,6 +256,56 @@ body {
 
 }
 
+.welcome_img {
+    width: 100%;
+    padding-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+}
+
+.reward_img {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Hot_coffee_header {
+    padding-left: 50px;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.Hot_tea_header {
+    padding-top:  50px;
+    padding-left: 50px;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.mocha_text {
+    text-align: center;
+    color: rgba(0,0,0,.87);
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem !important;
+}
+
+.latte_text {
+    text-align: center;
+    color: rgba(0,0,0,.87);
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem !important;
+}
+
+.cappucino_text {
+    text-align: center;
+    color: rgba(0,0,0,.87);
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem !important;
+}
+
 
 @media (min-width: 768px) {
     .top {
@@ -621,7 +671,7 @@ body {
 
 
     .column1 img {
-         margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
     width: 200px;
     height 50px;
@@ -630,5 +680,22 @@ body {
     vertical-align: middle;
 
         }
+
+    .welcome_img {
+        width: 100%;
+        padding-top: 10px;
+        margin-right: 0px;
+        margin-left: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+        
+    }
+
 }
 
