@@ -285,6 +285,38 @@ body {
     font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
+.Frapp_header {
+    padding-top:  50px;
+    padding-left: 50px;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.Cold_coffee_header {
+    padding-top: 50px;
+    padding-left: 50px;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.Cold_tea_header {
+    padding-top: 50px;
+    padding-left: 50px;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.Lemonade_header {
+    padding-top: 50px;
+    padding-left: 50px;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
 .mocha_text {
     text-align: center;
     color: rgba(0,0,0,.87);
@@ -300,10 +332,15 @@ body {
 }
 
 .cappucino_text {
-    text-align: center;
+     text-align: center;
     color: rgba(0,0,0,.87);
     font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 1rem !important;
+}
+
+.lemonade_img {
+   
+    position:relative;
 }
 
 
