@@ -11,6 +11,6 @@ namespace Starbucks_Calorimeter.Models.Entity
         public double? Fats { get; set; }
         public double? Carbohidrates { get; set; }
         public double? Calories { get; set; }
-
+        public double? Coffeine { get; set; }
     }
 }
