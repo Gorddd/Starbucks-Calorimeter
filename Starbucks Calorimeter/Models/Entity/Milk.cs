@@ -1,7 +1,10 @@
-﻿namespace Starbucks_Calorimeter.Models.Entity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Starbucks_Calorimeter.Models.Entity
 {
     public class Milk
     {
+        [Key]
         public int Id { get; set; }
         public string? Name { get; set; }
         public int? Volume { get; set; }

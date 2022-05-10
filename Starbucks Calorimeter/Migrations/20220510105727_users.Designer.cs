@@ -12,8 +12,8 @@ using Starbucks_Calorimeter.Models;
 namespace Starbucks_Calorimeter.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220501141456_add_migraton")]
-    partial class add_migraton
+    [Migration("20220510105727_users")]
+    partial class users
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,10 +33,9 @@ namespace Starbucks_Calorimeter.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Volume")
+                    b.Property<double?>("Volume")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -52,20 +51,19 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -81,23 +79,22 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
-                    b.Property<double>("Weight")
+                    b.Property<double?>("Weight")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -113,32 +110,31 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Coffeine")
+                    b.Property<double?>("Coffeine")
                         .HasColumnType("float");
 
-                    b.Property<int?>("CreamId")
+                    b.Property<int>("CreamId")
                         .HasColumnType("int");
 
                     b.Property<int>("EspressoId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<int>("MilkId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
                     b.Property<int>("SizeId")
@@ -165,20 +161,19 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -194,23 +189,22 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
-                    b.Property<double>("Weight")
+                    b.Property<double?>("Weight")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -226,23 +220,22 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
-                    b.Property<int>("Volume")
+                    b.Property<int?>("Volume")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -258,23 +251,22 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
-                    b.Property<int>("Volume")
+                    b.Property<int?>("Volume")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -290,23 +282,22 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
-                    b.Property<double>("Weight")
+                    b.Property<double?>("Weight")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -323,10 +314,9 @@ namespace Starbucks_Calorimeter.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Volume")
+                    b.Property<double?>("Volume")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -342,20 +332,19 @@ namespace Starbucks_Calorimeter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<double>("Calories")
+                    b.Property<double?>("Calories")
                         .HasColumnType("float");
 
-                    b.Property<double>("Carbohidrates")
+                    b.Property<double?>("Carbohidrates")
                         .HasColumnType("float");
 
-                    b.Property<double>("Fats")
+                    b.Property<double?>("Fats")
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Proteins")
+                    b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -367,7 +356,9 @@ namespace Starbucks_Calorimeter.Migrations
                 {
                     b.HasOne("Starbucks_Calorimeter.Models.Entity.Cream", "Cream")
                         .WithMany()
-                        .HasForeignKey("CreamId");
+                        .HasForeignKey("CreamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Starbucks_Calorimeter.Models.Entity.Espresso", "Espresso")
                         .WithMany()

@@ -117,16 +117,16 @@ namespace Starbucks_Calorimeter.Migrations
                     b.Property<double?>("Coffeine")
                         .HasColumnType("float");
 
-                    b.Property<int?>("CreamId")
+                    b.Property<int>("CreamId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EspressoId")
+                    b.Property<int>("EspressoId")
                         .HasColumnType("int");
 
                     b.Property<double?>("Fats")
                         .HasColumnType("float");
 
-                    b.Property<int?>("MilkId")
+                    b.Property<int>("MilkId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -135,7 +135,7 @@ namespace Starbucks_Calorimeter.Migrations
                     b.Property<double?>("Proteins")
                         .HasColumnType("float");
 
-                    b.Property<int?>("SizeId")
+                    b.Property<int>("SizeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -354,19 +354,27 @@ namespace Starbucks_Calorimeter.Migrations
                 {
                     b.HasOne("Starbucks_Calorimeter.Models.Entity.Cream", "Cream")
                         .WithMany()
-                        .HasForeignKey("CreamId");
+                        .HasForeignKey("CreamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Starbucks_Calorimeter.Models.Entity.Espresso", "Espresso")
                         .WithMany()
-                        .HasForeignKey("EspressoId");
+                        .HasForeignKey("EspressoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Starbucks_Calorimeter.Models.Entity.Milk", "Milk")
                         .WithMany()
-                        .HasForeignKey("MilkId");
+                        .HasForeignKey("MilkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Starbucks_Calorimeter.Models.Entity.Size", "Size")
                         .WithMany()
-                        .HasForeignKey("SizeId");
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cream");
 
