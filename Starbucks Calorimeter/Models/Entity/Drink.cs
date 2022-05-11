@@ -11,7 +11,7 @@ namespace Starbucks_Calorimeter.Models.Entity
         public int SizeId { get; set; }
         public Size? Size { get; set; }
 
-        public int EspressoId { get; set; }
+        public int? EspressoId { get; set; }
         public Espresso? Espresso { get; set; }
 
         public int? MilkId { get; set; }
