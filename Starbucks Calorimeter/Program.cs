@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Starbucks_Calorimeter.Managers.Sizes;
+using Starbucks_Calorimeter.Managers.Users;
 using Starbucks_Calorimeter.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddTransient<IUserManager, UserManager>();
 builder.Services.AddTransient<ISizeManager, SizeManager>();
 
 // Создаем контекст. Соединяем с БД
