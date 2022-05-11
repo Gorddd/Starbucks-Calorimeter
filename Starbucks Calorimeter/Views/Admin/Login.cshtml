@@ -1,0 +1,18 @@
+﻿@model Starbucks_Calorimeter.Models.Entity.User
+
+@{
+    ViewData["Login"] = "Home Page";
+}
+
+<h2>Login</h2>
+<form asp-action="Login" asp-controller="Admin">
+    <p>
+        <label>Login</label><br />
+        <input type="text" asp-for="Login" />
+    </p>
+    <p>
+        <label>Password</label><br />
+        <input type="password" asp-for="Password" />
+    </p>
+    <input type="submit" value="Войти" />
+</form>
