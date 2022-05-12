@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Starbucks_Calorimeter.Managers.Sizes;
+using Starbucks_Calorimeter.Managers.Users;
 using Starbucks_Calorimeter.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,14 +9,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddTransient<IUserManager, UserManager>();
 builder.Services.AddTransient<ISizeManager, SizeManager>();
 
 // Создаем контекст. Соединяем с БД
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
 
-var app = builder.Build();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Admin/Login";
+        options.AccessDeniedPath = "/Admin/Login";
+    });
+builder.Services.AddAuthorization();
 
+var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
@@ -30,6 +40,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
