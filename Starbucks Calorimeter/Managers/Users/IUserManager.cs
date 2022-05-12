@@ -4,6 +4,7 @@ namespace Starbucks_Calorimeter.Managers.Users
 {
     public interface IUserManager
     {
-        User GetUser(string login, string password);
+        User GetUser(User user);
+        Task UpdateUser(User user);
     }
 }

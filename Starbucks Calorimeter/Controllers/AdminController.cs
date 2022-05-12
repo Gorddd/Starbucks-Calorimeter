@@ -24,7 +24,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(User user)
         {
-            var admin = manager.GetUser(user.Login, user.Password);
+            var admin = manager.GetUser(user);
             if (admin is null)
                 return RedirectToAction(nameof(Login));
 

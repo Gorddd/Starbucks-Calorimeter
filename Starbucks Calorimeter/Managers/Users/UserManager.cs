@@ -12,9 +12,15 @@ namespace Starbucks_Calorimeter.Managers.Users
             this.context = context;
         }
 
-        public User GetUser(string login, string password)
+        public User GetUser(User user)
         {
-            return context.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
+            return context.Users.FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
+        }
+
+        public async Task UpdateUser(User user)
+        {
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
         }
     }
 }
