@@ -49,6 +49,33 @@ namespace Starbucks_Calorimeter.Controllers
         }
 
         [Authorize(Roles = "admin")]
+        public IActionResult ChangePassword()
+        {
+            ViewBag.Login = HttpContext.User.FindFirstValue(ClaimsIdentity.DefaultNameClaimType);
+
+            return View();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> ChangePasswordAsync(string oldPassword, string newPassword)
+        {
+            var login = HttpContext.User.FindFirstValue(ClaimsIdentity.DefaultNameClaimType);
+
+            var admin = manager.GetUser(new User { Login = login, Password = oldPassword });
+            if (admin is null)
+            {
+                await HttpContext.SignOutAsync();
+
+                return RedirectToAction(nameof(Login));
+            }
+
+            admin.Password = newPassword;
+            await manager.UpdateUser(admin);
+
+            return RedirectToAction(nameof(AdminPanel));
+        }
+
+        [Authorize(Roles = "admin")]
         public IActionResult AdminPanel()
         {
             return View();
