@@ -26,9 +26,13 @@ body {
     right: 25px;
 }
 
+html, body, .top {
+    height: 100%;
+}
+
 .top {
     background: #E0E1E2;
-    padding-bottom: 48px;  
+   
     height:100% !important;
 }
 
@@ -57,7 +61,10 @@ body {
     color: #C7C8C8;
     padding-top: 22px;
     padding-bottom: 0px;
-
+    left: 0;
+    bottom: 0;
+    width: 100%;
+   
 }
 
 .welcome_img {
@@ -270,12 +277,42 @@ body {
    
 }
 
+.monetka_text {
+    text-align: center;
+    color: rgba(0,0,0,.87);
+    font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem !important;
+}
+
+.package_figure {
+    text-align:center;
+}
+
+
+.left_side {
+    width: 50%;
+    padding-top: 60px;
+    padding-bottom: 200px;
+    padding-left: 10px;
+    height: 100%;
+}
+
+}
+
+.rigth_side {
+    width: 50%;
+    padding-top: 60px;
+    padding-bottom: 200px;
+    padding-left: 60%;
+    padding-right:10px;
+    height: 100%;
+}
+}
+
+
 
 @media (min-width: 768px) {
-    .top {
-        padding-bottom: 80px;
-       
-    }
+   
 
  
 

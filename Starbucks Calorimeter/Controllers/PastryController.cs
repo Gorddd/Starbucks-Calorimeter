@@ -8,5 +8,10 @@ namespace Starbucks_Calorimeter.Controllers
         {
             return View();
         }
+
+        public IActionResult Calories()
+        {
+            return View();
+        }
     }
 }
