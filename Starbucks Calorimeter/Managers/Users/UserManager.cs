@@ -1,4 +1,5 @@
-﻿using Starbucks_Calorimeter.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Starbucks_Calorimeter.Models;
 using Starbucks_Calorimeter.Models.Entity;
 
 namespace Starbucks_Calorimeter.Managers.Users
@@ -10,6 +11,11 @@ namespace Starbucks_Calorimeter.Managers.Users
         public UserManager(ApplicationContext context)
         {
             this.context = context;
+        }
+
+        public async Task<List<User>> GetAll()
+        {
+            return await context.Users.AsNoTracking().ToListAsync();
         }
 
         public User GetUser(User user)

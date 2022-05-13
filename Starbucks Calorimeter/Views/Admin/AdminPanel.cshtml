@@ -2,30 +2,12 @@
     ViewData["Title"] = "Admin Panel";
 }
 
-<style>
-    .head{
-        display: flex;
-        border-bottom: 2px solid black;
-    }
-    .somecontainer{
-        display: flex;
-    }
-    h1{
-        flex: 4;
-    }
-    .somebuttons{
-        flex: 1;
-        margin-top: 33px;
-    }
-    .leftmenu{
-        flex: 1;
-        border-right: 1px solid black;
-    }
-    main{
-        flex: 9;
-    }
-</style>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+<body>
 <div class="head">
     <h1>Админ страничка</h1>
 
@@ -61,3 +43,5 @@
         @RenderBody()
     </main>
 </div>
+</body>
+</html>

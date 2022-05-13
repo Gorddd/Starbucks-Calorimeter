@@ -9,11 +9,11 @@ namespace Starbucks_Calorimeter.Controllers
 {
     public class AdminController : Controller
     {
-        IUserManager manager;
+        IUserManager userManager;
 
-        public AdminController(IUserManager manager)
+        public AdminController(IUserManager userManager)
         {
-            this.manager = manager;
+            this.userManager = userManager;
         }
 
         public IActionResult Login()
@@ -24,7 +24,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(User user)
         {
-            var admin = manager.GetUser(user);
+            var admin = userManager.GetUser(user);
             if (admin is null)
                 return RedirectToAction(nameof(Login));
 
@@ -61,7 +61,7 @@ namespace Starbucks_Calorimeter.Controllers
         {
             var login = HttpContext.User.FindFirstValue(ClaimsIdentity.DefaultNameClaimType);
 
-            var admin = manager.GetUser(new User { Login = login, Password = oldPassword });
+            var admin = userManager.GetUser(new User { Login = login, Password = oldPassword });
             if (admin is null)
             {
                 await HttpContext.SignOutAsync();
@@ -70,7 +70,7 @@ namespace Starbucks_Calorimeter.Controllers
             }
 
             admin.Password = newPassword;
-            await manager.UpdateUser(admin);
+            await userManager.UpdateUser(admin);
 
             return RedirectToAction(nameof(Index));
         }
@@ -82,9 +82,11 @@ namespace Starbucks_Calorimeter.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        public IActionResult Users()
+        public async Task<IActionResult> UsersAsync()
         {
-            return View();
+            var users = await userManager.GetAll();
+
+            return View(users);
         }
     }
 }

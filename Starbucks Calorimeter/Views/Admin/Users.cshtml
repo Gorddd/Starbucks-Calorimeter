@@ -1,5 +1,32 @@
-﻿@{
+﻿@model IEnumerable<User>
+
+@{
     Layout = "AdminPanel";
 }
 
-Hello Сука
+<table>
+    <caption>
+        Users
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Login
+            </a>
+        </th>
+        <th>
+            <a>
+                Password
+            </a>
+        </th>
+    </tr>
+    @foreach(User u in Model)
+    {
+        <tr><td>@u.Id</td><td>@u.Login</td><td>@u.Password</td></tr>
+    }
+</table>
