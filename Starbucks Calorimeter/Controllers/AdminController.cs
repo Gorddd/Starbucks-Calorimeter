@@ -37,7 +37,7 @@ namespace Starbucks_Calorimeter.Controllers
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             await HttpContext.SignInAsync(claimsPrincipal);
 
-            return RedirectToAction(nameof(AdminPanel));
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
@@ -72,11 +72,17 @@ namespace Starbucks_Calorimeter.Controllers
             admin.Password = newPassword;
             await manager.UpdateUser(admin);
 
-            return RedirectToAction(nameof(AdminPanel));
+            return RedirectToAction(nameof(Index));
         }
 
         [Authorize(Roles = "admin")]
-        public IActionResult AdminPanel()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        public IActionResult Users()
         {
             return View();
         }

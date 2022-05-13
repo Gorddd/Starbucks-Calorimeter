@@ -15,7 +15,7 @@
     }
     .somebuttons{
         flex: 1;
-        margin-top: 10px;
+        margin-top: 33px;
     }
     .leftmenu{
         flex: 1;
@@ -26,9 +26,12 @@
     }
 </style>
 
-
 <div class="head">
     <h1>Админ страничка</h1>
+
+    <form action="/Home/Index">
+        <input type="submit" action="/Home/Index" value="Вернуться на главную" class="somebuttons" style="margin-right: 3px;"/>
+    </form>
 
     <form method="get" action="/Admin/ChangePassword">
         <input type="submit" action="/Admin/ChangePassword" value="Изменить пароль" class="somebuttons" style="margin-right: 3px;"/>
@@ -52,9 +55,9 @@
         <a>Pasty</a><br />
         <a>Sizes</a><br />
         <a>Syrops</a><br />
-        <a>Users</a><br />
+        <a asp-action="Users">Users</a><br />
     </nav>
     <main>
-
+        @RenderBody()
     </main>
 </div>
