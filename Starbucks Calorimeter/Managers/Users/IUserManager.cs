@@ -9,5 +9,6 @@ namespace Starbucks_Calorimeter.Managers.Users
         Task AddUser(User user);
         Task DeleteUser(int id);
         Task UpdateUser(User user);
+        Task<List<User>> Filter(string login);
     }
 }

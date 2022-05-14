@@ -28,6 +28,18 @@ namespace Starbucks_Calorimeter.Managers.Users
             await context.SaveChangesAsync();
         }
 
+        public async Task<List<User>> Filter(string? login)
+        {
+            var users = await GetAll();
+
+            if (!string.IsNullOrEmpty(login))
+            {
+                users = users.Where(u => u.Login == login).ToList();
+            }
+
+            return users;
+        }
+
         public async Task<List<User>> GetAll()
         {
             return await context.Users.AsNoTracking().ToListAsync();

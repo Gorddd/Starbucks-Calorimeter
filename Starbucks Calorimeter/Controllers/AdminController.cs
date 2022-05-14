@@ -92,6 +92,14 @@ namespace Starbucks_Calorimeter.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> UsersAsync(string login)
+        {
+            var users = await userManager.Filter(login);
+
+            return View(users);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> AddUser(User user)
         {
             await userManager.AddUser(user);
@@ -114,7 +122,6 @@ namespace Starbucks_Calorimeter.Controllers
 
             return RedirectToAction("Users");
         }
-
         #endregion
     }
 }
