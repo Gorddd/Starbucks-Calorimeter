@@ -81,6 +81,8 @@ namespace Starbucks_Calorimeter.Controllers
             return View();
         }
 
+        #region Users
+
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> UsersAsync()
         {
@@ -88,5 +90,23 @@ namespace Starbucks_Calorimeter.Controllers
 
             return View(users);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddUser(User user)
+        {
+            await userManager.AddUser(user);
+
+            return RedirectToAction("Users");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            await userManager.DeleteUser(id);
+
+            return RedirectToAction("Users");
+        }
+
+        #endregion
     }
 }

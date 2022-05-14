@@ -4,6 +4,18 @@
     Layout = "AdminPanel";
 }
 
+<form asp-action="AddUser">
+    <p>
+        <label>Login</label><br />
+        <input type="text" name="Login" />
+    </p>
+    <p>
+        <label>Password</label><br />
+        <input type="text" name="Password" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
 <table>
     <caption>
         Users
@@ -27,6 +39,15 @@
     </tr>
     @foreach(User u in Model)
     {
-        <tr><td>@u.Id</td><td>@u.Login</td><td>@u.Password</td></tr>
+        <tr>
+            <td>@u.Id</td>
+            <td>@u.Login</td>
+            <td>@u.Password</td>
+            <td>
+                <form asp-controller="Admin" asp-action="DeleteUser" method="post" asp-route-id="@u.Id">
+                    <input type="submit" value="Удалить">
+                </form>
+            </td>
+        </tr>
     }
 </table>

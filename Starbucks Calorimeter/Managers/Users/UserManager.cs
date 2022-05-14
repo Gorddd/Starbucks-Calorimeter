@@ -13,6 +13,21 @@ namespace Starbucks_Calorimeter.Managers.Users
             this.context = context;
         }
 
+        public async Task AddUser(User user)
+        {
+            context.Users.Add(user);
+
+            await context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUser(int id)
+        {
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            context.Users.Remove(user);
+            await context.SaveChangesAsync();
+        }
+
         public async Task<List<User>> GetAll()
         {
             return await context.Users.AsNoTracking().ToListAsync();
