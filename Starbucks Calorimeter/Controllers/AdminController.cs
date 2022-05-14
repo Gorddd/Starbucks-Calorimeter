@@ -16,6 +16,8 @@ namespace Starbucks_Calorimeter.Controllers
             this.userManager = userManager;
         }
 
+        #region authorization
+
         public IActionResult Login()
         {
             return View();
@@ -81,8 +83,11 @@ namespace Starbucks_Calorimeter.Controllers
             return View();
         }
 
+        #endregion
+
         #region Users
 
+        //Все юзеры
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> UsersAsync()
         {
@@ -91,6 +96,7 @@ namespace Starbucks_Calorimeter.Controllers
             return View(users);
         }
 
+        //Фильтрация по логину
         [HttpPost]
         public async Task<IActionResult> UsersAsync(string login)
         {
