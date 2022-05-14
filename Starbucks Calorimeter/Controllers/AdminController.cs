@@ -107,6 +107,14 @@ namespace Starbucks_Calorimeter.Controllers
             return RedirectToAction("Users");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateUser(User user)
+        {
+            await userManager.UpdateUser(user);
+
+            return RedirectToAction("Users");
+        }
+
         #endregion
     }
 }

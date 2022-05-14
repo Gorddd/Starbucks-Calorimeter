@@ -43,9 +43,20 @@
             <td>@u.Id</td>
             <td>@u.Login</td>
             <td>@u.Password</td>
-            <td>
-                <form asp-controller="Admin" asp-action="DeleteUser" method="post" asp-route-id="@u.Id">
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteUser" method="post" asp-route-id="@u.Id" style="display:flex;">
                     <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateUser" method="post" asp-route-id="@u.Id" style="display:flex;">
+                    <p>
+                        <label>Login</label><br />
+                        <input type="text" name="Login" />
+                    </p>
+                    <p>
+                        <label>Password</label><br />
+                         <input type="text" name="Password" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
                 </form>
             </td>
         </tr>
