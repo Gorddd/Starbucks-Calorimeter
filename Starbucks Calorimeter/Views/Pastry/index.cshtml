@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+</head>
+<body>
+    <section class="top">
+
+        <script>function funk(param) {
+            localStorage.setItem('4', document.getElementById(param).src);
+            };
+        </script>
+
+        <div class="Hot_coffee_header">Круассаны</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5">
+        <div class="row1">
+
+
+            <div class="column1">
+
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('butter_img')">
+                       <img id="butter_img" src="img/butter_croussant.png" height="200" width="200">
+                    </a>
+                    <figcaption class="mocha_text">Круассан с маслом</figcaption>
+                </figure>
+               
+            </div>
+            <div class="column1">
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('almond_img')">
+                         <img id="almond_img" src="img/almond_png.png" height="200" width="200">
+                    </a>
+                    <figcaption class="mocha_text">Миндальный круассан</figcaption>
+                </figure>
+            </div>
+            <div class="column1">
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('lemon_img')">
+                        <img id="lemon_img" src="img/lemon_png.png" height="200" width="200">
+                    </a>
+                    <figcaption class="mocha_text">Круассан с лимонным кремом</figcaption>
+                </figure>
+               
+            </div>
+
+        </div>
+
+        <div class="Hot_coffee_header">Маффины</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5" >
+        <div class="row1">
+            <div class="column1">
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('maffin_img')">
+                         <img id="maffin_img" class="maffin_image" src="img/maffin.png" >
+                    </a>
+                    <figcaption class="mocha_text">Маффин двойной шоколад</figcaption>
+                </figure>
+            </div>
+            <div class="column1">
+
+                <div>
+                    <img src=" ">
+                </div>
+
+            </div>
+            <div class="column1">
+
+                <div>
+                    <img src=" ">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="Hot_coffee_header">Остальная выпечка</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5">
+        <div class="row1">
+            <div class="column1">
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('brecle_img')">
+                         <img id="brecle_img" src="img/brecle_png.png"  height="200" width="200">
+                    </a>
+                    <figcaption class="mocha_text">Брецель с соленым маслом</figcaption>
+                </figure>
+                
+            </div>
+            <div class="column1">
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('pletenka_img')">
+                        <img id="pletenka_img" src="img/pletenka.png"  height="200" width="200">
+                    </a>
+                    <figcaption class="mocha_text">Плетенка с орехом пекан</figcaption>
+                </figure>
+             
+            </div>
+            <div class="column1">
+                <figure class="package_figure">
+                    <a asp-controller="Pastry" asp-action="Calories" onclick="funk('waffel_img')">
+                        <img id="waffel_img" src="img/waffel_png.png" src="img/maffin.png" height="200" width="200">
+                    </a>
+                    <figcaption class="mocha_text">Венская вафоя</figcaption>
+                </figure>
+               
+            </div>
+
+        </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

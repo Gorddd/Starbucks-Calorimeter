@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+
+</head>
+<body>
+
+    <script>
+        function press(imd) {
+            localStorage.setItem('image','../img/mocha_png.png')
+            
+        };
+    </script>
+
+    <script>
+        function funk(param) {
+            localStorage.setItem('4', document.getElementById(param).src);
+        };
+    </script>
+
+    <section class="top">
+
+
+        <div class="Hot_coffee_header">Горячий кофе</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5">
+        <div class="row1">
+
+            <div class="column1">
+
+                <figure>
+                    <a class="mocha" id="mocha" onclick="funk('mocha_img')" asp-controller="Drinks" asp-action="Calories">
+
+                        <img id="mocha_img" src="img/mocha_png.png" />
+                    </a>
+
+                    <figcaption class="mocha_text">Мокка</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="cappucino" id="cappucino" onclick="funk('cappuch')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="cappuch" src="img/cappucino_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Каппучино</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="latte" id="latte" onclick="funk('latte_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="latte_img" src="img/latte_png.png">
+                    </a>
+                    <figcaption class="latte_text">Латте</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="espresso" id="espresso" onclick="funk('esp_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="esp_img" src="img/espresso_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Эспрессо</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="black" id="black" onclick="funk('black_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="black_img" src="img/black_coffee_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Фильтр-кофе</figcaption>
+                </figure>
+
+            </div>
+            <div class="column1">
+                <figure>
+                    <a class="caramel" id="caramel" onclick="funk('caramel_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="caramel_img" src="img/Caramel_Macchiato_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Карамель - маккиато</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="americano" id="americano" onclick="funk('americano_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="americano_img" src="img/americano_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Американо</figcaption>
+                </figure>
+            </div>
+
+
+            <div class="column1">
+                <figure>
+                    <a class="flat" id="flat" onclick="funk('flat_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="flat_img" src="img/flat_white_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Флет - уайт</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="con_pana" id="con_pana" onclick="funk('con_pana_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="con_pana_img" class="con_pana_img" src="img/esp_conPanna_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Эспрессо - Кон - Пана</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="Hot_tea_header">Горячий чай</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5">
+        <div class="row1">
+
+            <div class="column1">
+
+                <figure>
+                    <a class="chai" id="chai" onclick="funk('chai_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="chai_img" src="img/chai_tea_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Чай со специями</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="earl" id="earl" onclick="funk('earl_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="earl_img" src="img/earl_gray_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Эрл грей</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="emperor" id="emperor" onclick="funk('emperror_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="emperror_img" src="img/emperors_mint_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Императорский зеленый чай</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="english" id="english" onclick="funk('english_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="english_img" src="img/english_breakfast_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Английский завтрак</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="macha" id="macha" onclick="funk('macha_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="macha_img" src="img/macha_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Маття чай латте</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="mint" id="mint" onclick="funk('mint_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="mint_img" src="img/mint_citrus_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Чай мята цитрус</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="tea_latte" id="tea_latte" onclick="funk('tea_latte_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="tea_latte_img" src="img/tea_latte_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Пряный чай латте</figcaption>
+                </figure>
+            </div>
+
+        </div>
+
+        <div class="Frapp_header">Фраппучино</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5">
+        <div class="row1">
+
+            <div class="column1">
+
+                <figure>
+                    <a class="caramel_frap" id="caramel_frap" onclick="funk('caramel_frap_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="caramel_frap_img" src="img/caramel_frap_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Карамельный фраппучино</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="coffee_frap" id="coffee_frap" onclick="funk('coffe_fpar_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="coffe_fpar_img" src="img/coffee_frap_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Кофейный фраппучино</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="esp_frap" id="esp_frap" onclick="funk('esp_frap_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="esp_frap_img" src="img/esp_frap_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Эспрессо фраппучино</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="java_frap" id="java_frap" onclick="funk('java_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="java_img" src="img/java_frap_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Шоколадный ява фраппучино</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="macha_grap" id="macha_grap" onclick="funk('macha_frap_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="macha_frap_img" src="img/macha_grap_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Маття сливочный фраппучино</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="mocha_frap" id="mocha_frap" onclick="funk('mocha_frap_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="mocha_frap_img" src="img/mocha_frap_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Мокка фраппучино</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="vanilla_frap" id="vanilla_frap" onclick="funk('vanilla_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="vanilla_img" src="img/vanilla_frap_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Ванильно - сливочный фраппучино</figcaption>
+                </figure>
+            </div>
+
+        </div>
+
+        <div class="Cold_coffee_header">Охлажденный кофе</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5"></hr>
+        <div class="row1">
+
+            <div class="column1">
+
+                <figure>
+                    <a class="cold_brew_lat" id="cold_brew_lat"  onclick="funk('cold_brew_latte_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="cold_brew_latte_img" src="img/cold_brew_latte_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Колд брю латте</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="cold_brew" id="cold_brew" onclick="funk('cold_brew_img')"  asp-controller="Drinks" asp-action="Calories">
+                        <img id="cold_brew_img" src="img/cold_brew_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Колд брю</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="iced_amer" id="iced_amer"  onclick="funk('iced_amer_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_amer_img" src="img/iced_americano_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Охлажденный американо</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="iced_cap" id="iced_cap" onclick="funk('iced_cap_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_cap_img" src="img/iced_cappucino_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Охлажденный каппучино</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="iced_caram" id="iced_caram"  onclick="funk('iced_caram_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_caram_img" src="img/iced_caram_macc.png">
+                    </a>
+                    <figcaption class="mocha_text">Охлажденный карамель маккиато</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="iced_latte" id="iced_latte" onclick="funk('iced_latte_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_latte_img" src="img/iced_latte_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Охлажденный латте</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="iced_mocha" id="iced_mocha" onclick="funk('iced_mocha_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_mocha_img" src="img/iced_mocha_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Охлажденный мокка</figcaption>
+                </figure>
+            </div>
+
+        </div>
+
+        <div class="Cold_tea_header">Охлажденный чай</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5"></hr>
+        <div class="row1">
+
+            <div class="column1">
+
+                <figure>
+                    <a class="black_lem" id="black_lem" onclick="funk('black_lem_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="black_lem_img" src="img/black_tea_lemonade_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Лимонад черный чай</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="iced_black" id="iced_black" onclick="funk('iced_black_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_black_img" src="img/iced_black_tea_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Охлажденный черный чай</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="green_lem" id="green_lem" onclick="funk('green_lem_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="green_lem_img" src="img/green_tea_lemonade_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Лимонад зеленый чай</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="iced_green" id="iced_green" onclick="funk('iced_green_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_green_img" src="img/iced_green_tea_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Охлажденный зеленый чай</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="iced_chai" id="iced_chai" onclick="funk('iced_chai_img')"  asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_chai_img" src="img/iced_chai_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Охлажденный чай латте</figcaption>
+                </figure>
+
+                <figure>
+                    <a class="iced_macha" id="iced_macha" onclick="funk('iced_macha_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="iced_macha_img" src="img/iced_macha_png.png">
+                    </a>
+                    <figcaption class="cappucino_text">Охлажденный маття</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+
+                <figure>
+                    <a class="peach" id="peach" onclick="funk('peach_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="peach_img" src="img/peach_lemonade_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Персиковый лимонад</figcaption>
+                </figure>
+            </div>
+
+        </div>
+
+        <div class="Lemonade_header">Лимонад</div>
+        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5"></hr>
+        <div class="row1">
+
+            <div class="column1">
+
+                <figure class="lemonade_img">
+                    <a class="lem" id="lem" onclick="funk('lem_img')" asp-controller="Drinks" asp-action="Calories">
+                        <img id="lem_img" src="img/lemonade_png.png">
+                    </a>
+                    <figcaption class="mocha_text">Лимонад</figcaption>
+                </figure>
+            </div>
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+
+            </div>
+
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+            </div>
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+            </div>
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+            </div>
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+            </div>
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+            </div>
+
+            <div class="column1">
+                <figure>
+
+                </figure>
+            </div>
+
+        </div>
+
+
+</body>
+    </html>
