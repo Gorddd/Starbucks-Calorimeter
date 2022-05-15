@@ -1,0 +1,191 @@
+﻿@model IEnumerable<Drink>
+
+@{
+    Layout = "AdminPanel";
+}
+
+<h3>Добавить Drink</h3>
+<form asp-action="AddDrink" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Size</label><br />
+        <input type="text" name="Size" />
+    </p>
+    <p>
+        <label>Espresso</label><br />
+        <input type="text" name="Espresso" />
+    </p>
+    <p>
+        <label>Milk</label><br />
+        <input type="text" name="Milk" />
+    </p>
+    <p>
+        <label>Cream</label><br />
+        <input type="text" name="Cream" />
+    </p>
+    <p>
+        <label>Proteins</label><br />
+        <input type="text" name="Proteins" />
+    </p>
+    <p>
+        <label>Fats</label><br />
+        <input type="text" name="Fats" />
+    </p>
+    <p>
+        <label>Carbohidrates</label><br />
+        <input type="text" name="Carbohidrates" />
+    </p>
+    <p>
+        <label>Coffeine</label><br />
+        <input type="text" name="Coffeine" />
+    </p>
+    <p>
+        <label>Calories</label><br />
+        <input type="text" name="Calories" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
+<br />
+
+<h3>Поиск по:</h3>
+<form asp-action="Drinks" method="post" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="name" />
+    </p>
+    <input type="submit" value="Фильтр" />
+</form>
+
+<table>
+    <caption>
+        Drink
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Name
+            </a>
+        </th>
+        <th>
+            <a>
+                Size
+            </a>
+        </th>
+        <th>
+            <a>
+                Espresso
+            </a>
+        </th>
+        <th>
+            <a>
+                Milk
+            </a>
+        </th>
+        <th>
+            <a>
+                Cream
+            </a>
+        </th>
+        <th>
+            <a>
+                Proteins
+            </a>
+        </th>
+        <th>
+            <a>
+                Fats
+            </a>
+        </th>
+        <th>
+            <a>
+                Carbohidrates
+            </a>
+        </th>
+        <th>
+            <a>
+                Coffeine
+            </a>
+        </th>
+        <th>
+            <a>
+                Calories
+            </a>
+        </th>
+    </tr>
+    @foreach(Drink d in Model)
+    {
+        <tr>
+            <td>@d.Id</td>
+            <td>@d.Name</td>
+            <td>@d.Size?.Name</td>
+            <td>@d.Espresso?.Name</td>
+            <td>@d.Milk?.Name </td>
+            <td>@d.Cream?.Name</td>
+            <td>@d.Proteins</td>
+            <td>@d.Fats</td>
+            <td>@d.Carbohidrates</td>
+            <td>@d.Coffeine</td>
+            <td>@d.Calories</td>
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteDrink" method="post" asp-route-id="@d.Id" style="display:flex;">
+                    <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateDrink" method="post" asp-route-id="@d.Id" style="display:flex;">
+                    <p>
+                        <label>Name</label><br />
+                        <input type="text" name="Name" />
+                    </p>
+                    <p>
+                        <label>Size</label><br />
+                         <input type="text" name="Size" />
+                    </p>
+                    <p>
+                        <label>Espresso</label><br />
+                         <input type="text" name="Espresso" />
+                    </p>
+                    <p>
+                        <label>Milk</label><br />
+                         <input type="text" name="Milk" />
+                    </p>
+                    <p>
+                        <label>Cream</label><br />
+                         <input type="text" name="Cream" />
+                    </p>
+                    <p>
+                        <label>Proteins</label><br />
+                         <input type="text" name="Proteins" />
+                    </p>
+                    <p>
+                        <label>Fats</label><br />
+                         <input type="text" name="Fats" />
+                    </p>
+                    <p>
+                        <label>Carbohidrates</label><br />
+                         <input type="text" name="Carbohidrates" />
+                    </p>
+                    <p>
+                        <label>Coffeine</label><br />
+                         <input type="text" name="Coffeine" />
+                    </p>
+                    <p>
+                        <label>Calories</label><br />
+                         <input type="text" name="Calories" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+}
+
+

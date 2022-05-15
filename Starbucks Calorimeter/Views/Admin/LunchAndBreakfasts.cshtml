@@ -1,0 +1,133 @@
+﻿@model IEnumerable<LunchAndBreakfast>
+
+@{
+    Layout = "AdminPanel";
+}
+
+<h3>Добавить LunchAndBreakfast</h3>
+<form asp-action="AddLunchAndBreakfast" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Volume</label><br />
+        <input type="text" name="Volume" />
+    </p>
+    <p>
+        <label>Proteins</label><br />
+        <input type="text" name="Proteins" />
+    </p>
+    <p>
+        <label>Fats</label><br />
+        <input type="text" name="Fats" />
+    </p>
+    <p>
+        <label>Carbohidrates</label><br />
+        <input type="text" name="Carbohidrates" />
+    </p>
+    <p>
+        <label>Calories</label><br />
+        <input type="text" name="Calories" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
+<br />
+
+<h3>Поиск по:</h3>
+<form asp-action="LunchAndBreakfasts" method="post" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="name" />
+    </p>
+    <input type="submit" value="Фильтр" />
+</form>
+
+<table>
+    <caption>
+        LunchAndBreakfast
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Name
+            </a>
+        </th>
+        <th>
+            <a>
+                Volume
+            </a>
+        </th>
+        <th>
+            <a>
+                Proteins
+            </a>
+        </th>
+        <th>
+            <a>
+                Fats
+            </a>
+        </th>
+        <th>
+            <a>
+                Carbohidrates
+            </a>
+        </th>
+        <th>
+            <a>
+                Calories
+            </a>
+        </th>
+    </tr>
+    @foreach(LunchAndBreakfast lab in Model)
+    {
+        <tr>
+            <td>@lab.Id</td>
+            <td>@lab.Name</td>
+            <td>@lab.Volume</td>
+            <td>@lab.Proteins</td>
+            <td>@lab.Fats</td>
+            <td>@lab.Carbohidrates</td>
+            <td>@lab.Calories</td>
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteLunchAndBreakfast" method="post" asp-route-id="@lab.Id" style="display:flex;">
+                    <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateLunchAndBreakfast" method="post" asp-route-id="@lab.Id" style="display:flex;">
+                    <p>
+                        <label>Name</label><br />
+                        <input type="text" name="Name" />
+                    </p>
+                    <p>
+                        <label>Volume</label><br />
+                         <input type="text" name="Volume" />
+                    </p>
+                    <p>
+                        <label>Proteins</label><br />
+                         <input type="text" name="Proteins" />
+                    </p>
+                    <p>
+                        <label>Fats</label><br />
+                         <input type="text" name="Fats" />
+                    </p>
+                    <p>
+                        <label>Carbohidrates</label><br />
+                         <input type="text" name="Carbohidrates" />
+                    </p>
+                    <p>
+                        <label>Calories</label><br />
+                         <input type="text" name="Calories" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+}

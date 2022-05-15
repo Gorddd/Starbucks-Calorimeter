@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Espresso>
+
+@{
+    Layout = "AdminPanel";
+}
+
+<h3>Добавить Espresso</h3>
+<form asp-action="AddEspresso" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Proteins</label><br />
+        <input type="text" name="Proteins" />
+    </p>
+    <p>
+        <label>Fats</label><br />
+        <input type="text" name="Fats" />
+    </p>
+    <p>
+        <label>Carbohidrates</label><br />
+        <input type="text" name="Carbohidrates" />
+    </p>
+    <p>
+        <label>Calories</label><br />
+        <input type="text" name="Calories" />
+    </p>
+    <p>
+        <label>Coffeine</label><br />
+        <input type="text" name="Coffeine" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
+<br />
+
+<h3>Поиск по:</h3>
+<form asp-action="Espressoes" method="post" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="name" />
+    </p>
+    <input type="submit" value="Фильтр" />
+</form>
+
+<table>
+    <caption>
+        Espresso
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Name
+            </a>
+        </th>
+        <th>
+            <a>
+                Proteins
+            </a>
+        </th>
+        <th>
+            <a>
+                Fats
+            </a>
+        </th>
+        <th>
+            <a>
+                Carbohidrates
+            </a>
+        </th>
+        <th>
+            <a>
+                Calories
+            </a>
+        </th>
+        <th>
+            <a>
+                Coffeine
+            </a>
+        </th>
+    </tr>
+    @foreach(Espresso es in Model)
+    {
+        <tr>
+            <td>@es.Id</td>
+            <td>@es.Name</td>
+            <td>@es.Proteins</td>
+            <td>@es.Fats</td>
+            <td>@es.Carbohidrates</td>
+            <td>@es.Calories</td>
+            <td>@es.Coffeine</td>
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteEspresso" method="post" asp-route-id="@es.Id" style="display:flex;">
+                    <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateEspresso" method="post" asp-route-id="@es.Id" style="display:flex;">
+                    <p>
+                        <label>Name</label><br />
+                        <input type="text" name="Name" />
+                    </p>
+                    <p>
+                        <label>Proteins</label><br />
+                         <input type="text" name="Proteins" />
+                    </p>
+                    <p>
+                        <label>Fats</label><br />
+                         <input type="text" name="Fats" />
+                    </p>
+                    <p>
+                        <label>Carbohidrates</label><br />
+                         <input type="text" name="Carbohidrates" />
+                    </p>
+                    <p>
+                        <label>Calories</label><br />
+                         <input type="text" name="Calories" />
+                    </p>
+                    <p>
+                        <label>Coffeine</label><br />
+                         <input type="text" name="Coffeine" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+}

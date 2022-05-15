@@ -14,7 +14,7 @@ namespace Starbucks_Calorimeter.Models
         public DbSet<FoodInPackage> FoodInPackages { get; set; }
         public DbSet<LunchAndBreakfast> LunchAndBreakfasts { get; set; }
         public DbSet<Milk> Milks { get; set; }
-        public DbSet<Pastry> Pastry { get; set; }
+        public DbSet<Pastry> Pastries { get; set; }
         public DbSet<Syrop> Syrops { get; set; }
         public DbSet<User> Users { get; set; }
 

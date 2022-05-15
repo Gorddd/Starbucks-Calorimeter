@@ -1,0 +1,134 @@
+﻿@model IEnumerable<BottledDrink>
+
+@{
+    Layout = "AdminPanel";
+}
+
+<h3>Добавить BottledDrink</h3>
+<form asp-action="AddBottledDrink" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Volume</label><br />
+        <input type="text" name="Volume" />
+    </p>
+    <p>
+        <label>Proteins</label><br />
+        <input type="text" name="Proteins" />
+    </p>
+    <p>
+        <label>Fats</label><br />
+        <input type="text" name="Fats" />
+    </p>
+    <p>
+        <label>Carbohidrates</label><br />
+        <input type="text" name="Carbohidrates" />
+    </p>
+    <p>
+        <label>Calories</label><br />
+        <input type="text" name="Calories" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
+<br />
+
+<h3>Поиск по:</h3>
+<form asp-action="BottledDrinks" method="post" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="name" />
+    </p>
+    <input type="submit" value="Фильтр" />
+</form>
+
+<table>
+    <caption>
+        BottledDrink
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Name
+            </a>
+        </th>
+        <th>
+            <a>
+                Volume
+            </a>
+        </th>
+        <th>
+            <a>
+                Proteins
+            </a>
+        </th>
+        <th>
+            <a>
+                Fats
+            </a>
+        </th>
+        <th>
+            <a>
+                Carbohidrates
+            </a>
+        </th>
+        <th>
+            <a>
+                Calories
+            </a>
+        </th>
+    </tr>
+    @foreach(BottledDrink bd in Model)
+    {
+        <tr>
+            <td>@bd.Id</td>
+            <td>@bd.Name</td>
+            <td>@bd.Volume</td>
+            <td>@bd.Proteins</td>
+            <td>@bd.Fats</td>
+            <td>@bd.Carbohidrates</td>
+            <td>@bd.Calories</td>
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteBottledDrink" method="post" asp-route-id="@bd.Id" style="display:flex;">
+                    <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateBottledDrink" method="post" asp-route-id="@bd.Id" style="display:flex;">
+                    <p>
+                        <label>Name</label><br />
+                        <input type="text" name="Name" />
+                    </p>
+                    <p>
+                        <label>Volume</label><br />
+                         <input type="text" name="Volume" />
+                    </p>
+                    <p>
+                        <label>Proteins</label><br />
+                         <input type="text" name="Proteins" />
+                    </p>
+                    <p>
+                        <label>Fats</label><br />
+                         <input type="text" name="Fats" />
+                    </p>
+                    <p>
+                        <label>Carbohidrates</label><br />
+                         <input type="text" name="Carbohidrates" />
+                    </p>
+                    <p>
+                        <label>Calories</label><br />
+                         <input type="text" name="Calories" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+}
+

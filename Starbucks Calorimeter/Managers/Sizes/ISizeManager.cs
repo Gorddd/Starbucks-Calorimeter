@@ -5,8 +5,10 @@ namespace Starbucks_Calorimeter.Managers.Sizes
     public interface ISizeManager
     {
         Task<List<Size>> GetAll();
-        Task Add(Size size);
-        Task Update(Size size);
-        Task Delete(int id);
+        Size GetSize(Size size);
+        Task AddSize(Size size);
+        Task DeleteSize(int id);
+        Task UpdateSize(Size size);
+        Task<List<Size>> Filter(string name);
     }
 }
