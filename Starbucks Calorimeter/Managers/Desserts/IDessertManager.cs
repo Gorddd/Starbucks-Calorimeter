@@ -6,6 +6,7 @@ namespace Starbucks_Calorimeter.Managers.Desserts
     {
         Task<List<Dessert>> GetAll(); //AsNoTracking
         Task<Dessert> Get(int id);
+        Task<Dessert> Get(string name);
         Task Add(Dessert dessert);
         Task Update(Dessert dessert);
         Task Delete(int id);

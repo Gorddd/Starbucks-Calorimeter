@@ -53,6 +53,10 @@ namespace Starbucks_Calorimeter.Managers.Drinks
         {
             return _context.Drinks.FirstOrDefault(d => d.Id == id);
         }
+        public async Task<Drink> GetDrink(string name)
+        {
+            return _context.Drinks.FirstOrDefault(d => d.Name == name);
+        }
 
         public async Task UpdateDrink(Drink drink)
         {

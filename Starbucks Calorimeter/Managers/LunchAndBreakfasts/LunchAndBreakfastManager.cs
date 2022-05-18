@@ -43,6 +43,11 @@ namespace Starbucks_Calorimeter.Managers.LunchAndBreakfasts
             return _context.LunchAndBreakfasts.FirstOrDefault(lab => lab.Id == id);
         }
 
+        public async Task<LunchAndBreakfast> Get(string name)
+        {
+            return _context.LunchAndBreakfasts.FirstOrDefault(d => d.Name == name);
+        }
+
         public async Task<List<LunchAndBreakfast>> GetAll()
         {
             

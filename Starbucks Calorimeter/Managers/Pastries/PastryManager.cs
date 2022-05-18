@@ -43,9 +43,14 @@ namespace Starbucks_Calorimeter.Managers.Pastries
             return await _context.Pastries.AsNoTracking().ToListAsync();
         }
 
-        public Pastry GetPastry(Pastry pastry)
+        public async Task<Pastry> GetPastry(int id)
         {
-            return _context.Pastries.FirstOrDefault(s => s.Name == pastry.Name);
+            return _context.Pastries.FirstOrDefault(s => s.Id == id);
+        }
+
+        public async Task<Pastry> GetPastry(string name)
+        {
+            return _context.Pastries.FirstOrDefault(d => d.Name == name);
         }
 
         public async Task UpdatePastry(Pastry pastry)

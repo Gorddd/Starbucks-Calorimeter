@@ -44,6 +44,11 @@ namespace Starbucks_Calorimeter.Managers.Desserts
             return _context.Desserts.FirstOrDefault(des => des.Id == id);
         }
 
+        public async Task<Dessert> Get(string name)
+        {
+            return _context.Desserts.FirstOrDefault(d => d.Name == name);
+        }
+
         public async Task<List<Dessert>> GetAll()
         {
             return await _context.Desserts.AsNoTracking().ToListAsync();

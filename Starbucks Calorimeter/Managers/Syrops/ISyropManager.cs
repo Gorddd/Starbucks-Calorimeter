@@ -5,7 +5,8 @@ namespace Starbucks_Calorimeter.Managers.Syrops
     public interface ISyropManager
     {
         Task<List<Syrop>> GetAll();
-        Syrop GetSyrop(Syrop syrop);
+        Task<Syrop> GetSyrop(int id);
+        Task<Syrop> GetSyrop(string name);
         Task AddSyrop(Syrop syrop);
         Task DeleteSyrop(int id);
         Task UpdateSyrop(Syrop syrop);

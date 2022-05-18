@@ -5,7 +5,8 @@ namespace Starbucks_Calorimeter.Managers.Pastries
     public interface IPastryManager
     {
         Task<List<Pastry>> GetAll();
-        Pastry GetPastry(Pastry pastry);
+        Task<Pastry> GetPastry(int id);
+        Pastry GetPastry(string name);
         Task AddPastry(Pastry pastry);
         Task DeletePastry(int id);
         Task UpdatePastry(Pastry pastry);
