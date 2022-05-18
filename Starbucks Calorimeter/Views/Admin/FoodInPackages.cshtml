@@ -1,0 +1,133 @@
+﻿@model IEnumerable<FoodInPackage>
+
+@{
+    Layout = "AdminPanel";
+}
+
+<h3>Добавить FoodInPackage</h3>
+<form asp-action="AddFoodInPackage" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Weight</label><br />
+        <input type="text" name="Weight" />
+    </p>
+    <p>
+        <label>Proteins</label><br />
+        <input type="text" name="Proteins" />
+    </p>
+    <p>
+        <label>Fats</label><br />
+        <input type="text" name="Fats" />
+    </p>
+    <p>
+        <label>Carbohidrates</label><br />
+        <input type="text" name="Carbohidrates" />
+    </p>
+    <p>
+        <label>Calories</label><br />
+        <input type="text" name="Calories" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
+<br />
+
+<h3>Поиск по:</h3>
+<form asp-action="FoodInPackages" method="post" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="name" />
+    </p>
+    <input type="submit" value="Фильтр" />
+</form>
+
+<table>
+    <caption>
+        FoodInPackage
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Name
+            </a>
+        </th>
+        <th>
+            <a>
+                Weight
+            </a>
+        </th>
+        <th>
+            <a>
+                Proteins
+            </a>
+        </th>
+        <th>
+            <a>
+                Fats
+            </a>
+        </th>
+        <th>
+            <a>
+                Carbohidrates
+            </a>
+        </th>
+        <th>
+            <a>
+                Calories
+            </a>
+        </th>
+    </tr>
+    @foreach(FoodInPackage fip in Model)
+    {
+        <tr>
+            <td>@fip.Id</td>
+            <td>@fip.Name</td>
+            <td>@fip.Weight</td>
+            <td>@fip.Proteins</td>
+            <td>@fip.Fats</td>
+            <td>@fip.Carbohidrates</td>
+            <td>@fip.Calories</td>
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteFoodInPackage" method="post" asp-route-id="@fip.Id" style="display:flex;">
+                    <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateFoodInPackages" method="post" asp-route-id="@fip.Id" style="display:flex;">
+                    <p>
+                        <label>Name</label><br />
+                        <input type="text" name="Name" />
+                    </p>
+                    <p>
+                        <label>Weight</label><br />
+                         <input type="text" name="Weight" />
+                    </p>
+                    <p>
+                        <label>Proteins</label><br />
+                         <input type="text" name="Proteins" />
+                    </p>
+                    <p>
+                        <label>Fats</label><br />
+                         <input type="text" name="Fats" />
+                    </p>
+                    <p>
+                        <label>Carbohidrates</label><br />
+                         <input type="text" name="Carbohidrates" />
+                    </p>
+                    <p>
+                        <label>Calories</label><br />
+                         <input type="text" name="Calories" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+}

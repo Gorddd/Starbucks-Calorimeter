@@ -1,6 +1,16 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Starbucks_Calorimeter.Managers.BottledDrinks;
+using Starbucks_Calorimeter.Managers.Creams;
+using Starbucks_Calorimeter.Managers.Desserts;
+using Starbucks_Calorimeter.Managers.Drinks;
+using Starbucks_Calorimeter.Managers.Espressoes;
+using Starbucks_Calorimeter.Managers.FoodInPackages;
+using Starbucks_Calorimeter.Managers.LunchAndBreakfasts;
+using Starbucks_Calorimeter.Managers.Milks;
+using Starbucks_Calorimeter.Managers.Pastries;
 using Starbucks_Calorimeter.Managers.Sizes;
+using Starbucks_Calorimeter.Managers.Syrops;
 using Starbucks_Calorimeter.Managers.Users;
 using Starbucks_Calorimeter.Models;
 
@@ -11,6 +21,16 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IUserManager, UserManager>();
 builder.Services.AddTransient<ISizeManager, SizeManager>();
+builder.Services.AddTransient<ISyropManager, SyropManager>();
+builder.Services.AddTransient<ILunchAndBreakfastManager, LunchAndBreakfastManager>();
+builder.Services.AddTransient<IFoodInPackageManager, FoodInPackageManager>();
+builder.Services.AddTransient<IEspressoManager, EspressoManager>();
+builder.Services.AddTransient<IDessertManager, DessertManager>();
+builder.Services.AddTransient<ICreamManager, CreamManager>();
+builder.Services.AddTransient<IBottledDrinkManager, BottledDrinkManager>();
+builder.Services.AddTransient<IMilkManager, MilkManager>();
+builder.Services.AddTransient<IDrinkManager, DrinkManager>();
+builder.Services.AddTransient<IPastryManager, PastryManager>();
 
 // Создаем контекст. Соединяем с БД
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");

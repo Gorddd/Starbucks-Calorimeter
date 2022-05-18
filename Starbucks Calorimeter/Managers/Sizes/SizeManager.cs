@@ -13,14 +13,14 @@ namespace Starbucks_Calorimeter.Managers.Sizes
             _context = context;
         }
 
-        public async Task Add(Size size)
+        public async Task AddSize(Size size)
         {
             _context.Sizes.Add(size);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteSize(int id)
         {
             var size = await _context.Sizes.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -28,12 +28,33 @@ namespace Starbucks_Calorimeter.Managers.Sizes
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Size>> GetAll()
+        public async Task<List<Size>> Filter(string name)
         {
-            return await _context.Sizes.ToListAsync();
+            var sizes = await GetAll();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                sizes = sizes.Where(s => s.Name == name).ToList();
+            }
+
+            return sizes; 
         }
 
-        public async Task Update(Size size)
+        public async Task<List<Size>> GetAll()
+        {
+            return await _context.Sizes.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Size> GetSize(int id)
+        {
+            return _context.Sizes.FirstOrDefault(s => s.Id == id);
+        }
+        public async Task<Size> GetSize(string name)
+        {
+            return _context.Sizes.FirstOrDefault(s => s.Name == name);
+        }
+
+        public async Task UpdateSize(Size size)
         {
             _context.Sizes.Update(size);
             await _context.SaveChangesAsync();

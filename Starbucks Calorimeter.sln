@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starbucks Calorimeter", "Starbucks Calorimeter\Starbucks Calorimeter.csproj", "{C4CFD6D2-0B38-4E32-AE6B-D14F404C635A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starbucks Calorimeter", "Starbucks Calorimeter\Starbucks Calorimeter.csproj", "{C4CFD6D2-0B38-4E32-AE6B-D14F404C635A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

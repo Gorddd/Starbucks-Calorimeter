@@ -6,6 +6,7 @@ namespace Starbucks_Calorimeter.Managers.Espressoes
     {
         Task<List<Espresso>> GetAll(); //AsNoTracking
         Task<Espresso> Get(int id);
+        Task<Espresso> Get(string name);
         Task Add(Espresso espresso);
         Task Update(Espresso espresso);
         Task Delete(int id);

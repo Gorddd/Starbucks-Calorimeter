@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Size>
+
+@{
+    Layout = "AdminPanel";
+}
+
+<h3>Добавить size</h3>
+<form asp-action="AddSize" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Volume</label><br />
+        <input type="text" name="Volume" />
+    </p>
+    <input type="submit" value="Добавить" />
+</form>
+
+<br />
+
+<h3>Поиск по:</h3>
+<form asp-action="Sizes" method="post" style="display:flex;">
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="name" />
+    </p>
+    <input type="submit" value="Фильтр" />
+</form>
+
+<table>
+    <caption>
+        Size
+    </caption>
+    <tr>
+        <th>
+            <a>
+                Id
+            </a>
+        </th>
+        <th>
+            <a>
+                Name
+            </a>
+        </th>
+        <th>
+            <a>
+                Volume
+            </a>
+        </th>
+    </tr>
+    @foreach(Size s in Model)
+    {
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.Volume</td>
+            <td style="display:flex;">
+                <form asp-controller="Admin" asp-action="DeleteSize" method="post" asp-route-id="@s.Id" style="display:flex;">
+                    <input type="submit" value="Удалить">
+                </form>
+                <form asp-controller="Admin" asp-action="UpdateSize" method="post" asp-route-id="@s.Id" style="display:flex;">
+                    <p>
+                        <label>Name</label><br />
+                        <input type="text" name="Name" />
+                    </p>
+                    <p>
+                        <label>Volume</label><br />
+                         <input type="text" name="Volume" />
+                    </p>
+                        <input type="submit" value="Сохранить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
