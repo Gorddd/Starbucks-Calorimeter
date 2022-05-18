@@ -1,6 +1,15 @@
 body {
     font-family: Roboto;
+    position: relative;
+    margin: 0;
+    min-height: 100%;
 }
+
+.html {
+    height: 100%;
+}
+
+
 
 .heading {
     font-style: normal;
@@ -36,9 +45,10 @@ html, body, .top {
 
 .top {
     background: #E0E1E2;
-   
-    height:100% !important;
+    min-height: calc(100vh - 75px - 23px);
 }
+
+
 
 
 
@@ -69,6 +79,7 @@ html, body, .top {
     bottom: 0;
     width: 100%;
     margin-top: -5px;
+    position: static;
 }
 
 .welcome_img {
