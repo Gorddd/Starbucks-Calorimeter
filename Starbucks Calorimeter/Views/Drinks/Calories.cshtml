@@ -56,13 +56,12 @@
 
                 <div class="add_buttons">
 
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#modal0"></button>
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal"></button>
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#modal2"></button>
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#modal3"></button>
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#modal4"></button>
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#modal5"></button>
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#modal6"></button>
+                   
+                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
+                   
 
 
                 </div>
@@ -73,20 +72,43 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="milkmodalLabel">Form</h5>
+                        <h5 class="modal-title" id="milkmodalLabel">Молоко</h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                        <button class="Complit-button"></button>
-                    </div>
-                    <div class="modal-footer">
+                        <div class="milk_text">
+                            Молоко
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Стандартное молоко</button>
+                            <button class="add_button">Кокосовое молоко</button>
+                            <button class="add_button">Овсяное молоко</button>
+                            <button class="add_button">Безлактозное молоко</button>
+                            <button class="add_button">Соевое молоко</button>
+                            <button class="add_button">Маложирное молоко</button>
+                            <button class="last_milk_temp_button">Миндальное молоко</button>
+                        </div>
 
+                        <div class="milk_text">
+                            Температура молока
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Детская температура</button>
+                            <button class="add_button">Стандартная температура</button>
+                            <button class="last_milk_temp_button">Повышенная температура</button>
+                        </div>
+                        <button class="Complit-button">Готово</button>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
 
-        <div class="modal fade" id="modal0" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+        <div class="modal fade" id="syropmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -94,7 +116,7 @@
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                        <button class="Complit-button"></button>
+                        <button class="Complit-button">Готово</button>
                     </div>
                     <div class="modal-footer">
 
@@ -103,7 +125,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modal2" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+        <div class="modal fade" id="espmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -111,7 +133,7 @@
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                        <button class="Complit-button"></button>
+                        <button class="Complit-button">Готово</button>
                     </div>
                     <div class="modal-footer">
 
@@ -120,7 +142,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modal3" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+        <div class="modal fade" id="creammodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -128,7 +150,7 @@
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                        <button class="Complit-button"></button>
+                        <button class="Complit-button">Готово</button>
                     </div>
                     <div class="modal-footer">
 
@@ -136,58 +158,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="modal4" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="milkmodalLabel">Form</h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <button class="Complit-button"></button>
-                    </div>
-                    <div class="modal-footer">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="modal5" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="milkmodalLabel">Form</h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <button class="Complit-button"></button>
-                    </div>
-                    <div class="modal-footer">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="modal6" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="milkmodalLabel">Form</h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <button class="Complit-button"></button>
-                    </div>
-                    <div class="modal-footer">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!--Modal-->
 
     </section>
