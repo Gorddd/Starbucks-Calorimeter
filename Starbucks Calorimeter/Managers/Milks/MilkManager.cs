@@ -40,12 +40,12 @@ namespace Starbucks_Calorimeter.Managers.Milks
 
         public async Task<Milk> Get(int id)
         {
-            return _context.Milks.FirstOrDefault(m => m.Id == id);
+            return await _context.Milks.FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<Milk> Get(string name)
         {
-            return _context.Milks.FirstOrDefault(d => d.Name == name);
+            return await _context.Milks.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<List<Milk>> GetAll()

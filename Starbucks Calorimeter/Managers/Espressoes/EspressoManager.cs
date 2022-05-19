@@ -42,12 +42,12 @@ namespace Starbucks_Calorimeter.Managers.Espressoes
 
         public async Task<Espresso> Get(int id)
         {
-            return _context.Espressoes.FirstOrDefault(es => es.Id == id);
+            return await _context.Espressoes.FirstOrDefaultAsync(es => es.Id == id);
         }
 
         public async Task<Espresso> Get(string name)
         {
-            return _context.Espressoes.FirstOrDefault(d => d.Name == name);
+            return await _context.Espressoes.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<List<Espresso>> GetAll()

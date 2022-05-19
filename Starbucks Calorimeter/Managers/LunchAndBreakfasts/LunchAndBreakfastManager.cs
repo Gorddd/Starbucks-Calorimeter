@@ -40,12 +40,12 @@ namespace Starbucks_Calorimeter.Managers.LunchAndBreakfasts
 
         public async Task<LunchAndBreakfast> Get(int id)
         {
-            return _context.LunchAndBreakfasts.FirstOrDefault(lab => lab.Id == id);
+            return await _context.LunchAndBreakfasts.FirstOrDefaultAsync(lab => lab.Id == id);
         }
 
         public async Task<LunchAndBreakfast> Get(string name)
         {
-            return _context.LunchAndBreakfasts.FirstOrDefault(d => d.Name == name);
+            return await _context.LunchAndBreakfasts.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<List<LunchAndBreakfast>> GetAll()

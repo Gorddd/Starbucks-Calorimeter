@@ -41,12 +41,12 @@ namespace Starbucks_Calorimeter.Managers.Creams
 
         public async Task<Cream> Get(int id)
         {
-            return _context.Creams.FirstOrDefault(cr => cr.Id == id);
+            return await _context.Creams.FirstOrDefaultAsync(cr => cr.Id == id);
         }
 
         public async Task<Cream> Get(string name)
         {
-            return _context.Creams.FirstOrDefault(d => d.Name == name);
+            return await _context.Creams.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<List<Cream>> GetAll()
