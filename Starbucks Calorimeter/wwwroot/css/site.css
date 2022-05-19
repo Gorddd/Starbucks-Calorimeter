@@ -54,8 +54,6 @@ html, body, .top {
 
 
 
-
-
 .header_logo_white {
     display: none;
 }
@@ -325,6 +323,17 @@ html, body, .top {
     padding-right:10px;
     height: 100%;
 }
+
+.modal-dialog {
+    height: 100%;
+    margin-right: 0;
+    min-width: 60%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.modal-content {
+    height: 100%;
 }
 
 
