@@ -51,10 +51,20 @@ namespace Starbucks_Calorimeter.Managers.Drinks
 
         public async Task<Drink> GetDrink(int id)
         {
+            _context.Espressoes.Load();
+            _context.Sizes.Load();
+            _context.Creams.Load();
+            _context.Milks.Load();
+
             return await _context.Drinks.FirstOrDefaultAsync(d => d.Id == id);
         }
         public async Task<Drink> GetDrink(string name)
         {
+            _context.Espressoes.Load();
+            _context.Sizes.Load();
+            _context.Creams.Load();
+            _context.Milks.Load();
+
             return await _context.Drinks.FirstOrDefaultAsync(d => d.Name == name);
         }
 
