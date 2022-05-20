@@ -17,9 +17,13 @@ namespace Starbucks_Calorimeter.Controllers
             return View();
         }
 
-        public IActionResult Calories(string drinkName)
+        public async Task<IActionResult> Calories(string drinkName)
         {
-            var drink = drinkManager.GetDrink(drinkName);
+            var drink = await drinkManager.GetDrink(drinkName);
+
+            /*Когда буду делать бафы, то создавать new Drink() с данными, 
+             *полученными с бд + Добавки (методы пост или хз)
+             и уже этот новый drink передавать во View()*/
 
             return View(drink);
         }
