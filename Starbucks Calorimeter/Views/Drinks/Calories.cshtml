@@ -1,12 +1,10 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 <head>
 </head>
 <body >
     <section class="top">
-
-
-     
         <div class="block">
             <div class="left_item">
                 <img name="drink_img" src=" " style="height:500px" />
@@ -19,7 +17,7 @@
                     Выберите размер
                     <hr aria-hidden="true" class="sb-rule sb-rule--thin  pb5 line" id="line" />
                 </div>
-              
+
                 <div class="size_buttons">
 
                     <figure class="lemonade_img">
@@ -58,19 +56,143 @@
 
                 <div class="add_buttons">
 
-                    <button class="add_button1"></button>
-                    <button class="add_button1"></button>
-                    <button class="add_button1"></button>
-                    <button class="add_button1"></button>
-                    <button class="add_button1"></button>
-                    <button class="add_button1"></button>
-                    <button class="add_button1"></button>
+                   
+                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
+                   
 
 
                 </div>
             </div>
         </div>
-</section>
+        <!--Modal-->
+        <div class="modal fade" id="milkmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="milkmodalLabel">Молоко</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="milk_text">
+                            Молоко
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Стандартное молоко</button>
+                            <button class="add_button">Кокосовое молоко</button>
+                            <button class="add_button">Овсяное молоко</button>
+                            <button class="add_button">Безлактозное молоко</button>
+                            <button class="add_button">Соевое молоко</button>
+                            <button class="add_button">Маложирное молоко</button>
+                            <button class="last_milk_temp_button">Миндальное молоко</button>
+                        </div>
+
+                        <div class="milk_text">
+                            Температура молока
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Детская температура</button>
+                            <button class="add_button">Стандартная температура</button>
+                            <button class="last_milk_temp_button">Повышенная температура</button>
+                        </div>
+                        <button class="Complit-button">Готово</button>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="syropmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="milk_text">
+                            Сиропы
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Малиновый сироп</button>
+                            <button class="add_button">Миндальный сироп</button>
+                            <button class="add_button">Шоколадный соус</button>
+                            <button class="add_button">Ванильный сироп</button>
+                            <button class="add_button">Сироп Ирландский Крем</button>
+                            <button class="add_button">Карамельный сироп</button>
+                            <button class="add_button">Кокосовый сироп</button>
+                            <button class="last_milk_temp_button">Ореховый сироп</button>
+                        </div>
+                        <button class="Complit-button">Готово</button>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="espmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+            <div class="modal-dialog" id="creammodal1">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                       
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="milk_text">
+                            Эспрессо
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Эспрессо</button>
+                            <button class="add_button">Эспрессо Декаф Эспрессо</button>
+                            <button class="last_milk_temp_button">Блонд Эспрессо</button>
+                        </div>
+                        <button class="Complit-button">Готово</button>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="creammodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+            <div class="modal-dialog" id="creammodal1">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="milk_text">
+                            Сливки
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Сливки жидкие</button>
+                            <button class="add_button">Сливки жидкие соевые</button>
+                            <button class="add_button">Сливки взбитые</button>
+                            <button class="last_milk_temp_button">Сливки взбитые соевые</button>
+                        </div>
+                        <button class="Complit-button">Готово</button>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal-->
+
+    </section>
 
 </body>
-
+</html>
