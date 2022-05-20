@@ -41,12 +41,12 @@ namespace Starbucks_Calorimeter.Managers.BottledDrinks
 
         public async Task<BottledDrink> Get(int id)
         {
-            return _context.BottledDrinks.FirstOrDefault(bd => bd.Id == id);
+            return await _context.BottledDrinks.FirstOrDefaultAsync(bd => bd.Id == id);
         }
 
         public async Task<BottledDrink> Get(string name)
         {
-            return _context.BottledDrinks.FirstOrDefault(d => d.Name == name);
+            return await _context.BottledDrinks.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<List<BottledDrink>> GetAll()

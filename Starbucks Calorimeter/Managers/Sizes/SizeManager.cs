@@ -47,11 +47,11 @@ namespace Starbucks_Calorimeter.Managers.Sizes
 
         public async Task<Size> GetSize(int id)
         {
-            return _context.Sizes.FirstOrDefault(s => s.Id == id);
+            return await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
         }
         public async Task<Size> GetSize(string name)
         {
-            return _context.Sizes.FirstOrDefault(s => s.Name == name);
+            return await _context.Sizes.FirstOrDefaultAsync(s => s.Name == name);
         }
 
         public async Task UpdateSize(Size size)

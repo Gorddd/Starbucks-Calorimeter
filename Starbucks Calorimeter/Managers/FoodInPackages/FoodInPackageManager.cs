@@ -39,12 +39,12 @@ namespace Starbucks_Calorimeter.Managers.FoodInPackages
 
         public async Task<FoodInPackage> Get(int id)
         {
-            return _context.FoodInPackages.FirstOrDefault(f => f.Id == id);
+            return await _context.FoodInPackages.FirstOrDefaultAsync(f => f.Id == id);
         }
 
         public async Task<FoodInPackage> Get(string name)
         {
-            return _context.FoodInPackages.FirstOrDefault(d => d.Name == name);
+            return await _context.FoodInPackages.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<List<FoodInPackage>> GetAll()
