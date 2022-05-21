@@ -9,28 +9,30 @@
 </head>
 <body>
     <section class="top">
-
+        <script>function funk(param) {
+            localStorage.setItem('4', document.getElementById(param).src);
+            };</script>
         <div class="row1">
 
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/be_kind_orange.png">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('orange')" asp-route-tableName="FoodInPackages" asp-route-name="Батончик Be-Kind арахисовый с миндалем и шоколадомй">
+                        <img id="orange" src="img/be_kind_orange.png">
                     </a>
                     <figcaption class="mocha_text">Арахисово-миндальный батончик</figcaption>
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/milk_choco.png">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('milk_choco')" asp-route-tableName="FoodInPackages" asp-route-name="Молочный шоколад">
+                        <img id="milk_choco" src="img/milk_choco.png">
                     </a>
                     <figcaption class="mocha_text">Молочный шоколад</figcaption>
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/dark_chocolate.png">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('dark')" asp-route-tableName="FoodInPackages" asp-route-name="Шоколад темный">
+                        <img id="dark" src="img/dark_chocolate.png">
                     </a>
                     <figcaption class="mocha_text">Тёмный шоколад</figcaption>
                 </figure>
@@ -38,16 +40,16 @@
 
             <div class="column1">
 
-                <figure  class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/be_kind_yellow.png">
+                <figure class="package_figure">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('yellow')" asp-route-tableName="FoodInPackages" asp-route-name="Батончик Be-Kind ореховый с медом и морской солью">
+                        <img id="yellow" src="img/be_kind_yellow.png">
                     </a>
                     <figcaption class="mocha_text">Ореховый батончик с медом</figcaption>
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/dark_choc.png">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('dark2')" asp-route-tableName="FoodInPackages" asp-route-name="Шоколад темный">
+                        <img id="dark2" src="img/dark_choc.png"> 
                     </a>
                     <figcaption class="mocha_text">Тёмный шоколад</figcaption>
                 </figure>
@@ -56,15 +58,15 @@
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/be_kind_blue.png">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('blue')" asp-route-tableName="FoodInPackages" asp-route-name="Батончик Be-Kind ореховый с медом и морской солью">
+                        <img id="blue" src="img/be_kind_blue.png">
                     </a>
                     <figcaption class="mocha_text">Злаковый батончик с горьким шоколадом</figcaption>
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="FoodInPackage" asp-action="Food_calories">
-                        <img src="img/moneta.png">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('moneta')" asp-route-tableName="FoodInPackages" asp-route-name="Шоколадная монета">
+                        <img id="moneta" src="img/moneta.png">
                     </a>
                     <figcaption class="monetka_text">Шоколадная монетка</figcaption>
                 </figure>
