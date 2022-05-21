@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Starbucks_Calorimeter.Managers.Drinks;
+using Starbucks_Calorimeter.Models.Entity;
 
 namespace Starbucks_Calorimeter.Controllers
 {
@@ -24,6 +25,19 @@ namespace Starbucks_Calorimeter.Controllers
             /*Когда буду делать бафы, то создавать new Drink() с данными, 
              *полученными с бд + Добавки (методы пост или хз)
              и уже этот новый drink передавать во View()*/
+
+            return View(drink);
+        }
+
+
+        //Получение с блока основа
+        [HttpPost]
+        public async Task<IActionResult> Calories(Drink drink, string? sizeName, string? espressoName, string? milkName)
+        {
+            drink = await drinkManager.GetDrink(drink.Name, 
+                sizeName ?? drink.Size.Name, 
+                espressoName ?? drink.Espresso.Name, 
+                milkName ?? drink.Milk.Name);
 
             return View(drink);
         }
