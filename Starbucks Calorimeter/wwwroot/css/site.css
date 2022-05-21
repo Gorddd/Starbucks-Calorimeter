@@ -356,14 +356,14 @@ html, body, .top {
 
 .rigth_side {
     width: 50%;
-    padding-top: 60px;
+    padding-top: 170px;
     padding-bottom: 200px;
-    padding-left: 60%;
-    padding-right:10px;
+    padding-left: 15%;
+    padding-right: 10px;
     height: 100%;
+   
 }
-
-.modal-dialog {
+ .modal-dialog {
     height: auto;
     margin-right: 0;
     min-width: 60%;

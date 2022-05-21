@@ -7,72 +7,74 @@
 </head>
 <body>
     <section class="top">
-      
+        <script>function funk(param) {
+            localStorage.setItem('4', document.getElementById(param).src);
+            };</script>
         <div class="row1">
 
             <div class="column1">
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/perrier.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('perrier')" asp-route-tableName="BottledDrinks" asp-route-name="Вода с газом Перье">
+                        <img id="perrier" src="img/perrier.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Минеральная вода перье</figcaption>
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/vita_yellow.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('yeallow')" asp-route-tableName="BottledDrinks" asp-route-name="Vitamin Well Defence сщ вкусщь лимона и бузины">
+                        <img id="yeallow" src="img/vita_yellow.png" height="200" width="200">
                     </a>
-                    <figcaption class="mocha_text">Напиток Vitamin Well лимон и бузина</figcaption>
+                    <figcaption class="mocha_text">Напиток Vitamin Well лимон и бузина</figcaption> 
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/perrier_pink.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('pink')" asp-route-tableName="BottledDrinks" asp-route-name="Напиток Perrier вишня">
+                        <img id="pink" src="img/perrier_pink.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Напиток Perrier личи</figcaption>
                 </figure>
-               
+
 
             </div>
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/vita_gray.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('gray')" asp-route-tableName="BottledDrinks" asp-route-name="хуй">
+                        <img id="gray" src="img/vita_gray.png" height="200" width="200">
                     </a>
-                    <figcaption class="mocha_text">Напиток Vitamin Well лимон и лайм</figcaption>
+                    <figcaption class="mocha_text">Напиток Vitamin Well лимон и лайм</figcaption><!--Спроси почему с бека не приходит ничего-->
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/perrier_red.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('red')" asp-route-tableName="BottledDrinks" asp-route-name="Напиток Perrier клубника">
+                        <img id="red" src="img/perrier_red.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Напиток Perrier клубника</figcaption>
                 </figure>
-               
+
 
             </div>
             <div class="column1">
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/vitel.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('vitel')" asp-route-tableName="BottledDrinks" asp-route-name="Вода без газа vittel">
+                        <img id="vitel" src="img/vitel.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Минеральная вода Vitel</figcaption>
                 </figure>
 
                 <figure class="package_figure">
-                    <a asp-controller="Pastry" asp-action="Calories">
-                        <img src="img/vita_orange.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('orange')" asp-route-tableName="BottledDrinks" asp-route-name="Vitamin well antioxidant со вкусом персика" >
+                        <img id="orange" src="img/vita_orange.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Напиток Vitamin Well персик</figcaption>
                 </figure>
-               
+
 
             </div>
 
         </div>
 
 
-            
+
 </body>
 </html>

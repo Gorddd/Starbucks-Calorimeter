@@ -8,27 +8,29 @@
 </head>
 <body>
     <section class="top">
-
+        <script>function funk(param) {
+                localStorage.setItem('4', document.getElementById(param).src);
+            };</script>
 
         <div class="Hot_coffee_header">Сендвичи</div>
         <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5">
         <div class="row1">
 
             <figure class="package_figure">
-                <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                    <img src="img/sandwich.png" height="200" width="200">
+                <a asp-controller="Products" asp-action="Calories" onclick="funk('sandwich_img')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Сэндвич с сыром и яйцом">
+                    <img id="sandwich_img" src="img/sandwich.png" height="200" width="200">
                 </a>
                 <figcaption class="mocha_text">Сендвич с яйцом</figcaption>
             </figure>
 
             <figure class="package_figure">
-                <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                    <img src="img/bagel.png" height="200" width="200">
+                <a asp-controller="Products" asp-action="Calories" onclick="funk('bagel')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Мультизерновой бейгл">
+                    <img id="bagel" src="img/bagel.png" height="200" width="200">
                 </a>
                 <figcaption class="mocha_text">Бейгл мультизреновой</figcaption>
             </figure>
 
-           
+
             <div class="column1">
                 <div>
                     <img src=" ">
@@ -46,8 +48,8 @@
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                       <img src="img/berry_parfe.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('berry_parfe')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Кокосовое парфе с ягодным джемом">
+                        <img id="berry_parfe" src="img/berry_parfe.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Ягодное парфе</figcaption>
                 </figure>
@@ -55,12 +57,12 @@
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                        <img src="img/chea_parfe.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('chea_parfe')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Парфе с семенами чиа">
+                        <img id="chea_parfe" src="img/chea_parfe.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Парфе с семянами чиа</figcaption>
                 </figure>
-               
+
             </div>
             <div class="column1">
                 <div>
@@ -76,8 +78,8 @@
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                        <img src="img/surniki.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('surniki')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Сырники (СМИК)">
+                        <img id="surniki" src="img/surniki.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Сырники сметаной и малиновым вареньем</figcaption>
                 </figure>
@@ -103,32 +105,32 @@
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                        <img src="img/pasta.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('pasta')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Соба с курицей и овощами">
+                        <img id="pasta" src="img/pasta.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Соба с курицей</figcaption>
                 </figure>
- 
+
             </div>
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                        <img src="img/grib.png" height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('grib')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Шпинатная паста с скурицей и сливочно-грибным соусом">
+                        <img id="grib" src="img/grib.png" height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Паста курица - грибы</figcaption>
                 </figure>
-               
+
             </div>
             <div class="column1">
 
                 <figure class="package_figure">
-                    <a asp-controller="LunchAndBreakfast" asp-action="Calories">
-                        <img src="img/list.png " height="200" width="200">
+                    <a asp-controller="Products" asp-action="Calories" onclick="funk('list')" asp-route-tableName="LunchAndBreakfasts" asp-route-name="Пенне арабьята">
+                        <img id="list" src="img/list.png " height="200" width="200">
                     </a>
                     <figcaption class="mocha_text">Пенне Арабьята</figcaption>
                 </figure>
-            
+
             </div>
 
         </div>

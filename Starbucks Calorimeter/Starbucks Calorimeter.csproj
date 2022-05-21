@@ -19,5 +19,9 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Views\Products\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Products\" />
   </ItemGroup>
 </Project>
