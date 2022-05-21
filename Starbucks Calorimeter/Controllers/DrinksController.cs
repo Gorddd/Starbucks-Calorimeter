@@ -32,8 +32,10 @@ namespace Starbucks_Calorimeter.Controllers
 
         //Получение с блока основа
         [HttpPost]
-        public async Task<IActionResult> Calories(Drink drink, string? sizeName, string? espressoName, string? milkName)
+        public async Task<IActionResult> Calories(int drinkId, string? sizeName, string? espressoName, string? milkName)
         {
+            var drink = await drinkManager.GetDrink(drinkId);
+
             drink = await drinkManager.GetDrink(drink.Name, 
                 sizeName ?? drink.Size.Name, 
                 espressoName ?? drink.Espresso.Name, 
