@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model Drink
+
+
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -10,6 +13,16 @@
                 <img name="drink_img" src=" " style="height:500px" />
                 <script>drink_img.src = localStorage.getItem('4');
                     // localStorage.clear();</script>
+                <div style="width:1000px">
+                    Информация о продукте:
+                </div>
+                <div style="width:1000px">
+                    @Model.Name  Размер напитка: @Model.Size.Name, Молоко: @Model.Milk.Name, Эспрессо: @Model.EspressoId @Model.Espresso.Name
+                   
+                </div>
+                <div style="width:1000px">
+                    Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
+                </div>
             </div>
 
             <div class="right_item">
@@ -21,28 +34,37 @@
                 <div class="size_buttons">
 
                     <figure class="lemonade_img">
-                        <button class="short_button" onclick="press()"></button>
+                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Шорт">
+                            <button class="short_button" onclick="press()" type="submit"></button>
+                        </form>
+
                         <figcaption class="size_text">Short</figcaption>
                     </figure>
 
 
 
                     <figure class="lemonade_img">
-                        <button class="tall_button"></button>
+                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Толл">
+                            <button class="tall_button" type="submit"></button>
+                        </form>
                         <figcaption class="size_text">Tall</figcaption>
                     </figure>
 
 
 
                     <figure class="lemonade_img">
-                        <button class="grande_button"></button>
+                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Гранде">
+                            <button class="grande_button" type="submit"></button>
+                        </form>
                         <figcaption class="size_text">Grande</figcaption>
                     </figure>
 
 
 
                     <figure class="lemonade_img">
-                        <button class="venti_button"></button>
+                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Венти">
+                            <button class="venti_button" type="submit"></button>
+                        </form>
                         <figcaption class="size_text">Venti</figcaption>
                     </figure>
 
@@ -50,21 +72,24 @@
                 </div>
 
                 <div class="config_size_text">
-                    Добавки
+                    Основные компоненты
                     <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                 </div>
 
                 <div class="add_buttons">
-
-                   
                     <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
-                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
                     <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
-                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
-                   
-
-
                 </div>
+
+                <div class="config_size_text">
+                    Добавки
+                    <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                </div>
+                <div class="add_buttons">
+                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
+                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
+                </div>
+
             </div>
         </div>
         <!--Modal-->
@@ -81,13 +106,27 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                            <button class="first_milk_button">Стандартное молоко</button>
-                            <button class="add_button">Кокосовое молоко</button>
-                            <button class="add_button">Овсяное молоко</button>
-                            <button class="add_button">Безлактозное молоко</button>
-                            <button class="add_button">Соевое молоко</button>
-                            <button class="add_button">Маложирное молоко</button>
-                            <button class="last_milk_temp_button">Миндальное молоко</button>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Стандартное молоко">
+                                <button class="first_milk_button" type="submit">Стандартное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Кокосовое молоко">
+                                <button class="add_button" type="submit">Кокосовое молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Овсяное молоко">
+                                <button class="add_button" type="submit">Овсяное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Безлактозное молоко">
+                                <button class="add_button" type="submit">Безлактозное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Соевое молоко">
+                                <button class="add_button" type="submit">Соевое молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Маложирное молоко">
+                                <button class="add_button" type="submit">Маложирное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Миндальное молоко">
+                                <button class="last_milk_temp_button" type="submit">Миндальное молоко</button>
+                            </form>
                         </div>
 
                         <div class="milk_text">
@@ -152,9 +191,15 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                            <button class="first_milk_button">Эспрессо</button>
-                            <button class="add_button">Эспрессо Декаф Эспрессо</button>
-                            <button class="last_milk_temp_button">Блонд Эспрессо</button>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Эспрессо">
+                                <button class="first_milk_button" type="submit">Эспрессо</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Декаф Эспрессо">
+                                <button class="add_button" type="submit">Эспрессо Декаф Эспрессо</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Блонд Эспрессо">
+                                <button class="last_milk_temp_button" type="submit">Блонд Эспрессо</button>
+                            </form>
                         </div>
                         <button class="Complit-button">Готово</button>
                     </div>
