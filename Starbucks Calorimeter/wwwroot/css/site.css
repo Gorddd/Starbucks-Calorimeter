@@ -407,7 +407,43 @@ html, body, .top {
     padding-left: 10px;
 }
 
+.syrop_buttons {
+    padding-right: 20px;
+}
 
+#minus1, #minus2, #minus3, #minus4, #minus5, #minus6, #minus7, #minus8 {
+    width: 24px;
+    height: 24px;
+    /* overflow: visible; */
+    /* fill: currentcolor; */
+    border-radius: 100%;
+    border-color: green;
+}
+
+#plus1, #plus2, #plus3, #plus4, #plus5, #plus6, #plus7, #plus8 {
+    width: 24px;
+    height: 24px;
+    /* overflow: visible; */
+    /* fill: currentcolor; */
+    border-radius: 100%;
+    border-color: green;
+}
+
+.rastberry {
+    background: #E0E1E2;
+    height: 45px;
+    width: 500px;
+    /* border: black; */
+    border: 1px solid black !important;
+    border-radius: 5px;
+    border-width: thin;
+    margin-top: 50px;
+    font-family: Roboto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
 
 @media (min-width: 768px) {
     .navbar {

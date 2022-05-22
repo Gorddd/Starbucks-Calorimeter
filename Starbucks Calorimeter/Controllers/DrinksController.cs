@@ -38,8 +38,8 @@ namespace Starbucks_Calorimeter.Controllers
 
             drink = await drinkManager.GetDrink(drink.Name, 
                 sizeName ?? drink.Size.Name, 
-                espressoName ?? drink.Espresso.Name, 
-                milkName ?? drink.Milk.Name);
+                espressoName ?? drink.Espresso?.Name, 
+                milkName ?? drink.Milk?.Name);
 
             return View(drink);
         }

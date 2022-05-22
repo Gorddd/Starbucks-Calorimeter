@@ -17,81 +17,258 @@
                     Информация о продукте:
                 </div>
                 <div style="width:1000px">
-                    @Model.Name  Размер напитка: @Model.Size.Name, Молоко: @Model.Milk.Name, Эспрессо: @Model.EspressoId @Model.Espresso.Name
-                   
+                    @Model.Name  Размер напитка: @Model.Size.Name,
+                    @if (Model.Milk is not null) {<span>Молоко: @Model.Milk.Name </span>}, @if (Model.Espresso is not null) {<span>Эспрессо: @Model.Espresso.Name </span>}
+                    @if (Model.Cream is not null) {<span>Сливки: @Model.Cream.Name </span>}
+
                 </div>
                 <div style="width:1000px">
                     Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
                 </div>
             </div>
+            <script>
+                let syrop_counter = [0,0,0,0,0,0,0,0];
+                function func(param1, param2) {
 
+                    switch (param1) {
+                        case "plus1":
+                            if (param1 == "plus1") {
+                                syrop_counter[0] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[0];
+                            }
+
+
+                            break;
+                        case "plus2":
+                            if (document.getElementById(param1).id == "plus2") {
+                                syrop_counter[1] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[1];
+                            }
+
+
+                            break;
+                        case "plus3":
+                            if (document.getElementById(param1).id == "plus3") {
+                                syrop_counter[2] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[2];
+                            }
+
+
+                            break;
+                        case "plus4":
+                            if (document.getElementById(param1).id == "plus4") {
+                                syrop_counter[3] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[3];
+                            }
+
+
+                            break;
+                        case "plus5":
+                            if (document.getElementById(param1).id == "plus5") {
+                                syrop_counter[4] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[4];
+                            }
+
+                            break;
+                        case "plus6":
+                            if (document.getElementById(param1).id == "plus6") {
+                                syrop_counter[5] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[5];
+                            }
+
+                            break;
+                        case "plus7":
+                            if (document.getElementById(param1).id == "plus7") {
+                                syrop_counter[6] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[6];
+                            }
+
+                            break;
+                        case "plus8":
+                            if (document.getElementById(param1).id == "plus8") {
+                                syrop_counter[7] += 1;
+                                document.getElementById(param2).textContent = syrop_counter[7];
+                            }
+                            break;
+                        case "minus1":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[0] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[0];
+                            }
+                            break;
+                        case "minus2":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[1] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[1];
+                            }
+                            break;
+                        case "minus3":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[2] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[2];
+                            }
+                            break;
+                        case "minus4":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[3] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[3];
+                            }
+                            break;
+                        case "minus5":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[4] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[4];
+                            }
+                            break;
+                        case "minus6":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[5] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[5];
+                            }
+                            break;
+                        case "minus7":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[6] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[6];
+                            }
+                            break;
+                        case "minus8":
+                            if (document.getElementById(param2).textContent != "0") {
+                                syrop_counter[7] -= 1;
+                                document.getElementById(param2).textContent = syrop_counter[7];
+                            }
+                            break;
+                    }
+                
+                  
+                };
+            </script>
             <div class="right_item">
                 <div class="config_size_text">
                     Выберите размер
                     <hr aria-hidden="true" class="sb-rule sb-rule--thin  pb5 line" id="line" />
                 </div>
 
-                <div class="size_buttons">
 
-                    <figure class="lemonade_img">
-                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Шорт">
-                            <button class="short_button" onclick="press()" type="submit"></button>
-                        </form>
+                @if (Model.Name == "Эспрессо")
+                {
+                    <div class="size_buttons">
 
-                        <figcaption class="size_text">Short</figcaption>
-                    </figure>
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Соло">
+                                <button class="short_button" onclick="press()" type="submit"></button>
+                            </form>
 
-
-
-                    <figure class="lemonade_img">
-                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Толл">
-                            <button class="tall_button" type="submit"></button>
-                        </form>
-                        <figcaption class="size_text">Tall</figcaption>
-                    </figure>
+                            <figcaption class="size_text">Соло</figcaption>
+                        </figure>
 
 
 
-                    <figure class="lemonade_img">
-                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Гранде">
-                            <button class="grande_button" type="submit"></button>
-                        </form>
-                        <figcaption class="size_text">Grande</figcaption>
-                    </figure>
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Доппио">
+                                <button class="tall_button" type="submit"></button>
+                            </form>
+                            <figcaption class="size_text">Доппио</figcaption>
+                        </figure>
 
 
 
-                    <figure class="lemonade_img">
-                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Венти">
-                            <button class="venti_button" type="submit"></button>
-                        </form>
-                        <figcaption class="size_text">Venti</figcaption>
-                    </figure>
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Лунго">
+                                <button class="grande_button" type="submit"></button>
+                            </form>
+                            <figcaption class="size_text">Лунго</figcaption>
+                        </figure>
+                    </div>
+                }
+
+                else
+                {
+                    <div class="size_buttons">
+
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Шорт">
+                                <button class="short_button" onclick="press()" type="submit"></button>
+                            </form>
+
+                            <figcaption class="size_text">Short</figcaption>
+                        </figure>
 
 
-                </div>
 
-                <div class="config_size_text">
-                    Основные компоненты
-                    <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
-                </div>
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Толл">
+                                <button class="tall_button" type="submit"></button>
+                            </form>
+                            <figcaption class="size_text">Tall</figcaption>
+                        </figure>
 
-                <div class="add_buttons">
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
-                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
-                </div>
 
-                <div class="config_size_text">
-                    Добавки
-                    <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
-                </div>
-                <div class="add_buttons">
-                    <button class="add_button1" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
-                    <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
-                </div>
+
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Гранде">
+                                <button class="grande_button" type="submit"></button>
+                            </form>
+                            <figcaption class="size_text">Grande</figcaption>
+                        </figure>
+
+
+
+                        <figure class="lemonade_img">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-sizeName="Венти">
+                                <button class="venti_button" type="submit"></button>
+                            </form>
+                            <figcaption class="size_text">Venti</figcaption>
+                        </figure>
+
+
+                    </div>
+                }
+
+
+                @if (Model.Milk is not null && Model.Espresso is not null)
+                {
+                    <div class="config_size_text">
+                        Основные компоненты
+                        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                    </div>
+
+                    <div class="add_buttons">
+                        <button class="add_button1" id="milk_but" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                    </div>
+
+                    <div class="config_size_text">
+                        Добавки
+                        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                    </div>
+                    <div class="add_buttons">
+                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
+                    </div>
+                }
+
+                else
+                {
+                    <div class="config_size_text">
+                        Добавки
+                        <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                    </div>
+                    <div class="add_buttons">
+                        <button class="add_button1" id="milk_but" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп </button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
+                    </div>
+                }
+
+
+
+
 
             </div>
-        </div>
+                </div>
         <!--Modal-->
         <div class="modal fade" id="milkmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -106,8 +283,8 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Стандартное молоко">
-                                <button class="first_milk_button" type="submit">Стандартное молоко</button>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Обычное молоко">
+                                <button class="first_milk_button" type="submit"><span id="milk">Стандартное молоко</span></button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Кокосовое молоко">
                                 <button class="add_button" type="submit">Кокосовое молоко</button>
@@ -138,7 +315,7 @@
                             <button class="add_button">Стандартная температура</button>
                             <button class="last_milk_temp_button">Повышенная температура</button>
                         </div>
-                        <button class="Complit-button">Готово</button>
+                        <button class="Complit-button" onclick="func(milk_but, milk)">Готово</button>
                         </div>
                         <div class="modal-footer">
 
@@ -160,17 +337,73 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                            <button class="first_milk_button">Малиновый сироп</button>
-                            <button class="add_button">Миндальный сироп</button>
-                            <button class="add_button">Шоколадный соус</button>
-                            <button class="add_button">Ванильный сироп</button>
-                            <button class="add_button">Сироп Ирландский Крем</button>
-                            <button class="add_button">Карамельный сироп</button>
-                            <button class="add_button">Кокосовый сироп</button>
-                            <button class="last_milk_temp_button">Ореховый сироп</button>
+                            <div class="rastberry">
+                                <span>Малиновый сироп</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus1" onclick="func('plus1','syrop_counter_rast')"> <span>+</span></button>
+                                    <span id="syrop_counter_rast" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus1" onclick="func('minus1','syrop_counter_rast')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>Миндальный сироп пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus2" onclick="func('plus2','syrop_counter_alm')"> <span>+</span></button>
+                                    <span id="syrop_counter_alm" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus2" onclick="func('minus2','syrop_counter_alm')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>  Шоколадный соус пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus3" onclick="func('plus3','syrop_counter_choko')"> <span>+</span></button>
+                                    <span id="syrop_counter_choko" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus3" onclick="func('minus3','syrop_counter_choko')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>  Ванильный сироп пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus4" onclick="func('plus4','syrop_counter_vanilla')"> <span>+</span></button>
+                                    <span id="syrop_counter_vanilla" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus4" onclick="func('minus4','syrop_counter_vanilla')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>  Сироп Ирландский Крем пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus5" onclick="func('plus5','syrop_counter_irish')"> <span>+</span></button>
+                                    <span id="syrop_counter_irish" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus5" onclick="func('minus5','syrop_counter_irish')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>  Карамельный сироп пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus6" onclick="func('plus6','syrop_counter_caram')"> <span>+</span></button>
+                                    <span id="syrop_counter_caram" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus6" onclick="func('minus6','syrop_counter_caram')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>  Кокосовый сироп пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus7" onclick="func('plus7','syrop_counter_coco')"> <span>+</span></button>
+                                    <span id="syrop_counter_coco" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus7" onclick="func('minus7','syrop_counter_coco')"><span>-</span></button>
+                                </div>
+                            </div>
+                            <div class="rastberry">
+                                <span>  Ореховый сироп пампы</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus8" onclick="func('plus8','syrop_counter_nut')"> <span>+</span></button>
+                                    <span id="syrop_counter_nut" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus8" onclick="func('minus8','syrop_counter_nut')"><span>-</span></button>
+                                </div>
+                            </div>
                         </div>
-                        <button class="Complit-button">Готово</button>
-                    </div>
+                     <button class="Complit-button">Готово</button>
+                   </div>
                     <div class="modal-footer">
 
                     </div>
@@ -195,7 +428,7 @@
                                 <button class="first_milk_button" type="submit">Эспрессо</button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Декаф Эспрессо">
-                                <button class="add_button" type="submit">Эспрессо Декаф Эспрессо</button>
+                                <button class="add_button" type="submit">Эспрессо Декаф </button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Блонд Эспрессо">
                                 <button class="last_milk_temp_button" type="submit">Блонд Эспрессо</button>
