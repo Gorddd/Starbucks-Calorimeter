@@ -18,16 +18,18 @@
                 </div>
                 <div style="width:1000px">
                     @Model.Name  Размер напитка: @Model.Size.Name,
-                    @if (Model.Milk is not null) {<span>Молоко: @Model.Milk.Name </span>}, @if (Model.Espresso is not null) {<span>Эспрессо: @Model.Espresso.Name </span>}
-                    @if (Model.Cream is not null) {<span>Сливки: @Model.Cream.Name </span>}
+                    @if (Model.Milk is not null)
+                    {<span>Молоко: @Model.Milk.Name </span>}, @if (Model.Espresso is not null)
+                    {<span>Эспрессо: @Model.Espresso.Name </span>}
+                    @if (Model.Cream is not null)
+                    {<span>Сливки: @Model.Cream.Name </span>}
 
                 </div>
                 <div style="width:1000px">
                     Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
                 </div>
             </div>
-            <script>
-                let syrop_counter = [0,0,0,0,0,0,0,0];
+            <script>let syrop_counter = [0, 0, 0, 0, 0, 0, 0, 0];
                 function func(param1, param2) {
 
                     switch (param1) {
@@ -139,10 +141,64 @@
                             }
                             break;
                     }
-                
-                  
+
+
+                };</script>
+
+            <script>function milk_name_output(param1, param2) {
+
+                    document.getElementById(param2).textContent = document.getElementById(param1).textContent;
+                    console.log(document.getElementById(param1).textContent);
+                };</script>
+
+            <script>let esp_counter = [0, 0, 0];
+                function func_esp(param1, param2) {
+
+                    switch (param1) {
+                        case "plus1":
+                            if (param1 == "plus1") {
+                                esp_counter[0] += 1;
+                                document.getElementById(param2).textContent = esp_counter[0];
+                            }
+
+
+                            break;
+                        case "plus2":
+                            if (document.getElementById(param1).id == "plus2") {
+                                esp_counter[1] += 1;
+                                document.getElementById(param2).textContent = esp_counter[1];
+                            }
+
+
+                            break;
+                        case "plus3":
+                            if (document.getElementById(param1).id == "plus3") {
+                                esp_counter[2] += 1;
+                                document.getElementById(param2).textContent = esp_counter[2];
+                            }
+                            break;
+                        case "minus1":
+                            if (document.getElementById(param2).textContent != "0") {
+                                esp_counter[0] -= 1;
+                                document.getElementById(param2).textContent = esp_counter[0];
+                            }
+                            break;
+                        case "minus2":
+                            if (document.getElementById(param2).textContent != "0") {
+                                esp_counter[1] -= 1;
+                                document.getElementById(param2).textContent = esp_counter[1];
+                            }
+                            break;
+                        case "minus3":
+                            if (document.getElementById(param2).textContent != "0") {
+                                esp_counter[2] -= 1;
+                                document.getElementById(param2).textContent = esp_counter[2];
+                            }
+                            break;
+                    }
                 };
             </script>
+
             <div class="right_item">
                 <div class="config_size_text">
                     Выберите размер
@@ -234,7 +290,7 @@
                     </div>
 
                     <div class="add_buttons">
-                        <button class="add_button1" id="milk_but" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
+                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal"><span id="milk_but">Молоко</span></button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
                     </div>
 
@@ -243,7 +299,7 @@
                         <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                     </div>
                     <div class="add_buttons">
-                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#esp_addmodal">Эспрессо</button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп</button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
                     </div>
@@ -256,8 +312,8 @@
                         <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                     </div>
                     <div class="add_buttons">
-                        <button class="add_button1" id="milk_but" data-bs-toggle="modal" data-bs-target="#milkmodal">Молоко</button>
-                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#espmodal">Эспрессо</button>
+                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal"><span id="milk_but">Молоко</span></button>
+                        <button class="add_button2" data-bs-toggle="modal" data-bs-target="#esp_addmodal">Эспрессо</button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп </button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
                     </div>
@@ -268,7 +324,7 @@
 
 
             </div>
-                </div>
+        </div>
         <!--Modal-->
         <div class="modal fade" id="milkmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -284,7 +340,7 @@
                         </div>
                         <div class="milk_buttons">
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Обычное молоко">
-                                <button class="first_milk_button" type="submit"><span id="milk">Стандартное молоко</span></button>
+                                <button id="standart" class="first_milk_button" onclick="milk_name_output('milk','milk_but')" type="submit"><span id="milk">Стандартное молоко</span></button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Кокосовое молоко">
                                 <button class="add_button" type="submit">Кокосовое молоко</button>
@@ -316,11 +372,11 @@
                             <button class="last_milk_temp_button">Повышенная температура</button>
                         </div>
                         <button class="Complit-button" onclick="func(milk_but, milk)">Готово</button>
-                        </div>
-                        <div class="modal-footer">
-
-                        </div>
                     </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -328,7 +384,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        
+
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
@@ -402,8 +458,8 @@
                                 </div>
                             </div>
                         </div>
-                     <button class="Complit-button">Готово</button>
-                   </div>
+                        <button class="Complit-button">Готово</button>
+                    </div>
                     <div class="modal-footer">
 
                     </div>
@@ -413,9 +469,9 @@
 
         <div class="modal fade" id="espmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
             <div class="modal-dialog" id="creammodal1">
-                <div class="modal-content" >
+                <div class="modal-content">
                     <div class="modal-header">
-                       
+
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
@@ -425,14 +481,67 @@
                         </div>
                         <div class="milk_buttons">
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Эспрессо">
-                                <button class="first_milk_button" type="submit">Эспрессо</button>
+                                <button class="first_milk_button" type="submit">Эспрессо Шоты</button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Декаф Эспрессо">
-                                <button class="add_button" type="submit">Эспрессо Декаф </button>
+                                <button class="add_button" type="submit">Эспрессо Декаф</button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espressoName="Шот Блонд Эспрессо">
                                 <button class="last_milk_temp_button" type="submit">Блонд Эспрессо</button>
                             </form>
+                        </div>
+                        <button class="Complit-button">Готово</button>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="esp_addmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+            <div class="modal-dialog" id="creammodal1">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="milk_text">
+                            Эспрессо
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                           
+                                <div class="rastberry">
+                                    <span>Эспрессо Шоты</span>
+                                    <div class="syrop_buttons">
+                                        <button id="plus1" onclick="func_esp('plus1','esp_counter')"> <span>+</span></button>
+                                        <span id="esp_counter" style="font-size: font-size: 1.9rem !important">0</span>
+                                        <button id="minus1" onclick="func_esp('minus1','esp_counter')"><span>-</span></button>
+                                    </div>
+                                </div>
+                           
+                           
+                                <div class="rastberry">
+                                    <span>Эспрессо Декаф Шоты</span>
+                                    <div class="syrop_buttons">
+                                        <button id="plus1" onclick="func_esp('plus2','esp_counter_decaf')"> <span>+</span></button>
+                                        <span id="esp_counter_decaf" style="font-size: font-size: 1.9rem !important">0</span>
+                                        <button id="minus1" onclick="func_esp('minus2','esp_counter_decaf')"><span>-</span></button>
+                                    </div>
+                                </div>
+                           
+                           
+                                <div class="rastberry">
+                                    <span> Блонд Эспрессо Шоты</span>
+                                    <div class="syrop_buttons">
+                                        <button id="plus1" onclick="func_esp('plus3','esp_counter_blonde')"> <span>+</span></button>
+                                        <span id="esp_counter_blonde" style="font-size: font-size: 1.9rem !important">0</span>
+                                        <button id="minus1" onclick="func_esp('minus3','esp_counter_blonde')"><span>-</span></button>
+                                    </div>
+                                </div>
+                          
                         </div>
                         <button class="Complit-button">Готово</button>
                     </div>
