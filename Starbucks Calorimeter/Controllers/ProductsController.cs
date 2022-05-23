@@ -50,7 +50,6 @@ namespace Starbucks_Calorimeter.Controllers
                     break;
                 default:
                     throw new ArgumentException("Неверное имя таблицы!");
-                    break;
             }
 
             return View(product);

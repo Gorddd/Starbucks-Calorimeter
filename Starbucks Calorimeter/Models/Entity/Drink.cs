@@ -25,5 +25,14 @@ namespace Starbucks_Calorimeter.Models.Entity
         public double? Coffeine { get; set; }
         public double? Calories { get; set; }
 
+        public void AddNutritionalValue(Espresso espresso)
+        {
+            Proteins += espresso.Proteins;
+            Fats += espresso.Fats;
+            Carbohidrates += espresso.Carbohidrates;
+            Coffeine += espresso.Coffeine;
+            Calories += espresso.Calories;
+        }
+
     }
 }
