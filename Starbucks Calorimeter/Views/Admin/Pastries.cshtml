@@ -30,6 +30,10 @@
         <label>Calories</label><br />
         <input type="text" name="Calories" />
     </p>
+    <p>
+        <label>Descriptions</label><br />
+        <input type="text" name="Descriptions" />
+    </p>
     <input type="submit" value="Добавить" />
 </form>
 
@@ -84,6 +88,11 @@
                 Calories
             </a>
         </th>
+        <th>
+            <a>
+                Description
+            </a>
+        </th>
     </tr>
     @foreach(Pastry p in Model)
     {
@@ -95,6 +104,7 @@
             <td>@p.Fats</td>
             <td>@p.Carbohidrates</td>
             <td>@p.Calories</td>
+            <td>@p.Descriptions</td>
             <td style="display:flex;">
                 <form asp-controller="Admin" asp-action="DeletePastry" method="post" asp-route-id="@p.Id" style="display:flex;">
                     <input type="submit" value="Удалить">
@@ -123,6 +133,10 @@
                     <p>
                         <label>Calories</label><br />
                          <input type="text" name="Calories" />
+                    </p>
+                    <p>
+                        <label>Description</label><br />
+                         <input type="text" name="Descriptions" />
                     </p>
                         <input type="submit" value="Сохранить" />
                 </form>
