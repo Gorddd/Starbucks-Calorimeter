@@ -9,5 +9,6 @@
         public double? Fats { get; set; }
         public double? Carbohidrates { get; set; }
         public double? Calories { get; set; }
+        public string? Descriptions { get; set; }
     }
 }
