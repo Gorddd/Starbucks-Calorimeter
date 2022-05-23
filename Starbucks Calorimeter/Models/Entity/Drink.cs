@@ -34,5 +34,12 @@ namespace Starbucks_Calorimeter.Models.Entity
             Calories += espresso.Calories;
         }
 
+        public void AddNutritionalValue(Syrop syrop)
+        {
+            Proteins += syrop.Proteins;
+            Fats += syrop.Fats;
+            Carbohidrates += syrop.Carbohidrates;
+            Calories += syrop.Calories;
+        }
     }
 }
