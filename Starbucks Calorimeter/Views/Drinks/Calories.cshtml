@@ -25,6 +25,19 @@
                     {<span>Сливки: @Model.Cream.Name </span>}
 
                 </div>
+                <div>
+                    @if (ViewBag.espShots is not null)
+                    {
+                        @foreach (var esp in ViewBag.espShots)
+
+                        {
+                            @esp.Key
+                            <span>:</span>
+                            @esp.Value
+                            <span>, </span>
+                        }
+                    }
+                </div>
                 <div style="width:1000px">
                     Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
                 </div>
@@ -196,8 +209,37 @@
                             }
                             break;
                     }
-                };
-            </script>
+                    document.getElementById('pizda1').value = document.getElementById('esp_counter').textContent;
+                    document.getElementById('pizda2').value = document.getElementById('esp_counter_decaf').textContent;
+                    document.getElementById('pizda3').value = document.getElementById('esp_counter_blonde').textContent;
+                };</script>
+            <script>
+
+                function espCounter(param1, param2, param3, param4) {
+                    console.log(document.getElementById(param1).asp);
+                    document.getElementById(param1).asp.route.espCount = 3;
+                    document.getElementById(param1).asp.route.espDecafCount = 3;
+                    document.getElementById(param1).asp.route.espBlondeCount = 3;
+                };</script>
+
+            <script>
+                function espCounter1(param1) {
+                    var a = document.getElementById(param1).textContent;
+                    
+                    return (a);
+
+                };</script>
+            <script>
+                function espCounter2(param2) {
+                    var a = document.getElementById(param2).textContent;
+                    return (a);
+
+                };</script>
+            <script>
+                function espCounter1(param3) {
+                    var a = document.getElementById(param3).textContent;
+                    return (a)
+                };</script>
 
             <div class="right_item">
                 <div class="config_size_text">
@@ -436,7 +478,7 @@
                             <div class="rastberry">
                                 <span>  Карамельный сироп пампы</span>
                                 <div class="syrop_buttons">
-                                    <button id="plus6" onclick="func('plus6','syrop_counter_caram')"> <span>+</span></button>
+                                    <button id="plus6" onclick="func('plus6','syrop_counter_caram')">+</button>
                                     <span id="syrop_counter_caram" style="font-size: font-size: 1.9rem !important">0</span>
                                     <button id="minus6" onclick="func('minus6','syrop_counter_caram')"><span>-</span></button>
                                 </div>
@@ -490,7 +532,9 @@
                                 <button class="last_milk_temp_button" type="submit">Блонд Эспрессо</button>
                             </form>
                         </div>
-                        <button class="Complit-button">Готово</button>
+                       
+                            <button class="Complit-button">Готово</button>
+                     
                     </div>
                     <div class="modal-footer">
 
@@ -512,38 +556,46 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                           
-                                <div class="rastberry">
-                                    <span>Эспрессо Шоты</span>
-                                    <div class="syrop_buttons">
-                                        <button id="plus1" onclick="func_esp('plus1','esp_counter')"> <span>+</span></button>
-                                        <span id="esp_counter" style="font-size: font-size: 1.9rem !important">0</span>
-                                        <button id="minus1" onclick="func_esp('minus1','esp_counter')"><span>-</span></button>
-                                    </div>
+
+                            <div class="rastberry">
+                                <span>Эспрессо Шоты</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus1" onclick="func_esp('plus1','esp_counter')"> <span>+</span></button>
+                                    <span id="esp_counter" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus1" onclick="func_esp('minus1','esp_counter')"><span>-</span></button>
                                 </div>
-                           
-                           
-                                <div class="rastberry">
-                                    <span>Эспрессо Декаф Шоты</span>
-                                    <div class="syrop_buttons">
-                                        <button id="plus1" onclick="func_esp('plus2','esp_counter_decaf')"> <span>+</span></button>
-                                        <span id="esp_counter_decaf" style="font-size: font-size: 1.9rem !important">0</span>
-                                        <button id="minus1" onclick="func_esp('minus2','esp_counter_decaf')"><span>-</span></button>
-                                    </div>
+                            </div>
+
+
+                            <div class="rastberry">
+                                <span>Эспрессо Декаф Шоты</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus1" onclick="func_esp('plus2','esp_counter_decaf')"> <span>+</span></button>
+                                    <span id="esp_counter_decaf" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus1" onclick="func_esp('minus2','esp_counter_decaf')"><span>-</span></button>
                                 </div>
-                           
-                           
-                                <div class="rastberry">
-                                    <span> Блонд Эспрессо Шоты</span>
-                                    <div class="syrop_buttons">
-                                        <button id="plus1" onclick="func_esp('plus3','esp_counter_blonde')"> <span>+</span></button>
-                                        <span id="esp_counter_blonde" style="font-size: font-size: 1.9rem !important">0</span>
-                                        <button id="minus1" onclick="func_esp('minus3','esp_counter_blonde')"><span>-</span></button>
-                                    </div>
+                            </div>
+
+
+                            <div class="rastberry">
+                                <span> Блонд Эспрессо Шоты</span>
+                                <div class="syrop_buttons">
+                                    <button id="plus1" onclick="func_esp('plus3','esp_counter_blonde')"> <span>+</span></button>
+                                    <span id="esp_counter_blonde" style="font-size: font-size: 1.9rem !important">0</span>
+                                    <button id="minus1" onclick="func_esp('minus3','esp_counter_blonde')"><span>-</span></button>
                                 </div>
-                          
+                            </div>
+                            
                         </div>
-                        <button class="Complit-button">Готово</button>
+                       
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espCount="0" asp-route-espDecafCount="0" asp-route-espBlondeCount="0">
+                                <input id="pizda1" type="number" name="espCount" style="opacity: 0; display:none" />
+                                <input id="pizda2" type="number" name="espDecafCount" style="opacity: 0; display: none" />
+                                <input id="pizda3" type="number" name="espBlondeCount" style="opacity: 0; display: none" />
+                                <button type="submit" class="Complit-button">Готово</button>
+                            </form>
+                          
+                        
                     </div>
                     <div class="modal-footer">
 
