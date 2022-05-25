@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Starbucks_Calorimeter.Managers.Creams;
 using Starbucks_Calorimeter.Managers.Drinks;
 using Starbucks_Calorimeter.Managers.Espressoes;
 using Starbucks_Calorimeter.Managers.Milks;
@@ -12,15 +13,17 @@ namespace Starbucks_Calorimeter.Controllers
         IEspressoManager espressoManager;
         ISyropManager syropManager;
         IMilkManager milkManager;
+        ICreamManager creamManager;
 
         int a = 0;
 
-        public DrinksController(IDrinkManager drinkManager, IEspressoManager espressoManager, ISyropManager syropManager, IMilkManager milkManager)
+        public DrinksController(IDrinkManager drinkManager, IEspressoManager espressoManager, ISyropManager syropManager, IMilkManager milkManager, ICreamManager creamManager)
         {
             this.drinkManager = drinkManager;
             this.espressoManager = espressoManager;
             this.syropManager = syropManager;
             this.milkManager = milkManager;
+            this.creamManager = creamManager;
         }
 
         public IActionResult Index()
@@ -205,6 +208,20 @@ namespace Starbucks_Calorimeter.Controllers
             drink.AddNutritionalValue(milk);
 
             ViewBag.milkName = addmilkName;
+            return View(drink);
+        }
+
+        [HttpPost]
+        [Route("Drinks/Calories/{drinkId}/{drinkName}/{addCream}")]
+        public async Task<IActionResult> Calories(int drinkId, string drinkName, string addCream)
+        {
+            var drink = await drinkManager.GetDrink(drinkId);
+
+            var cream = await creamManager.Get(addCream);
+
+            drink.AddNutritionalValue(cream);
+
+            ViewBag.creamName = addCream;
             return View(drink);
         }
     }
