@@ -193,7 +193,7 @@ namespace Starbucks_Calorimeter.Controllers
             }
 
             ViewBag.syrops = syrops;
-            return View();
+            return View(drink);
         }
 
         //Получение молока с блока добавки

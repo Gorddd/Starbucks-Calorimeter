@@ -17,7 +17,7 @@
                     Информация о продукте:
                 </div>
                 <div style="width:1000px">
-                    @Model.Name  Размер напитка: @Model.Size.Name,
+                    @Model.Name,  Размер напитка: @Model.Size.Name,
                     @if (Model.Milk is not null)
                     {<span>Молоко: @Model.Milk.Name </span>}, @if (Model.Espresso is not null)
                     {<span>Эспрессо: @Model.Espresso.Name </span>}
@@ -45,6 +45,22 @@
                 <div style="width:1000px">
                     Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
                 </div>
+                <div style="width:600px">
+
+
+                    @if (ViewBag.syrops is not null)
+                    {<span style="font-family:Roboto">Добавленные сиропы: </span>
+                        @foreach (var esp in ViewBag.syrops)
+
+                        {
+                            @esp.Key
+                            <span>:</span>
+                            @esp.Value
+                            <span> </span>
+                        }
+                    }
+                </div>
+
             </div>
             <script>let syrop_counter = [0, 0, 0, 0, 0, 0, 0, 0];
                 function func(param1, param2) {
@@ -159,7 +175,14 @@
                             break;
                     }
 
-
+                    document.getElementById('pizda4').value = document.getElementById('syrop_counter_rast').textContent;
+                    document.getElementById('pizda5').value = document.getElementById('syrop_counter_alm').textContent;
+                    document.getElementById('pizda6').value = document.getElementById('syrop_counter_choko').textContent;
+                    document.getElementById('pizda7').value = document.getElementById('syrop_counter_vanilla').textContent;
+                    document.getElementById('pizda8').value = document.getElementById('syrop_counter_irish').textContent;
+                    document.getElementById('pizda9').value = document.getElementById('syrop_counter_caram').textContent;
+                    document.getElementById('pizda10').value = document.getElementById('syrop_counter_coco').textContent;
+                    document.getElementById('pizda11').value = document.getElementById('syrop_counter_nut').textContent;
                 };</script>
 
             <script>function milk_name_output(param1, param2) {
@@ -217,30 +240,25 @@
                     document.getElementById('pizda2').value = document.getElementById('esp_counter_decaf').textContent;
                     document.getElementById('pizda3').value = document.getElementById('esp_counter_blonde').textContent;
                 };</script>
-            <script>
-
-                function espCounter(param1, param2, param3, param4) {
+            <script>function espCounter(param1, param2, param3, param4) {
                     console.log(document.getElementById(param1).asp);
                     document.getElementById(param1).asp.route.espCount = 3;
                     document.getElementById(param1).asp.route.espDecafCount = 3;
                     document.getElementById(param1).asp.route.espBlondeCount = 3;
                 };</script>
 
-            <script>
-                function espCounter1(param1) {
+            <script>function espCounter1(param1) {
                     var a = document.getElementById(param1).textContent;
-                    
+
                     return (a);
 
                 };</script>
-            <script>
-                function espCounter2(param2) {
+            <script>function espCounter2(param2) {
                     var a = document.getElementById(param2).textContent;
                     return (a);
 
                 };</script>
-            <script>
-                function espCounter1(param3) {
+            <script>function espCounter1(param3) {
                     var a = document.getElementById(param3).textContent;
                     return (a)
                 };</script>
@@ -358,7 +376,7 @@
                         <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                     </div>
                     <div class="add_buttons">
-                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#milkmodal"><span id="milk_but">Молоко</span></button>
+                        <button class="add_button1" data-bs-toggle="modal" data-bs-target="#tea_milkmodal"><span id="milk_but">Молоко</span></button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#esp_addmodal">Эспрессо</button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#syropmodal">Сироп </button>
                         <button class="add_button2" data-bs-toggle="modal" data-bs-target="#creammodal">Сливки</button>
@@ -404,6 +422,60 @@
                                 <button class="add_button" type="submit">Маложирное молоко</button>
                             </form>
                             <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-milkName="Миндальное молоко">
+                                <button class="last_milk_temp_button" type="submit">Миндальное молоко</button>
+                            </form>
+                        </div>
+
+                        <div class="milk_text">
+                            Температура молока
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <button class="first_milk_button">Детская температура</button>
+                            <button class="add_button">Стандартная температура</button>
+                            <button class="last_milk_temp_button">Повышенная температура</button>
+                        </div>
+                        <button class="Complit-button" onclick="func(milk_but, milk)">Готово</button>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="tea_milkmodal" tabindex="-1" aria-bs-labelledby="milkmodalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="milkmodalLabel">Молоко</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="milk_text">
+                            Молоко
+                            <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
+                        </div>
+                        <div class="milk_buttons">
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Обычное молоко">
+                                <button id="standart" class="first_milk_button" onclick="milk_name_output('milk','milk_but')" type="submit"><span id="milk">Стандартное молоко</span></button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Кокосовое молоко">
+                                <button class="add_button" type="submit">Кокосовое молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Овсяное молоко">
+                                <button class="add_button" type="submit">Овсяное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Безлактозное молоко">
+                                <button class="add_button" type="submit">Безлактозное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Соевое молоко">
+                                <button class="add_button" type="submit">Соевое молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Маложирное молоко">
+                                <button class="add_button" type="submit">Маложирное молоко</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-addmilkName="Миндальное молоко">
                                 <button class="last_milk_temp_button" type="submit">Миндальное молоко</button>
                             </form>
                         </div>
@@ -504,7 +576,18 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="Complit-button">Готово</button>
+                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-malinCount="0" asp-route-mindalCount="0" asp-route-chocolateCount="0"
+                              asp-route-vanillaCount="0" asp-route-irelandCount="0" asp-route-caramelCount="0" asp-route-coconutCount="0" asp-route-nutCount="0">
+                            <input id="pizda4" type="number" name="malinCount" style="opacity: 0; display:none" />
+                            <input id="pizda5" type="number" name="mindalCount" style="opacity: 0; display: none" />
+                            <input id="pizda6" type="number" name="chocolateCount" style="opacity: 0; display: none" />
+                            <input id="pizda7" type="number" name="vanillaCount" style="opacity: 0; display: none" />
+                            <input id="pizda8" type="number" name="irelandCount" style="opacity: 0; display: none" />
+                            <input id="pizda9" type="number" name="caramelCount" style="opacity: 0; display: none" />
+                            <input id="pizda10" type="number" name="coconutCount" style="opacity: 0; display: none" />
+                            <input id="pizda11" type="number" name="nutCount" style="opacity: 0; display: none" />
+                            <button type="submit" class="Complit-button">Готово</button>
+                        </form>
                     </div>
                     <div class="modal-footer">
 
@@ -536,9 +619,9 @@
                                 <button class="last_milk_temp_button" type="submit">Блонд Эспрессо</button>
                             </form>
                         </div>
-                       
-                            <button class="Complit-button">Готово</button>
-                     
+
+                        <button class="Complit-button">Готово</button>
+
                     </div>
                     <div class="modal-footer">
 
@@ -589,17 +672,17 @@
                                     <button id="minus1" onclick="func_esp('minus3','esp_counter_blonde')"><span>-</span></button>
                                 </div>
                             </div>
-                            
+
                         </div>
-                       
-                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espCount="0" asp-route-espDecafCount="0" asp-route-espBlondeCount="0">
-                                <input id="pizda1" type="number" name="espCount" style="opacity: 0; display:none" />
-                                <input id="pizda2" type="number" name="espDecafCount" style="opacity: 0; display: none" />
-                                <input id="pizda3" type="number" name="espBlondeCount" style="opacity: 0; display: none" />
-                                <button type="submit" class="Complit-button">Готово</button>
-                            </form>
-                          
-                        
+
+                        <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id" asp-route-espCount="0" asp-route-espDecafCount="0" asp-route-espBlondeCount="0">
+                            <input id="pizda1" type="number" name="espCount" style="opacity: 0; display:none" />
+                            <input id="pizda2" type="number" name="espDecafCount" style="opacity: 0; display: none" />
+                            <input id="pizda3" type="number" name="espBlondeCount" style="opacity: 0; display: none" />
+                            <button type="submit" class="Complit-button">Готово</button>
+                        </form>
+
+
                     </div>
                     <div class="modal-footer">
 
