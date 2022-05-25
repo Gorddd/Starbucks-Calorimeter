@@ -36,28 +36,31 @@ namespace Starbucks_Calorimeter.Controllers
             return View();
         }
         
-        public async Task<IActionResult> Calories(string drinkName)
+        public async Task<IActionResult> GetDrink(string drinkName)
         {
             var drink = await drinkManager.GetDrink(drinkName);
 
             drinkView.Drink = drink;
 
-            return View(drink);
+            return RedirectToAction(nameof(Calories));
+        }
+
+        public async Task<IActionResult> Calories()
+        {
+            return View(drinkView.Drink);
         }
 
 
         //Получение с блока основа
         [HttpPost]
-        public async Task<IActionResult> Calories(int drinkId, string? sizeName, string? espressoName, string? milkName)
+        public async Task<IActionResult> Basis(string? sizeName, string? espressoName, string? milkName)
         {
-            var drink = await drinkManager.GetDrink(drinkId);
+            drinkView.Drink = await drinkManager.GetDrink(drinkView.Drink.Name, 
+                sizeName ?? drinkView.Drink.Size.Name, 
+                espressoName ?? drinkView.Drink.Espresso?.Name, 
+                milkName ?? drinkView.Drink.Milk?.Name);
 
-            drink = await drinkManager.GetDrink(drink.Name, 
-                sizeName ?? drink.Size.Name, 
-                espressoName ?? drink.Espresso?.Name, 
-                milkName ?? drink.Milk?.Name);
-
-            return View(drink);
+            return RedirectToAction(nameof(Calories));
         }
 
         //Получение эспрессо с блока добавки
