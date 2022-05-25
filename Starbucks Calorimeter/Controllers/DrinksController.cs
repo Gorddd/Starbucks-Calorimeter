@@ -46,6 +46,8 @@ namespace Starbucks_Calorimeter.Controllers
             drinkView.addedEspShots = null;
             drinkView.syrops = null;
             drinkView.addedSyrops = null;
+            drinkView.MilkName = null;
+            drinkView.addedMilk = null;
 
             return RedirectToAction(nameof(Calories));
         }
@@ -55,6 +57,7 @@ namespace Starbucks_Calorimeter.Controllers
         {
             ViewBag.espShots = drinkView.espShots;
             ViewBag.syrops = drinkView.syrops;
+            ViewBag.milkName = drinkView.MilkName;
 
             return View(drinkView.Drink);
         }
@@ -78,6 +81,9 @@ namespace Starbucks_Calorimeter.Controllers
                 foreach (var syr in drinkView.addedSyrops)
                     for (int i = 0; i < syr.Value; i++)
                         drinkView.Drink.AddNutritionalValue(syr.Key);
+
+            if (drinkView.MilkName is not null)
+                drinkView.Drink.AddNutritionalValue(drinkView.addedMilk);
 
             return RedirectToAction(nameof(Calories));
         }
@@ -263,17 +269,18 @@ namespace Starbucks_Calorimeter.Controllers
 
         //Получение молока с блока добавки
         [HttpPost]
-        [Route("Drinks/Calories/{drinkId}/{addmilkName}")]
-        public async Task<IActionResult> Calories(int drinkId, string addmilkName)
+        public async Task<IActionResult> AddMilk(string addmilkName)
         {
-            var drink = await drinkManager.GetDrink(drinkId);
-
             var milk = await milkManager.Get(addmilkName);
 
-            drink.AddNutritionalValue(milk);
+            if (drinkView.MilkName is not null)//Очистка от предыдущего
+                drinkView.Drink.SubtractNutritionalValue(drinkView.addedMilk);
 
-            ViewBag.milkName = addmilkName;
-            return View(drink);
+            drinkView.Drink.AddNutritionalValue(milk);
+
+            drinkView.addedMilk = milk;
+            drinkView.MilkName = addmilkName;
+            return RedirectToAction(nameof(Calories));
         }
 
         [HttpPost]

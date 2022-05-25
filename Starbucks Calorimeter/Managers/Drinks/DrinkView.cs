@@ -11,5 +11,11 @@ namespace Starbucks_Calorimeter.Managers.Drinks
 
         public Dictionary<string, int> syrops { get; set; }
         public Dictionary<Syrop, int> addedSyrops { get; set; }
+
+        public string MilkName { get; set; }
+        public Milk addedMilk { get; set; }
+
+
+
     }
 }
