@@ -44,6 +44,8 @@ namespace Starbucks_Calorimeter.Controllers
             drinkView.Drink = drink;
             drinkView.espShots = null;//Очистка от старого
             drinkView.addedEspShots = null;
+            drinkView.syrops = null;
+            drinkView.addedSyrops = null;
 
             return RedirectToAction(nameof(Calories));
         }
@@ -52,6 +54,7 @@ namespace Starbucks_Calorimeter.Controllers
         public async Task<IActionResult> Calories()
         {
             ViewBag.espShots = drinkView.espShots;
+            ViewBag.syrops = drinkView.syrops;
 
             return View(drinkView.Drink);
         }
@@ -70,6 +73,11 @@ namespace Starbucks_Calorimeter.Controllers
                 foreach(var shot in drinkView.addedEspShots)
                     for (int i = 0; i < shot.Value; i++)
                         drinkView.Drink.AddNutritionalValue(shot.Key);
+
+            if (drinkView.syrops is not null)
+                foreach (var syr in drinkView.addedSyrops)
+                    for (int i = 0; i < syr.Value; i++)
+                        drinkView.Drink.AddNutritionalValue(syr.Key);
 
             return RedirectToAction(nameof(Calories));
         }
@@ -137,13 +145,26 @@ namespace Starbucks_Calorimeter.Controllers
 
         //Получение сиропов с блока добавки
         [HttpPost]
-        [Route("Drinks/Calories/{drinkId}/{malinCount}/{mindalCount}/{chocolateCount}/{vanillaCount}/{irelandCount}/{caramelCount}/{coconutCount}/{nutCount}")]
-        public async Task<IActionResult> Calories(int drinkId, int malinCount, int mindalCount,
+        public async Task<IActionResult> AddSyrop(int malinCount, int mindalCount,
             int chocolateCount, int vanillaCount, int irelandCount, int caramelCount, int coconutCount, int nutCount)
         {
-            var drink = await drinkManager.GetDrink(drinkId);
+            var drink = drinkView.Drink;
+
+            if (drinkView.syrops is not null)//Очистка от предыдущего
+                foreach (var syr in drinkView.addedSyrops)
+                    for (int i = 0; i < syr.Value; i++)
+                        drinkView.Drink.SubtractNutritionalValue(syr.Key);
+
+            drinkView.syrops = null;
+            drinkView.addedSyrops = null;
+
+            if (malinCount == 0 && mindalCount == 0 && chocolateCount == 0 && vanillaCount == 0 
+                && irelandCount == 0 && caramelCount == 0 && coconutCount == 0 && nutCount == 0)
+                return RedirectToAction(nameof(Calories));
+
 
             var syrops = new Dictionary<string, int>();
+            drinkView.addedSyrops = new Dictionary<Models.Entity.Syrop, int>();
 
             if (malinCount > 0)
             {
@@ -153,6 +174,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Малиновый", malinCount);
+                drinkView.addedSyrops.Add(syrop, malinCount);
             }
 
             if (mindalCount > 0)
@@ -163,6 +185,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Миндальный", mindalCount);
+                drinkView.addedSyrops.Add(syrop, mindalCount);
             }
 
             if (chocolateCount > 0)
@@ -173,6 +196,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Шоколадный", chocolateCount);
+                drinkView.addedSyrops.Add(syrop, chocolateCount);
             }
 
             if (vanillaCount > 0)
@@ -183,6 +207,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Ванильный", vanillaCount);
+                drinkView.addedSyrops.Add(syrop, vanillaCount);
             }
 
             if (irelandCount > 0)
@@ -193,6 +218,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Ирландский", irelandCount);
+                drinkView.addedSyrops.Add(syrop, irelandCount);
             }
 
             if (caramelCount > 0)
@@ -203,6 +229,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Карамельный", caramelCount);
+                drinkView.addedSyrops.Add(syrop, caramelCount);
             }
 
             if (coconutCount > 0)
@@ -213,6 +240,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Кокосовый", coconutCount);
+                drinkView.addedSyrops.Add(syrop, coconutCount);
             }
 
             if (nutCount > 0)
@@ -223,10 +251,14 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(syrop);
 
                 syrops.Add("Ореховый", nutCount);
+                drinkView.addedSyrops.Add(syrop, nutCount);
             }
 
-            ViewBag.syrops = syrops;
-            return View(drink);
+
+            drinkView.Drink = drink;
+            drinkView.syrops = syrops;
+
+            return RedirectToAction(nameof(Calories));
         }
 
         //Получение молока с блока добавки

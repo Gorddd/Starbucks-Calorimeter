@@ -68,6 +68,19 @@ namespace Starbucks_Calorimeter.Models.Entity
             Coffeine = Math.Round((double)Coffeine, 2);
         }
 
+        public void SubtractNutritionalValue(Syrop syrop)
+        {
+            Proteins -= syrop.Proteins;
+            Fats -= syrop.Fats;
+            Carbohidrates -= syrop.Carbohidrates;
+            Calories -= syrop.Calories;
+
+            Proteins = Math.Round((double)Proteins, 2);
+            Fats = Math.Round((double)Fats, 2);
+            Carbohidrates = Math.Round((double)Carbohidrates, 2);
+            Coffeine = Math.Round((double)Coffeine, 2);
+        }
+
         public void AddNutritionalValue(Milk milk)
         {
             Proteins += milk.Proteins;
