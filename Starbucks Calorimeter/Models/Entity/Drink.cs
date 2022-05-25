@@ -32,6 +32,12 @@ namespace Starbucks_Calorimeter.Models.Entity
             Carbohidrates += espresso.Carbohidrates;
             Coffeine += espresso.Coffeine;
             Calories += espresso.Calories;
+
+            Proteins = Math.Round((double)Proteins, 2);
+            Fats = Math.Round((double)Fats, 2);
+            Carbohidrates = Math.Round((double)Carbohidrates, 2);
+            Coffeine = Math.Round((double)Coffeine, 2);
+            Calories = Math.Round((double)Calories, 2);
         }
 
         public void AddNutritionalValue(Syrop syrop)
@@ -40,6 +46,11 @@ namespace Starbucks_Calorimeter.Models.Entity
             Fats += syrop.Fats;
             Carbohidrates += syrop.Carbohidrates;
             Calories += syrop.Calories;
+
+            Proteins = Math.Round((double)Proteins, 2);
+            Fats = Math.Round((double)Fats, 2);
+            Carbohidrates = Math.Round((double)Carbohidrates, 2);
+            Coffeine = Math.Round((double)Coffeine, 2);
         }
     }
 }
