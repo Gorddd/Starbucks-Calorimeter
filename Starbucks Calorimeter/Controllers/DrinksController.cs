@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Starbucks_Calorimeter.Managers.Drinks;
 using Starbucks_Calorimeter.Managers.Espressoes;
+using Starbucks_Calorimeter.Managers.Milks;
 using Starbucks_Calorimeter.Managers.Syrops;
 
 namespace Starbucks_Calorimeter.Controllers
@@ -10,12 +11,14 @@ namespace Starbucks_Calorimeter.Controllers
         IDrinkManager drinkManager;
         IEspressoManager espressoManager;
         ISyropManager syropManager;
+        IMilkManager milkManager;
 
-        public DrinksController(IDrinkManager drinkManager, IEspressoManager espressoManager, ISyropManager syropManager)
+        public DrinksController(IDrinkManager drinkManager, IEspressoManager espressoManager, ISyropManager syropManager, IMilkManager milkManager)
         {
             this.drinkManager = drinkManager;
             this.espressoManager = espressoManager;
             this.syropManager = syropManager;
+            this.milkManager = milkManager;
         }
 
         public IActionResult Index()
@@ -180,6 +183,22 @@ namespace Starbucks_Calorimeter.Controllers
 
             ViewBag.syrops = syrops;
             return View();
+        }
+
+
+        //Получение молока с блока добавки
+        [HttpPost]
+        [Route("Drinks/Calories/{drinkId}/{milkName}")]
+        public async Task<IActionResult> Calories(int drinkId, string milkName)
+        {
+            var drink = await drinkManager.GetDrink(drinkId);
+
+            var milk = await milkManager.Get(milkName);
+
+            drink.AddNutritionalValue(milk);
+
+            ViewBag.milkName = milkName;
+            return View(drink);
         }
     }
 }
