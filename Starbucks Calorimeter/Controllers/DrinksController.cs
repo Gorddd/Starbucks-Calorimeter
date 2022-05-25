@@ -13,6 +13,8 @@ namespace Starbucks_Calorimeter.Controllers
         ISyropManager syropManager;
         IMilkManager milkManager;
 
+        int a = 0;
+
         public DrinksController(IDrinkManager drinkManager, IEspressoManager espressoManager, ISyropManager syropManager, IMilkManager milkManager)
         {
             this.drinkManager = drinkManager;
@@ -28,6 +30,8 @@ namespace Starbucks_Calorimeter.Controllers
         
         public async Task<IActionResult> Calories(string drinkName)
         {
+            a++;
+
             var drink = await drinkManager.GetDrink(drinkName);
 
             return View(drink);
@@ -38,6 +42,8 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> Calories(int drinkId, string? sizeName, string? espressoName, string? milkName)
         {
+            a++;
+
             var drink = await drinkManager.GetDrink(drinkId);
 
             drink = await drinkManager.GetDrink(drink.Name, 
@@ -53,6 +59,8 @@ namespace Starbucks_Calorimeter.Controllers
         [Route("Drinks/Calories/{drinkId}/{espCount}/{espDecafCount}/{espBlondeCount}")]
         public async Task<IActionResult> Calories(int drinkId, int espCount, int espDecafCount, int espBlondeCount)
         {
+            a++;
+
             var drink = await drinkManager.GetDrink(drinkId);
 
             var espressoShots = new Dictionary<string, int>(3);
@@ -184,7 +192,6 @@ namespace Starbucks_Calorimeter.Controllers
             ViewBag.syrops = syrops;
             return View();
         }
-
 
         //Получение молока с блока добавки
         [HttpPost]
