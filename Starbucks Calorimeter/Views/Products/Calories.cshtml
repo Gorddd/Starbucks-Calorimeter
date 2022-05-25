@@ -17,6 +17,7 @@
                 {
                      case Dessert dessert:
                      <h2 style="margin-left:20%">@dessert.Name</h2>
+                     <p style="margin-left:20%; font-size:larger">@dessert.Descriptions</p>
                         break;
 
                     case BottledDrink bottledDrink:
@@ -57,6 +58,7 @@
                         break;
 
                     case BottledDrink bottledDrink:
+                        <div> Объем: @bottledDrink.Volume</div>
                         <div> Белки: @bottledDrink.Proteins </div>
                         <div> Жиры: @bottledDrink.Fats </div>
                         <div> Углеводы: @bottledDrink.Carbohidrates </div>
