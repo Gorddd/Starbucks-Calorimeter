@@ -41,12 +41,15 @@ namespace Starbucks_Calorimeter.Controllers
             var drink = await drinkManager.GetDrink(drinkName);
 
             drinkView.Drink = drink;
+            drinkView.espShots = null;
 
             return RedirectToAction(nameof(Calories));
         }
 
         public async Task<IActionResult> Calories()
         {
+            ViewBag.espShots = drinkView.espShots;
+
             return View(drinkView.Drink);
         }
 
@@ -65,12 +68,11 @@ namespace Starbucks_Calorimeter.Controllers
 
         //Получение эспрессо с блока добавки
         [HttpPost]
-        [Route("Drinks/Calories/{drinkId}/{espCount}/{espDecafCount}/{espBlondeCount}")]
-        public async Task<IActionResult> Calories(int drinkId, int espCount, int espDecafCount, int espBlondeCount)
+        public async Task<IActionResult> AddEspresso(int espCount, int espDecafCount, int espBlondeCount)
         {
-            var drink = await drinkManager.GetDrink(drinkId);
+            var drink = drinkView.Drink;
 
-            var espressoShots = new Dictionary<string, int>(3);
+            var espressoShots = new Dictionary<string, int>(3); //Словарь: key - название шота, value - количество
 
             if (espCount > 0)
             {
@@ -102,8 +104,10 @@ namespace Starbucks_Calorimeter.Controllers
                 espressoShots.Add("Блонд Эспрессо Шоты", espBlondeCount);
             }
 
-            ViewBag.espShots = espressoShots; //Словарь: key - название шота, value - количество
-            return View(drink);
+            drinkView.Drink = drink;
+            drinkView.espShots = espressoShots;
+
+            return RedirectToAction(nameof(Calories));
         }
 
         //Получение сиропов с блока добавки

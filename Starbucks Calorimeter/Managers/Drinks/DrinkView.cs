@@ -5,5 +5,6 @@ namespace Starbucks_Calorimeter.Managers.Drinks
     public class DrinkView
     {
         public Drink Drink { get; set; }
+        public Dictionary<string, int> espShots { get; set; }
     }
 }
