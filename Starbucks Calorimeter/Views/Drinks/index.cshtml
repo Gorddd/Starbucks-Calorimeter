@@ -39,14 +39,14 @@
                 </figure>
 
                 <figure>
-                    <a class="cappucino" id="cappucino" onclick="funk('cappuch')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="cappucino" id="cappucino" onclick="funk('cappuch')" asp-controller="Drinks" asp-action="Calories"  asp-route-drinkName="Латте">
                         <img id="cappuch" src="img/cappucino_png.png">
                     </a>
                     <figcaption class="cappucino_text">Каппучино</figcaption>
                 </figure>
 
                 <figure>
-                    <a class="latte" id="latte" onclick="funk('latte_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Латте">
+                    <a class="latte" id="latte" onclick="funk('latte_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Капучино">
                         <img id="latte_img" src="img/latte_png.png">
                     </a>
                     <figcaption class="latte_text">Латте</figcaption>
@@ -63,7 +63,7 @@
                 </figure>
 
                 <figure>
-                    <a class="black" id="black" onclick="funk('black_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="black" id="black" onclick="funk('black_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Свежесваренный Пайк Плейс">
                         <img id="black_img" src="img/black_coffee_png.png">
                     </a>
                     <figcaption class="cappucino_text">Фильтр-кофе</figcaption>
@@ -72,14 +72,14 @@
             </div>
             <div class="column1">
                 <figure>
-                    <a class="caramel" id="caramel" onclick="funk('caramel_img')" asp-controller="Drinks" asp-action="Calories" >
+                    <a class="caramel" id="caramel" onclick="funk('caramel_img')" asp-controller="Drinks" asp-action="Calories"  asp-route-drinkName="Карамель Маккиато">
                         <img id="caramel_img" src="img/Caramel_Macchiato_png.png">
                     </a>
                     <figcaption class="mocha_text">Карамель - маккиато</figcaption>
                 </figure>
 
                 <figure>
-                    <a class="americano" id="americano" onclick="funk('americano_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="americano" id="americano" onclick="funk('americano_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Американо">
                         <img id="americano_img" src="img/americano_png.png">
                     </a>
                     <figcaption class="cappucino_text">Американо</figcaption>
@@ -89,7 +89,7 @@
 
             <div class="column1">
                 <figure>
-                    <a class="flat" id="flat" onclick="funk('flat_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="flat" id="flat" onclick="funk('flat_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Флет Уайт">
                         <img id="flat_img" src="img/flat_white_png.png">
                     </a>
                     <figcaption class="mocha_text">Флет - уайт</figcaption>
@@ -111,7 +111,7 @@
             <div class="column1">
 
                 <figure>
-                    <a class="chai" id="chai" onclick="funk('chai_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="chai" id="chai" onclick="funk('chai_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Чай со специями">
                         <img id="chai_img" src="img/chai_tea_png.png">
                     </a>
                     <figcaption class="mocha_text">Чай со специями</figcaption>
@@ -162,7 +162,7 @@
             <div class="column1">
 
                 <figure>
-                    <a class="tea_latte" id="tea_latte" onclick="funk('tea_latte_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="tea_latte" id="tea_latte" onclick="funk('tea_latte_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Пряный Чай Латте">
                         <img id="tea_latte_img" src="img/tea_latte_png.png">
                     </a>
                     <figcaption class="mocha_text">Пряный чай латте</figcaption>
@@ -195,7 +195,7 @@
             <div class="column1">
 
                 <figure>
-                    <a class="esp_frap" id="esp_frap" onclick="funk('esp_frap_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="esp_frap" id="esp_frap" onclick="funk('esp_frap_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Фраппучино Эспрессо">
                         <img id="esp_frap_img" src="img/esp_frap_png.png">
                     </a>
                     <figcaption class="mocha_text">Эспрессо фраппучино</figcaption>
@@ -212,7 +212,7 @@
             <div class="column1">
 
                 <figure>
-                    <a class="macha_grap" id="macha_grap" onclick="funk('macha_frap_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="macha_grap" id="macha_grap" onclick="funk('macha_frap_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Маття сливочный фраппуччино">
                         <img id="macha_frap_img" src="img/macha_grap_png.png">
                     </a>
                     <figcaption class="mocha_text">Маття сливочный фраппучино</figcaption>
@@ -245,14 +245,14 @@
             <div class="column1">
 
                 <figure>
-                    <a class="cold_brew_lat" id="cold_brew_lat"  onclick="funk('cold_brew_latte_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="cold_brew_lat" id="cold_brew_lat"  onclick="funk('cold_brew_latte_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Колд Брю Латте">
                         <img id="cold_brew_latte_img" src="img/cold_brew_latte_png.png">
                     </a>
                     <figcaption class="mocha_text">Колд брю латте</figcaption>
                 </figure>
 
                 <figure>
-                    <a class="cold_brew" id="cold_brew" onclick="funk('cold_brew_img')"  asp-controller="Drinks" asp-action="Calories">
+                    <a class="cold_brew" id="cold_brew" onclick="funk('cold_brew_img')"  asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Колд Брю">
                         <img id="cold_brew_img" src="img/cold_brew_png.png">
                     </a>
                     <figcaption class="cappucino_text">Колд брю</figcaption>
@@ -262,14 +262,14 @@
             <div class="column1">
 
                 <figure>
-                    <a class="iced_amer" id="iced_amer"  onclick="funk('iced_amer_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_amer" id="iced_amer"  onclick="funk('iced_amer_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный Американо">
                         <img id="iced_amer_img" src="img/iced_americano_png.png">
                     </a>
                     <figcaption class="mocha_text">Охлажденный американо</figcaption>
                 </figure>
 
                 <figure>
-                    <a class="iced_cap" id="iced_cap" onclick="funk('iced_cap_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_cap" id="iced_cap" onclick="funk('iced_cap_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Капучино">
                         <img id="iced_cap_img" src="img/iced_cappucino_png.png">
                     </a>
                     <figcaption class="cappucino_text">Охлажденный каппучино</figcaption>
@@ -279,14 +279,14 @@
             <div class="column1">
 
                 <figure>
-                    <a class="iced_caram" id="iced_caram"  onclick="funk('iced_caram_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_caram" id="iced_caram"  onclick="funk('iced_caram_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный Карамель Маккиато">
                         <img id="iced_caram_img" src="img/iced_caram_macc.png">
                     </a>
                     <figcaption class="mocha_text">Охлажденный карамель маккиато</figcaption>
                 </figure>
 
                 <figure>
-                    <a class="iced_latte" id="iced_latte" onclick="funk('iced_latte_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_latte" id="iced_latte" onclick="funk('iced_latte_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный Латте">
                         <img id="iced_latte_img" src="img/iced_latte_png.png">
                     </a>
                     <figcaption class="cappucino_text">Охлажденный латте</figcaption>
@@ -296,7 +296,7 @@
             <div class="column1">
 
                 <figure>
-                    <a class="iced_mocha" id="iced_mocha" onclick="funk('iced_mocha_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_mocha" id="iced_mocha" onclick="funk('iced_mocha_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный Мокка">
                         <img id="iced_mocha_img" src="img/iced_mocha_png.png">
                     </a>
                     <figcaption class="mocha_text">Охлажденный мокка</figcaption>
@@ -319,7 +319,7 @@
                 </figure>
 
                 <figure>
-                    <a class="iced_black" id="iced_black" onclick="funk('iced_black_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_black" id="iced_black" onclick="funk('iced_black_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный черный чай">
                         <img id="iced_black_img" src="img/iced_black_tea_png.png">
                     </a>
                     <figcaption class="cappucino_text">Охлажденный черный чай</figcaption>
@@ -336,7 +336,7 @@
                 </figure>
 
                 <figure>
-                    <a class="iced_green" id="iced_green" onclick="funk('iced_green_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_green" id="iced_green" onclick="funk('iced_green_img')" asp-controller="Drinks" asp-action="Calories asp-route-drinkName="Охлажденный зеленый чай">
                         <img id="iced_green_img" src="img/iced_green_tea_png.png">
                     </a>
                     <figcaption class="cappucino_text">Охлажденный зеленый чай</figcaption>
@@ -346,14 +346,14 @@
             <div class="column1">
 
                 <figure>
-                    <a class="iced_chai" id="iced_chai" onclick="funk('iced_chai_img')"  asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_chai" id="iced_chai" onclick="funk('iced_chai_img')"  asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный Пряный Чай Латте">
                         <img id="iced_chai_img" src="img/iced_chai_png.png">
                     </a>
                     <figcaption class="mocha_text">Охлажденный чай латте</figcaption>
                 </figure>
 
                 <figure>
-                    <a class="iced_macha" id="iced_macha" onclick="funk('iced_macha_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="iced_macha" id="iced_macha" onclick="funk('iced_macha_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Охлажденный Маття Чай Латте">
                         <img id="iced_macha_img" src="img/iced_macha_png.png">
                     </a>
                     <figcaption class="cappucino_text">Охлажденный маття</figcaption>
@@ -379,7 +379,7 @@
             <div class="column1">
 
                 <figure class="lemonade_img">
-                    <a class="lem" id="lem" onclick="funk('lem_img')" asp-controller="Drinks" asp-action="Calories">
+                    <a class="lem" id="lem" onclick="funk('lem_img')" asp-controller="Drinks" asp-action="Calories" asp-route-drinkName="Лимонад">
                         <img id="lem_img" src="img/lemonade_png.png">
                     </a>
                     <figcaption class="mocha_text">Лимонад</figcaption>
