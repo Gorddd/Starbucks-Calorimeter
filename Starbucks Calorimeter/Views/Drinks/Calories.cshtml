@@ -43,14 +43,18 @@
                         }
                     }
                 </div>
+
                 <div>
                     @if (ViewBag.milkName is not null)
                         @ViewBag.milkName
                 </div>
 
+                <div>
+                    @if (ViewBag.creamName is not null)
+                        @ViewBag.creamName
+                </div>
+
                 <div style="width:600px">
-
-
                     @if (ViewBag.syrops is not null)
                     {<span style="font-family:Roboto">Добавленные сиропы: </span>
                         @foreach (var esp in ViewBag.syrops)
@@ -63,6 +67,7 @@
                         }
                     }
                 </div>
+
                 <div style="width:1000px">
                     Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Кофеин: @Model.Coffeine, Калории: @Model.Calories,
                 </div>
@@ -694,16 +699,16 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки жидкие">
+                            <form method="post" asp-controller="Drinks" asp-action="AddCream" asp-route-addCream="Жидкие сливки">
                                 <button class="first_milk_button">Сливки жидкие</button>
                             </form>
-                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки жидкие соевые">
+                            <form method="post" asp-controller="Drinks" asp-action="AddCream" asp-route-addCream="Жидкие соевые сливки">
                                 <button class="add_button">Сливки жидкие соевые</button>
                             </form>
-                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки взбитые">
+                            <form method="post" asp-controller="Drinks" asp-action="AddCream" asp-route-addCream="Взбитые сливки">
                                 <button class="add_button">Сливки взбитые</button>
                             </form>
-                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки взбитые соевые">
+                            <form method="post" asp-controller="Drinks" asp-action="AddCream" asp-route-addCream="Взбитые соевые сливки">
                                 <button class="last_milk_temp_button">Сливки взбитые соевые</button>
                             </form>
                         </div>

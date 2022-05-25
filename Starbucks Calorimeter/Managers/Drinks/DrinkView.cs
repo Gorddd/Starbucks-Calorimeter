@@ -15,7 +15,7 @@ namespace Starbucks_Calorimeter.Managers.Drinks
         public string MilkName { get; set; }
         public Milk addedMilk { get; set; }
 
-
-
+        public string CreamName { get; set; }
+        public Cream addedCream { get; set; }
     }
 }

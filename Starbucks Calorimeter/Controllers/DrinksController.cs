@@ -48,6 +48,8 @@ namespace Starbucks_Calorimeter.Controllers
             drinkView.addedSyrops = null;
             drinkView.MilkName = null;
             drinkView.addedMilk = null;
+            drinkView.CreamName = null;
+            drinkView.addedCream = null;
 
             return RedirectToAction(nameof(Calories));
         }
@@ -58,6 +60,7 @@ namespace Starbucks_Calorimeter.Controllers
             ViewBag.espShots = drinkView.espShots;
             ViewBag.syrops = drinkView.syrops;
             ViewBag.milkName = drinkView.MilkName;
+            ViewBag.creamName = drinkView.CreamName;
 
             return View(drinkView.Drink);
         }
@@ -84,6 +87,9 @@ namespace Starbucks_Calorimeter.Controllers
 
             if (drinkView.MilkName is not null)
                 drinkView.Drink.AddNutritionalValue(drinkView.addedMilk);
+
+            if (drinkView.CreamName is not null)
+                drinkView.Drink.AddNutritionalValue(drinkView.addedCream);
 
             return RedirectToAction(nameof(Calories));
         }
@@ -283,23 +289,20 @@ namespace Starbucks_Calorimeter.Controllers
             return RedirectToAction(nameof(Calories));
         }
 
+        //Получение сливок с блока добавки
         [HttpPost]
-        [Route("Drinks/Calories/{drinkId}/{drinkName}/{addCream}")]
-        public async Task<IActionResult> Calories(int drinkId, string drinkName, string addCream)
+        public async Task<IActionResult> AddCream(string addCream)
         {
-            if (drinkName is null)
-            {
-                throw new ArgumentNullException(nameof(drinkName));
-            }
-
-            var drink = await drinkManager.GetDrink(drinkId);
-
             var cream = await creamManager.Get(addCream);
 
-            drink.AddNutritionalValue(cream);
+            if (drinkView.CreamName is not null)//Очистка от предыдущего
+                drinkView.Drink.SubtractNutritionalValue(drinkView.addedCream);
 
-            ViewBag.creamName = addCream;
-            return View(drink);
+            drinkView.Drink.AddNutritionalValue(cream);
+
+            drinkView.addedCream = cream;
+            drinkView.CreamName = addCream;
+            return RedirectToAction(nameof(Calories));
         }
     }
 }
