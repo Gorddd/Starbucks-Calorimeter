@@ -17,9 +17,11 @@
                     <span style="font-weight:bold; font-family:Roboto">Информация о продукте:</span>
                 </div>
                 <div style="width:1000px">
-                    @Model.Name,  Размер напитка: @Model.Size.Name,
+                    @Model.Name,  
+                    Размер напитка: @Model.Size.Name,
                     @if (Model.Milk is not null)
-                    {<span>Молоко: @Model.Milk.Name </span>}, @if (Model.Espresso is not null)
+                    {<span>Молоко: @Model.Milk.Name </span>}, 
+                    @if (Model.Espresso is not null)
                     {<span>Эспрессо: @Model.Espresso.Name </span>}
                     @if (Model.Cream is not null)
                     {<span>Сливки: @Model.Cream.Name </span>}
@@ -62,7 +64,7 @@
                     }
                 </div>
                 <div style="width:1000px">
-                    Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
+                    Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Кофеин: @Model.Coffeine, Калории: @Model.Calories,
                 </div>
 
             </div>
@@ -309,26 +311,29 @@
                             <figcaption class="size_text">Short</figcaption>
                         </figure>
 
-                        <figure class="lemonade_img">
-                            <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Толл">
-                                <button class="tall_button" type="submit"></button>
-                            </form>
-                            <figcaption class="size_text">Tall</figcaption>
-                        </figure>
+                        @if (Model.Name != "Флэт Уайт")
+                        {
+                            <figure class="lemonade_img">
+                                <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Толл">
+                                    <button class="tall_button" type="submit"></button>
+                                </form>
+                                <figcaption class="size_text">Tall</figcaption>
+                            </figure>
 
-                        <figure class="lemonade_img">
-                            <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Гранде">
-                                <button class="grande_button" type="submit"></button>
-                            </form>
-                            <figcaption class="size_text">Grande</figcaption>
-                        </figure>
+                            <figure class="lemonade_img">
+                                <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Гранде">
+                                    <button class="grande_button" type="submit"></button>
+                                </form>
+                                <figcaption class="size_text">Grande</figcaption>
+                            </figure>
 
-                        <figure class="lemonade_img">
-                            <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Венти">
+                            <figure class="lemonade_img">
+                                <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Венти">
                                 <button class="venti_button" type="submit"></button>
                             </form>
                             <figcaption class="size_text">Venti</figcaption>
                         </figure>
+                        }
                     </div>
                 }
 
