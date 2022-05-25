@@ -13,8 +13,8 @@
                 <img name="drink_img" src=" " style="height:500px" />
                 <script>drink_img.src = localStorage.getItem('4');
                     // localStorage.clear();</script>
-                <div style="width:1000px">
-                    Информация о продукте:
+                <div style="width:1000px" >
+                    <span style="font-weight:bold; font-family:Roboto">Информация о продукте:</span>
                 </div>
                 <div style="width:1000px">
                     @Model.Name,  Размер напитка: @Model.Size.Name,
@@ -24,6 +24,9 @@
                     @if (Model.Cream is not null)
                     {<span>Сливки: @Model.Cream.Name </span>}
 
+                </div>
+                <div style="width:1000px">
+                    <span style="font-weight:bold; font-family:Roboto">Добавки:</span>
                 </div>
                 <div>
                     @if (ViewBag.espShots is not null)
@@ -42,9 +45,7 @@
                     @if (ViewBag.milkName is not null)
                         @ViewBag.milkName
                 </div>
-                <div style="width:1000px">
-                    Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
-                </div>
+
                 <div style="width:600px">
 
 
@@ -59,6 +60,9 @@
                             <span> </span>
                         }
                     }
+                </div>
+                <div style="width:1000px">
+                    Белки: @Model.Proteins, Жиры: @Model.Fats, Углеводы: @Model.Carbohidrates, Калории: @Model.Calories,
                 </div>
 
             </div>
@@ -703,10 +707,18 @@
                             <hr aria-hidden="true" class="sb-rule sb-rule--thin pb5 line" id="line" />
                         </div>
                         <div class="milk_buttons">
-                            <button class="first_milk_button">Сливки жидкие</button>
-                            <button class="add_button">Сливки жидкие соевые</button>
-                            <button class="add_button">Сливки взбитые</button>
-                            <button class="last_milk_temp_button">Сливки взбитые соевые</button>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки жидкие">
+                                <button class="first_milk_button">Сливки жидкие</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки жидкие соевые">
+                                <button class="add_button">Сливки жидкие соевые</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки взбитые">
+                                <button class="add_button">Сливки взбитые</button>
+                            </form>
+                            <form method="post" asp-controller="Drinks" asp-action="Calories" asp-route-drinkId="@Model.Id"  asp-route-drinkName="@Model.Name" asp-route-addCream="Сливки взбитые соевые">
+                                <button class="last_milk_temp_button">Сливки взбитые соевые</button>
+                            </form>
                         </div>
                         <button class="Complit-button">Готово</button>
                     </div>

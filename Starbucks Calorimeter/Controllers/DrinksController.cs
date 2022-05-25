@@ -215,6 +215,11 @@ namespace Starbucks_Calorimeter.Controllers
         [Route("Drinks/Calories/{drinkId}/{drinkName}/{addCream}")]
         public async Task<IActionResult> Calories(int drinkId, string drinkName, string addCream)
         {
+            if (drinkName is null)
+            {
+                throw new ArgumentNullException(nameof(drinkName));
+            }
+
             var drink = await drinkManager.GetDrink(drinkId);
 
             var cream = await creamManager.Get(addCream);

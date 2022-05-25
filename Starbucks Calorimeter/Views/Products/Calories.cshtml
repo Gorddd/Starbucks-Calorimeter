@@ -11,55 +11,59 @@
 <body style="height:100%">
     <section class="top" style="height:100%">
         <div style="display:flex">
-        <div class="left_side" style="height:100%">
-            <img name="drink_img" src=" " style="height:400px" width="400px" />
-            <script>drink_img.src = localStorage.getItem('4');
-                                                        // localStorage.clear();</script>
-            <h2> </h2>
-            <p>Классический французский круассан с сырной начинкой и посыпкой из трав. </p>
-        </div>
+            <div class="left_side" style="height:100%">
+                <img name="drink_img" src=" " style="height: 500px;margin-left: 20%;width: 500px;" />
+                <script>drink_img.src = localStorage.getItem('4');
+                                                                        // localStorage.clear();</script>
+                <h2 style="margin-left:20%">Круассан с маслом</h2>
+                <p style="margin-left:20%; font-size:larger">Пикантная колбаса Impossible™, сделанная из растений, в сочетании с жареным яйцом без клеток и выдержанным сыром Чеддер на булочке из чиабатты с кунжутом ручной работы. </pstyle="margin-left:20%">
+            </div>
 
         <div class="rigth_side">
-            <div class=" calories_text">Информация о продукте:</div>
-            @switch (Model)
-            {
-                case Dessert dessert:
+            <h3 class=" calories_text">Информация о продукте:</h3>
+            <div>
 
-                    <div> Белки: @dessert.Proteins </div>
-                    <div> Жиры: @dessert.Fats </div>
-                    <div> Углеводы: @dessert.Carbohidrates </div>
-                    <div> Калории: @dessert.Calories </div>
+                @switch (Model)
+                {
+                    case Dessert dessert:
 
-                    break;
+                        <div> Белки: @dessert.Proteins </div>
+                        <div> Жиры: @dessert.Fats </div>
+                        <div> Углеводы: @dessert.Carbohidrates </div>
+                        <div> Калории: @dessert.Calories </div>
 
-                case BottledDrink bottledDrink:
-                    <div> Белки: @bottledDrink.Proteins </div>
-                    <div> Жиры: @bottledDrink.Fats </div>
-                    <div> Углеводы: @bottledDrink.Carbohidrates </div>
-                    <div> Калории: @bottledDrink.Calories </div>
-                    break;
+                        break;
 
-                case LunchAndBreakfast lunchAndBreakfast:
-                    <div> Белки: @lunchAndBreakfast.Proteins </div>
-                    <div> Жиры: @lunchAndBreakfast.Fats </div>
-                    <div> Углеводы: @lunchAndBreakfast.Carbohidrates </div>
-                    <div> Калории: @lunchAndBreakfast.Calories </div>
-                    break;
+                    case BottledDrink bottledDrink:
+                        <div> Белки: @bottledDrink.Proteins </div>
+                        <div> Жиры: @bottledDrink.Fats </div>
+                        <div> Углеводы: @bottledDrink.Carbohidrates </div>
+                        <div> Калории: @bottledDrink.Calories </div>
+                        break;
 
-                case FoodInPackage foodInPackage:
-                    <div> Белки: @foodInPackage.Proteins </div>
-                    <div> Жиры: @foodInPackage.Fats </div>
-                    <div> Углеводы: @foodInPackage.Carbohidrates </div>
-                    <div> Калории: @foodInPackage.Calories </div>
-                    break;
+                    case LunchAndBreakfast lunchAndBreakfast:
+                        <div> Белки: @lunchAndBreakfast.Proteins </div>
+                        <div> Жиры: @lunchAndBreakfast.Fats </div>
+                        <div> Углеводы: @lunchAndBreakfast.Carbohidrates </div>
+                        <div> Калории: @lunchAndBreakfast.Calories </div>
+                        break;
 
-                case Pastry pastry:
-                    <div> Белки: @pastry.Proteins </div>
-                    <div> Жиры: @pastry.Fats </div>
-                    <div> Углеводы: @pastry.Carbohidrates </div>
-                    <div> Калории: @pastry.Calories </div>
-                    break;
-            }
+                    case FoodInPackage foodInPackage:
+                        <div> Белки: @foodInPackage.Proteins </div>
+                        <div> Жиры: @foodInPackage.Fats </div>
+                        <div> Углеводы: @foodInPackage.Carbohidrates </div>
+                        <div> Калории: @foodInPackage.Calories </div>
+                        break;
+
+                    case Pastry pastry:
+                        <div> Белки: @pastry.Proteins </div>
+                        <div> Жиры: @pastry.Fats </div>
+                        <div> Углеводы: @pastry.Carbohidrates </div>
+                        <div> Калории: @pastry.Calories </div>
+                        break;
+                }
+
+            </div>
         </div>
         </div>
     </section>
