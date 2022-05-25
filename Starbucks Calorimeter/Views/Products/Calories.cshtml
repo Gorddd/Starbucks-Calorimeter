@@ -1,9 +1,5 @@
 ﻿@model object
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" style="height:100%">
 <head>
@@ -15,8 +11,34 @@
                 <img name="drink_img" src=" " style="height: 500px;margin-left: 20%;width: 500px;" />
                 <script>drink_img.src = localStorage.getItem('4');
                                                                         // localStorage.clear();</script>
-                <h2 style="margin-left:20%">Круассан с маслом</h2>
-                <p style="margin-left:20%; font-size:larger">Пикантная колбаса Impossible™, сделанная из растений, в сочетании с жареным яйцом без клеток и выдержанным сыром Чеддер на булочке из чиабатты с кунжутом ручной работы. </pstyle="margin-left:20%">
+
+                
+                @switch (Model)
+                {
+                     case Dessert dessert:
+                     <h2 style="margin-left:20%">@dessert.Name</h2>
+                        break;
+
+                    case BottledDrink bottledDrink:
+                        <h2 style="margin-left:20%">@bottledDrink.Name</h2>
+                        break;
+
+                    case LunchAndBreakfast lunchAndBreakfast:
+                        <h2 style="margin-left:20%">@lunchAndBreakfast.Name</h2>
+                        <p style="margin-left:20%; font-size:larger">@lunchAndBreakfast.Descriptions</p>
+                        break;
+
+                    case FoodInPackage foodInPackage:
+                        <h2 style="margin-left:20%">@foodInPackage.Name</h2>
+                        <p style="margin-left:20%; font-size:larger">@foodInPackage.Descriptions</p>
+                        break;
+
+                    case Pastry pastry:
+                            <h2 style="margin-left:20%">@pastry.Name</h2>
+                            <p style="margin-left:20%; font-size:larger">@pastry.Descriptions</p>
+                        break;
+                    
+                }
             </div>
 
         <div class="rigth_side">
