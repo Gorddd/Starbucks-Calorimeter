@@ -14,16 +14,21 @@ namespace Starbucks_Calorimeter.Controllers
         ISyropManager syropManager;
         IMilkManager milkManager;
         ICreamManager creamManager;
+        DrinkView drinkView;
 
-        int a = 0;
-
-        public DrinksController(IDrinkManager drinkManager, IEspressoManager espressoManager, ISyropManager syropManager, IMilkManager milkManager, ICreamManager creamManager)
+        public DrinksController(IDrinkManager drinkManager, 
+            IEspressoManager espressoManager, 
+            ISyropManager syropManager, 
+            IMilkManager milkManager, 
+            ICreamManager creamManager, 
+            DrinkView drinkView)
         {
             this.drinkManager = drinkManager;
             this.espressoManager = espressoManager;
             this.syropManager = syropManager;
             this.milkManager = milkManager;
             this.creamManager = creamManager;
+            this.drinkView = drinkView;
         }
 
         public IActionResult Index()
@@ -33,9 +38,9 @@ namespace Starbucks_Calorimeter.Controllers
         
         public async Task<IActionResult> Calories(string drinkName)
         {
-            a++;
-
             var drink = await drinkManager.GetDrink(drinkName);
+
+            drinkView.Drink = drink;
 
             return View(drink);
         }
@@ -45,8 +50,6 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> Calories(int drinkId, string? sizeName, string? espressoName, string? milkName)
         {
-            a++;
-
             var drink = await drinkManager.GetDrink(drinkId);
 
             drink = await drinkManager.GetDrink(drink.Name, 
@@ -62,8 +65,6 @@ namespace Starbucks_Calorimeter.Controllers
         [Route("Drinks/Calories/{drinkId}/{espCount}/{espDecafCount}/{espBlondeCount}")]
         public async Task<IActionResult> Calories(int drinkId, int espCount, int espDecafCount, int espBlondeCount)
         {
-            a++;
-
             var drink = await drinkManager.GetDrink(drinkId);
 
             var espressoShots = new Dictionary<string, int>(3);

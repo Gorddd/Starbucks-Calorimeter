@@ -19,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSingleton<DrinkView>();
 builder.Services.AddTransient<IUserManager, UserManager>();
 builder.Services.AddTransient<ISizeManager, SizeManager>();
 builder.Services.AddTransient<ISyropManager, SyropManager>();
