@@ -36,16 +36,19 @@ namespace Starbucks_Calorimeter.Controllers
             return View();
         }
         
+        //Заходим в новый напиток
         public async Task<IActionResult> GetDrink(string drinkName)
         {
             var drink = await drinkManager.GetDrink(drinkName);
 
             drinkView.Drink = drink;
-            drinkView.espShots = null;
+            drinkView.espShots = null;//Очистка от старого
+            drinkView.addedEspShots = null;
 
             return RedirectToAction(nameof(Calories));
         }
 
+        //Выводим напиток
         public async Task<IActionResult> Calories()
         {
             ViewBag.espShots = drinkView.espShots;
@@ -63,6 +66,11 @@ namespace Starbucks_Calorimeter.Controllers
                 espressoName ?? drinkView.Drink.Espresso?.Name, 
                 milkName ?? drinkView.Drink.Milk?.Name);
 
+            if (drinkView.espShots is not null)//прибавляем пищевую ценность с добавок
+                foreach(var shot in drinkView.addedEspShots)
+                    for (int i = 0; i < shot.Value; i++)
+                        drinkView.Drink.AddNutritionalValue(shot.Key);
+
             return RedirectToAction(nameof(Calories));
         }
 
@@ -72,7 +80,20 @@ namespace Starbucks_Calorimeter.Controllers
         {
             var drink = drinkView.Drink;
 
+            if (drinkView.espShots is not null)//Очистка от предыдущего
+                foreach (var esp in drinkView.addedEspShots)
+                    for (int i = 0; i < esp.Value; i++)
+                        drinkView.Drink.SubtractNutritionalValue(esp.Key);
+
+            drinkView.espShots = null;
+            drinkView.addedEspShots = null;
+
+            if (espCount == 0 && espDecafCount == 0 && espBlondeCount == 0)
+                return RedirectToAction(nameof(Calories));
+
+
             var espressoShots = new Dictionary<string, int>(3); //Словарь: key - название шота, value - количество
+            drinkView.addedEspShots = new Dictionary<Models.Entity.Espresso, int>(3); //key - espresso, value - колво
 
             if (espCount > 0)
             {
@@ -82,6 +103,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(espresso);
 
                 espressoShots.Add("Эспрессо Шоты", espCount);
+                drinkView.addedEspShots.Add(espresso, espCount);
             }
 
             if (espDecafCount > 0)
@@ -92,6 +114,7 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(espresso);
 
                 espressoShots.Add("Эспрессо Декаф Шоты", espDecafCount);
+                drinkView.addedEspShots.Add(espresso, espDecafCount);
             }
 
             if (espBlondeCount > 0)
@@ -102,7 +125,9 @@ namespace Starbucks_Calorimeter.Controllers
                     drink.AddNutritionalValue(espresso);
 
                 espressoShots.Add("Блонд Эспрессо Шоты", espBlondeCount);
+                drinkView.addedEspShots.Add(espresso, espBlondeCount);
             }
+
 
             drinkView.Drink = drink;
             drinkView.espShots = espressoShots;

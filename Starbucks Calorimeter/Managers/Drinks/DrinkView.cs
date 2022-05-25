@@ -6,5 +6,6 @@ namespace Starbucks_Calorimeter.Managers.Drinks
     {
         public Drink Drink { get; set; }
         public Dictionary<string, int> espShots { get; set; }
+        public Dictionary<Espresso, int> addedEspShots { get; set; }
     }
 }
