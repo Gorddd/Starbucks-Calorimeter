@@ -188,16 +188,16 @@ namespace Starbucks_Calorimeter.Controllers
 
         //Получение молока с блока добавки
         [HttpPost]
-        [Route("Drinks/Calories/{drinkId}/{milkName}")]
-        public async Task<IActionResult> Calories(int drinkId, string milkName)
+        [Route("Drinks/Calories/{drinkId}/{addmilkName}")]
+        public async Task<IActionResult> Calories(int drinkId, string addmilkName)
         {
             var drink = await drinkManager.GetDrink(drinkId);
 
-            var milk = await milkManager.Get(milkName);
+            var milk = await milkManager.Get(addmilkName);
 
             drink.AddNutritionalValue(milk);
 
-            ViewBag.milkName = milkName;
+            ViewBag.milkName = addmilkName;
             return View(drink);
         }
     }
