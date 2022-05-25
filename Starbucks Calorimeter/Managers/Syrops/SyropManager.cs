@@ -41,11 +41,11 @@ namespace Starbucks_Calorimeter.Managers.Syrops
 
         public async Task<Syrop> GetSyrop(int id)
         {
-            return _context.Syrops.FirstOrDefault(s => s.Id == id);
+            return await _context.Syrops.FirstOrDefaultAsync(s => s.Id == id);
         }
         public async Task<Syrop> GetSyrop(string name)
         {
-            return _context.Syrops.FirstOrDefault(s => s.Name == name);
+            return await _context.Syrops.FirstOrDefaultAsync(s => s.Name == name);
         }
 
         public async Task<List<Syrop>> GetAll()
