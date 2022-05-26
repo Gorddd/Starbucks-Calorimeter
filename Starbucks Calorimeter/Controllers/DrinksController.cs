@@ -75,6 +75,9 @@ namespace Starbucks_Calorimeter.Controllers
                 espressoName ?? drinkView.Drink.Espresso?.Name, 
                 milkName ?? drinkView.Drink.Milk?.Name);
 
+            if (drinkView.Drink is null)
+                return RedirectToAction(nameof(ErrorWasntFound));
+
             if (drinkView.espShots is not null)//прибавляем пищевую ценность с добавок
                 foreach(var shot in drinkView.addedEspShots)
                     for (int i = 0; i < shot.Value; i++)
@@ -303,6 +306,11 @@ namespace Starbucks_Calorimeter.Controllers
             drinkView.addedCream = cream;
             drinkView.CreamName = addCream;
             return RedirectToAction(nameof(Calories));
+        }
+
+        public string ErrorWasntFound()
+        {
+            return $"Данный напиток не был найден!";
         }
     }
 }
