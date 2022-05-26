@@ -4,7 +4,7 @@ This website allows you to configure your coffee and see the energy value, prote
 It was our university project
 
 ![AllDrinks](screenshots/drinks.jpg)
-![Cappucino](screenshots/cappucino.jpg)
+![Cappucino](screenshots/cappuccino.jpg)
 ![AddSyrops](screenshots/addsyrops.jpg)
 
 Actually inside the project you will find a terrible code, because the main features were done on the last night. </br>
