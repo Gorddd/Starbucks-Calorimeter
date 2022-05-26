@@ -697,7 +697,6 @@ html, body, .top {
 
             .navbar-light .navbar-nav .nav-link.active,
             .navbar-light .navbar-nav .show > .nav-link {
-                border-bottom: 1px solid #fff;
                 font-style: normal;
                 font-weight: 500;
                 font-size: 12px;

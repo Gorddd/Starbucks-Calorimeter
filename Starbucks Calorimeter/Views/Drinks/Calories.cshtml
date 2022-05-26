@@ -280,8 +280,8 @@
                     <hr aria-hidden="true" class="sb-rule sb-rule--thin  pb5 line" id="line" />
                 </div>
 
-
-                @if (Model.Name == "Эспрессо")
+                
+                @if (Model.Name == "Эспрессо" || Model.Name == "Эспрессо Коп Пана")
                 {
                     <div class="size_buttons">
 
@@ -308,13 +308,16 @@
                 {
                     <div class="size_buttons">
 
-                        <figure class="lemonade_img">
-                            <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Шорт">
-                                <button class="short_button" onclick="press()" type="submit"></button>
-                            </form>
+                        @if ((Model.Id < 824 || Model.Id > 1167) && (Model.Id < 380 || Model.Id > 559)) 
+                        {
+                            <figure class="lemonade_img">
+                                <form method="post" asp-controller="Drinks" asp-action="Basis" asp-route-sizeName="Шорт">
+                                    <button class="short_button" onclick="press()" type="submit"></button>
+                                </form>
 
-                            <figcaption class="size_text">Short</figcaption>
-                        </figure>
+                                <figcaption class="size_text">Short</figcaption>
+                            </figure>
+                        }
 
                         @if (Model.Name != "Флэт Уайт")
                         {
