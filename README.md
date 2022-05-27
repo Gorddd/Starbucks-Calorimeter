@@ -9,6 +9,7 @@ It was our university project
 
 Actually inside the project you will find a terrible code, because the main features were done on the last night. </br>
 
-Asp.net core mvc </br> .net 6.0 </br> C# 10
+
+Asp.net core mvc </br> .net 6.0 </br> C# 10 </br> Sql server
 --
 Гордейчик Даниил, Половинкин Максим, Некипелов Матвей
