@@ -2,63 +2,61 @@
 using Starbucks_Calorimeter.Models;
 using Starbucks_Calorimeter.Models.Entity;
 
-namespace Starbucks_Calorimeter.Managers.Espressoes
+namespace Starbucks_Calorimeter.Managers;
+
+public class EspressoManager : IEspressoManager
 {
+    private ApplicationContext _context;
 
-    public class EspressoManager : IEspressoManager
+    public EspressoManager(ApplicationContext context)
     {
-        private ApplicationContext _context;
+        _context = context;
+    }
 
-        public EspressoManager(ApplicationContext context)
+    public async Task Add(Espresso espresso)
+    {
+        _context.Espressoes.Add(espresso);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task Delete(int id)
+    {
+        var espresso = _context.Espressoes.FirstOrDefault(es => es.Id == id);
+        
+        _context.Espressoes.Remove(espresso);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<List<Espresso>> Filter(string name)
+    {
+        var espressos = await GetAll();
+
+        if (!string.IsNullOrEmpty(name))
         {
-            _context = context;
+            espressos = espressos.Where(s => s.Name == name).ToList();
         }
 
-        public async Task Add(Espresso espresso)
-        {
-            _context.Espressoes.Add(espresso);
-            await _context.SaveChangesAsync();
-        }
+        return espressos;
+    }
 
-        public async Task Delete(int id)
-        {
-            var espresso = _context.Espressoes.FirstOrDefault(es => es.Id == id);
-            
-            _context.Espressoes.Remove(espresso);
-            await _context.SaveChangesAsync();
-        }
+    public async Task<Espresso> Get(int id)
+    {
+        return await _context.Espressoes.FirstOrDefaultAsync(es => es.Id == id);
+    }
 
-        public async Task<List<Espresso>> Filter(string name)
-        {
-            var espressos = await GetAll();
+    public async Task<Espresso> Get(string name)
+    {
+        return await _context.Espressoes.FirstOrDefaultAsync(d => d.Name == name);
+    }
 
-            if (!string.IsNullOrEmpty(name))
-            {
-                espressos = espressos.Where(s => s.Name == name).ToList();
-            }
+    public async Task<List<Espresso>> GetAll()
+    {
+        return await _context.Espressoes.AsNoTracking().ToListAsync();
+    }
 
-            return espressos;
-        }
-
-        public async Task<Espresso> Get(int id)
-        {
-            return await _context.Espressoes.FirstOrDefaultAsync(es => es.Id == id);
-        }
-
-        public async Task<Espresso> Get(string name)
-        {
-            return await _context.Espressoes.FirstOrDefaultAsync(d => d.Name == name);
-        }
-
-        public async Task<List<Espresso>> GetAll()
-        {
-            return await _context.Espressoes.AsNoTracking().ToListAsync();
-        }
-
-        public async Task Update(Espresso espresso)
-        {
-            _context.Espressoes.Update(espresso);
-            await _context.SaveChangesAsync();
-        }
+    public async Task Update(Espresso espresso)
+    {
+        _context.Espressoes.Update(espresso);
+        await _context.SaveChangesAsync();
     }
 }

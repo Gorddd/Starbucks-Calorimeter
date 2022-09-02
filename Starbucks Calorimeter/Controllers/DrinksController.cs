@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Starbucks_Calorimeter.Managers.Creams;
-using Starbucks_Calorimeter.Managers.Drinks;
-using Starbucks_Calorimeter.Managers.Espressoes;
-using Starbucks_Calorimeter.Managers.Milks;
-using Starbucks_Calorimeter.Managers.Syrops;
+using Starbucks_Calorimeter.Managers;
 
 namespace Starbucks_Calorimeter.Controllers
 {

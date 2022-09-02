@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Starbucks_Calorimeter.Managers.BottledDrinks;
-using Starbucks_Calorimeter.Managers.Desserts;
-using Starbucks_Calorimeter.Managers.FoodInPackages;
-using Starbucks_Calorimeter.Managers.LunchAndBreakfasts;
-using Starbucks_Calorimeter.Managers.Pastries;
+using Starbucks_Calorimeter.Managers;
 using Starbucks_Calorimeter.Models.Entity;
 
 namespace Starbucks_Calorimeter.Controllers

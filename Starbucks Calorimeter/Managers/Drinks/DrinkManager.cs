@@ -2,87 +2,86 @@
 using Starbucks_Calorimeter.Models;
 using Starbucks_Calorimeter.Models.Entity;
 
-namespace Starbucks_Calorimeter.Managers.Drinks
+namespace Starbucks_Calorimeter.Managers;
+
+public class DrinkManager : IDrinkManager
 {
-    public class DrinkManager : IDrinkManager
+    private ApplicationContext _context;
+
+    public DrinkManager(ApplicationContext context)
     {
-        private ApplicationContext _context;
+        _context = context;
+    } 
 
-        public DrinkManager(ApplicationContext context)
-        {
-            _context = context;
-        } 
+    public async Task AddDrink(Drink drink)
+    {
+        _context.Drinks.Add(drink);
+        await _context.SaveChangesAsync();
+    }
 
-        public async Task AddDrink(Drink drink)
+    public async Task DeleteDrink(int id)
+    {
+        var drink = _context.Drinks.FirstOrDefault(d => d.Id == id);
+
+        _context.Drinks.Remove(drink);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<List<Drink>> Filter(string name)
+    {
+        var drinks = await GetAll();
+
+        if (!string.IsNullOrEmpty(name))
         {
-            _context.Drinks.Add(drink);
-            await _context.SaveChangesAsync();
+            drinks = drinks.Where(s => s.Name == name).ToList();
         }
 
-        public async Task DeleteDrink(int id)
-        {
-            var drink = _context.Drinks.FirstOrDefault(d => d.Id == id);
+        return drinks;
+    }
 
-            _context.Drinks.Remove(drink);
-            await _context.SaveChangesAsync();
-        }
+    public async Task<List<Drink>> GetAll()
+    {
+        _context.Espressoes.Load();
+        _context.Sizes.Load();
+        _context.Creams.Load();
+        _context.Milks.Load();
 
-        public async Task<List<Drink>> Filter(string name)
-        {
-            var drinks = await GetAll();
+        return await _context.Drinks.ToListAsync();
+    }
 
-            if (!string.IsNullOrEmpty(name))
-            {
-                drinks = drinks.Where(s => s.Name == name).ToList();
-            }
+    public async Task<Drink> GetDrink(int id)
+    {
+        _context.Espressoes.Load();
+        _context.Sizes.Load();
+        _context.Creams.Load();
+        _context.Milks.Load();
 
-            return drinks;
-        }
+        return await _context.Drinks.FirstOrDefaultAsync(d => d.Id == id);
+    }
+    public async Task<Drink> GetDrink(string name)
+    {
+        _context.Espressoes.Load();
+        _context.Sizes.Load();
+        _context.Creams.Load();
+        _context.Milks.Load();
 
-        public async Task<List<Drink>> GetAll()
-        {
-            _context.Espressoes.Load();
-            _context.Sizes.Load();
-            _context.Creams.Load();
-            _context.Milks.Load();
+        return await _context.Drinks.FirstOrDefaultAsync(d => d.Name == name);
+    }
 
-            return await _context.Drinks.ToListAsync();
-        }
+    public async Task<Drink> GetDrink(string drinkName, string sizeName, string espressoName, string milkName)
+    {
+        _context.Espressoes.Load();
+        _context.Sizes.Load();
+        _context.Creams.Load();
+        _context.Milks.Load();
 
-        public async Task<Drink> GetDrink(int id)
-        {
-            _context.Espressoes.Load();
-            _context.Sizes.Load();
-            _context.Creams.Load();
-            _context.Milks.Load();
+        return await _context.Drinks.FirstOrDefaultAsync(d => d.Name == drinkName && d.Size.Name == sizeName
+                                                && d.Espresso.Name == espressoName && d.Milk.Name == milkName);
+    }
 
-            return await _context.Drinks.FirstOrDefaultAsync(d => d.Id == id);
-        }
-        public async Task<Drink> GetDrink(string name)
-        {
-            _context.Espressoes.Load();
-            _context.Sizes.Load();
-            _context.Creams.Load();
-            _context.Milks.Load();
-
-            return await _context.Drinks.FirstOrDefaultAsync(d => d.Name == name);
-        }
-
-        public async Task<Drink> GetDrink(string drinkName, string sizeName, string espressoName, string milkName)
-        {
-            _context.Espressoes.Load();
-            _context.Sizes.Load();
-            _context.Creams.Load();
-            _context.Milks.Load();
-
-            return await _context.Drinks.FirstOrDefaultAsync(d => d.Name == drinkName && d.Size.Name == sizeName
-                                                    && d.Espresso.Name == espressoName && d.Milk.Name == milkName);
-        }
-
-        public async Task UpdateDrink(Drink drink)
-        {
-            _context.Drinks.Update(drink);
-            await _context.SaveChangesAsync();
-        }
+    public async Task UpdateDrink(Drink drink)
+    {
+        _context.Drinks.Update(drink);
+        await _context.SaveChangesAsync();
     }
 }

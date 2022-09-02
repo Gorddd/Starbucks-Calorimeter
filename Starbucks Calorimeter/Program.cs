@@ -1,17 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Starbucks_Calorimeter.Managers.BottledDrinks;
-using Starbucks_Calorimeter.Managers.Creams;
-using Starbucks_Calorimeter.Managers.Desserts;
-using Starbucks_Calorimeter.Managers.Drinks;
-using Starbucks_Calorimeter.Managers.Espressoes;
-using Starbucks_Calorimeter.Managers.FoodInPackages;
-using Starbucks_Calorimeter.Managers.LunchAndBreakfasts;
-using Starbucks_Calorimeter.Managers.Milks;
-using Starbucks_Calorimeter.Managers.Pastries;
-using Starbucks_Calorimeter.Managers.Sizes;
-using Starbucks_Calorimeter.Managers.Syrops;
-using Starbucks_Calorimeter.Managers.Users;
+using Starbucks_Calorimeter.Managers;
 using Starbucks_Calorimeter.Models;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -2,19 +2,8 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Starbucks_Calorimeter.Managers.Users;
+using Starbucks_Calorimeter.Managers;
 using Starbucks_Calorimeter.Models.Entity;
-using Starbucks_Calorimeter.Managers.Sizes;
-using Starbucks_Calorimeter.Managers.Syrops;
-using Starbucks_Calorimeter.Managers.LunchAndBreakfasts;
-using Starbucks_Calorimeter.Managers.FoodInPackages;
-using Starbucks_Calorimeter.Managers.Espressoes;
-using Starbucks_Calorimeter.Managers.Desserts;
-using Starbucks_Calorimeter.Managers.Creams;
-using Starbucks_Calorimeter.Managers.BottledDrinks;
-using Starbucks_Calorimeter.Managers.Milks;
-using Starbucks_Calorimeter.Managers.Drinks;
-using Starbucks_Calorimeter.Managers.Pastries;
 
 namespace Starbucks_Calorimeter.Controllers
 {
