@@ -9,38 +9,11 @@ namespace Starbucks_Calorimeter.Controllers
 {
     public class AdminController : Controller
     {
-        IUserManager userManager;
-        ISizeManager sizeManager;
-        ISyropManager syropManager;
-        ILunchAndBreakfastManager lunchAndBreakfastManager;
-        IFoodInPackageManager foodInPackageManager;
-        IEspressoManager espressoManager;
-        IDessertManager dessertManager;
-        ICreamManager creamManager;
-        IBottledDrinkManager bottledDrinkManager;
-        IMilkManager milkManager;
-        IDrinkManager drinkManager;
-        IPastryManager pastryManager;
-
-        public AdminController(IUserManager userManager, ISizeManager sizeManager,
-            ISyropManager syropManager, ILunchAndBreakfastManager lunchAndBreakfastManager,
-            IFoodInPackageManager foodInPackageManager, IEspressoManager espressoManager,
-            IDessertManager dessertManager, ICreamManager creamManager, IBottledDrinkManager bottledDrinkManager,
-            IMilkManager milkManager, IDrinkManager drinkManager, IPastryManager pastryManager)
+        IAdminManager manager;
+        public AdminController(IAdminManager manager)
         {
-            this.userManager = userManager;
-            this.sizeManager = sizeManager;
-            this.syropManager = syropManager;
-            this.lunchAndBreakfastManager = lunchAndBreakfastManager;
-            this.foodInPackageManager = foodInPackageManager;
-            this.espressoManager = espressoManager;
-            this.dessertManager = dessertManager;
-            this.creamManager = creamManager;
-            this.bottledDrinkManager = bottledDrinkManager;
-            this.milkManager = milkManager;
-            this.drinkManager = drinkManager;
-            this.pastryManager = pastryManager;
-         }
+            this.manager = manager;
+        }
 
         #region authorization
 
@@ -52,7 +25,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(User user)
         {
-            var admin = userManager.GetUser(user);
+            var admin = manager.UserManager.GetUser(user);
             if (admin is null)
                 return RedirectToAction(nameof(Login));
 
@@ -89,7 +62,7 @@ namespace Starbucks_Calorimeter.Controllers
         {
             var login = HttpContext.User.FindFirstValue(ClaimsIdentity.DefaultNameClaimType);
 
-            var admin = userManager.GetUser(new User { Login = login, Password = oldPassword });
+            var admin = manager.UserManager.GetUser(new User { Login = login, Password = oldPassword });
             if (admin is null)
             {
                 await HttpContext.SignOutAsync();
@@ -98,7 +71,7 @@ namespace Starbucks_Calorimeter.Controllers
             }
 
             admin.Password = newPassword;
-            await userManager.UpdateUser(admin);
+            await manager.UserManager.UpdateUser(admin);
 
             return RedirectToAction(nameof(Index));
         }
@@ -117,7 +90,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> UsersAsync()
         {
-            var users = await userManager.GetAll();
+            var users = await manager.UserManager.GetAll();
 
             return View(users);
         }
@@ -126,7 +99,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UsersAsync(string login)
         {
-            var users = await userManager.Filter(login);
+            var users = await manager.UserManager.Filter(login);
 
             return View(users);
         }
@@ -134,7 +107,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(User user)
         {
-            await userManager.AddUser(user);
+            await manager.UserManager.AddUser(user);
 
             return RedirectToAction("Users");
         }
@@ -142,7 +115,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            await userManager.DeleteUser(id);
+            await manager.UserManager.DeleteUser(id);
 
             return RedirectToAction("Users");
         }
@@ -150,7 +123,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateUser(User user)
         {
-            await userManager.UpdateUser(user);
+            await manager.UserManager.UpdateUser(user);
 
             return RedirectToAction("Users");
         }
@@ -162,7 +135,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> SizesAsync()
         {
-            var sizes = await sizeManager.GetAll();
+            var sizes = await manager.SizeManager.GetAll();
 
             return View(sizes);
         }
@@ -171,7 +144,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> SizesAsync(string name)
         {
-            var sizes = await sizeManager.Filter(name);
+            var sizes = await manager.SizeManager.Filter(name);
 
             return View(sizes);
         }
@@ -179,7 +152,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSize(Size size)
         {
-            await sizeManager.AddSize(size);
+            await manager.SizeManager.AddSize(size);
 
             return RedirectToAction("Sizes");
         }
@@ -187,7 +160,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteSize(int id)
         {
-            await sizeManager.DeleteSize(id);
+            await manager.SizeManager.DeleteSize(id);
 
             return RedirectToAction("Sizes");
         }
@@ -195,7 +168,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateSize(Size size)
         {
-            await sizeManager.UpdateSize(size);
+            await manager.SizeManager.UpdateSize(size);
 
             return RedirectToAction("Sizes");
         }
@@ -207,7 +180,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> SyropsAsync()
         {
-            var syrops = await syropManager.GetAll();
+            var syrops = await manager.SyropManager.GetAll();
 
             return View(syrops);
         }
@@ -216,7 +189,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> SyropsAsync(string name)
         {
-            var sizes = await syropManager.Filter(name);
+            var sizes = await manager.SyropManager.Filter(name);
 
             return View(sizes);
         }
@@ -224,7 +197,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSyrop(Syrop syrop)
         {
-            await syropManager.AddSyrop(syrop);
+            await manager.SyropManager.AddSyrop(syrop);
 
             return RedirectToAction("Syrops");
         }
@@ -232,7 +205,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteSyrop(int id)
         {
-            await syropManager.DeleteSyrop(id);
+            await manager.SyropManager.DeleteSyrop(id);
 
             return RedirectToAction("Syrops");
         }
@@ -240,7 +213,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateSyrop(Syrop syrop)
         {
-            await syropManager.UpdateSyrop(syrop);
+            await manager.SyropManager.UpdateSyrop(syrop);
 
             return RedirectToAction("Syrops");
         }
@@ -252,7 +225,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> LunchAndBreakfastsAsync()
         {
-            var lab = await lunchAndBreakfastManager.GetAll();
+            var lab = await manager.LunchAndBreakfastManager.GetAll();
 
             return View(lab);
         }
@@ -261,7 +234,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> LunchAndBreakfastsAsync(string name)
         {
-            var lab = await lunchAndBreakfastManager.Filter(name);
+            var lab = await manager.LunchAndBreakfastManager.Filter(name);
 
             return View(lab);
         }
@@ -269,7 +242,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddLunchAndBreakfast(LunchAndBreakfast lunchAndBreakfast)
         {
-            await lunchAndBreakfastManager.Add(lunchAndBreakfast);
+            await manager.LunchAndBreakfastManager.Add(lunchAndBreakfast);
 
             return RedirectToAction("LunchAndBreakfasts");
         }
@@ -277,7 +250,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteLunchAndBreakfast(int id)
         {
-            await lunchAndBreakfastManager.Delete(id);
+            await manager.LunchAndBreakfastManager.Delete(id);
 
             return RedirectToAction("LunchAndBreakfasts");
         }
@@ -285,7 +258,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateLunchAndBreakfast(LunchAndBreakfast lunchAndBreakfast)
         {
-            await lunchAndBreakfastManager.Update(lunchAndBreakfast);
+            await manager.LunchAndBreakfastManager.Update(lunchAndBreakfast);
 
             return RedirectToAction("LunchAndBreakfasts");
         }
@@ -297,7 +270,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> FoodInPackagesAsync()
         {
-            var fip = await foodInPackageManager.GetAll();
+            var fip = await manager.FoodInPackageManager.GetAll();
 
             return View(fip);
         }
@@ -306,7 +279,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> FoodInPackagesAsync(string name)
         {
-            var fip = await foodInPackageManager.Filter(name);
+            var fip = await manager.FoodInPackageManager.Filter(name);
 
             return View(fip);
         }
@@ -314,7 +287,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFoodInPackage(FoodInPackage foodInPackage)
         {
-            await foodInPackageManager.Add(foodInPackage);
+            await manager.FoodInPackageManager.Add(foodInPackage);
 
             return RedirectToAction("FoodInPackages");
         }
@@ -322,7 +295,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteFoodInPackage(int id)
         {
-            await foodInPackageManager.Delete(id);
+            await manager.FoodInPackageManager.Delete(id);
 
             return RedirectToAction("FoodInPackages");
         }
@@ -330,7 +303,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateFoodInPackages(FoodInPackage foodInPackage)
         {
-            await foodInPackageManager.Update(foodInPackage);
+            await manager.FoodInPackageManager.Update(foodInPackage);
 
             return RedirectToAction("FoodInPackages");
         }
@@ -342,7 +315,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> EspressoesAsync()
         {
-            var espresso = await espressoManager.GetAll();
+            var espresso = await manager.EspressoManager.GetAll();
 
             return View(espresso);
         }
@@ -351,7 +324,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> EspressoesAsync(string name)
         {
-            var espresso = await espressoManager.Filter(name);
+            var espresso = await manager.EspressoManager.Filter(name);
 
             return View(espresso);
         }
@@ -359,7 +332,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddEspresso(Espresso espresso)
         {
-            await espressoManager.Add(espresso);
+            await manager.EspressoManager.Add(espresso);
 
             return RedirectToAction("Espressoes");
         }
@@ -367,7 +340,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteEspresso(int id)
         {
-            await espressoManager.Delete(id);
+            await manager.EspressoManager.Delete(id);
 
             return RedirectToAction("Espressoes");
         }
@@ -375,7 +348,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateEspresso(Espresso espresso)
         {
-            await espressoManager.Update(espresso);
+            await manager.EspressoManager.Update(espresso);
 
             return RedirectToAction("Espressoes");
         }
@@ -387,7 +360,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> DessertsAsync()
         {
-            var dessert = await dessertManager.GetAll();
+            var dessert = await manager.DessertManager.GetAll();
 
             return View(dessert);
         }
@@ -396,7 +369,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DessertsAsync(string name)
         {
-            var dessert = await dessertManager.Filter(name);
+            var dessert = await manager.DessertManager.Filter(name);
 
             return View(dessert);
         }
@@ -404,7 +377,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDessert(Dessert dessert)
         {
-            await dessertManager.Add(dessert);
+            await manager.DessertManager.Add(dessert);
 
             return RedirectToAction("Desserts");
         }
@@ -412,7 +385,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteDessert(int id)
         {
-            await dessertManager.Delete(id);
+            await manager.DessertManager.Delete(id);
 
             return RedirectToAction("Desserts");
         }
@@ -420,7 +393,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateDessert(Dessert dessert)
         {
-            await dessertManager.Update(dessert);
+            await manager.DessertManager.Update(dessert);
 
             return RedirectToAction("Desserts");
         }
@@ -432,7 +405,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> CreamsAsync()
         {
-            var cream = await creamManager.GetAll();
+            var cream = await manager.CreamManager.GetAll();
 
             return View(cream);
         }
@@ -441,7 +414,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> CreamsAsync(string name)
         {
-            var cream = await creamManager.Filter(name);
+            var cream = await manager.CreamManager.Filter(name);
 
             return View(cream);
         }
@@ -449,7 +422,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCream(Cream cream)
         {
-            await creamManager.Add(cream);
+            await manager.CreamManager.Add(cream);
 
             return RedirectToAction("Creams");
         }
@@ -457,7 +430,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCream(int id)
         {
-            await creamManager.Delete(id);
+            await manager.CreamManager.Delete(id);
 
             return RedirectToAction("Creams");
         }
@@ -465,7 +438,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateCream(Cream cream)
         {
-            await creamManager.Update(cream);
+            await manager.CreamManager.Update(cream);
 
             return RedirectToAction("Creams");
         }
@@ -477,7 +450,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> BottledDrinksAsync()
         {
-            var bottledDrinks = await bottledDrinkManager.GetAll();
+            var bottledDrinks = await manager.BottledDrinkManager.GetAll();
 
             return View(bottledDrinks);
         }
@@ -486,7 +459,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> BottledDrinkssAsync(string name)
         {
-            var bottleddrink = await bottledDrinkManager.Filter(name);
+            var bottleddrink = await manager.BottledDrinkManager.Filter(name);
 
             return View(bottleddrink);
         }
@@ -494,7 +467,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBottledDrink(BottledDrink bottledDrink)
         {
-            await bottledDrinkManager.Add(bottledDrink);
+            await manager.BottledDrinkManager.Add(bottledDrink);
 
             return RedirectToAction("BottledDrinks");
         }
@@ -502,7 +475,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteBottledDrink(int id)
         {
-            await bottledDrinkManager.Delete(id);
+            await manager.BottledDrinkManager.Delete(id);
 
             return RedirectToAction("BottledDrinks");
         }
@@ -510,7 +483,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateBottledDrink(BottledDrink bottledDrink)
         {
-            await bottledDrinkManager.Update(bottledDrink);
+            await manager.BottledDrinkManager.Update(bottledDrink);
 
             return RedirectToAction("BottledDrinks");
         }
@@ -522,7 +495,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> MilksAsync()
         {
-            var milks = await milkManager.GetAll();
+            var milks = await manager.MilkManager.GetAll();
 
             return View(milks);
         }
@@ -531,7 +504,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> MilksAsync(string name)
         {
-            var milk = await milkManager.Filter(name);
+            var milk = await manager.MilkManager.Filter(name);
 
             return View(milk);
         }
@@ -539,7 +512,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMilk(Milk milk)
         {
-            await milkManager.Add(milk);
+            await manager.MilkManager.Add(milk);
 
             return RedirectToAction("Milks");
         }
@@ -547,7 +520,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteMilk(int id)
         {
-            await milkManager.Delete(id);
+            await manager.MilkManager.Delete(id);
 
             return RedirectToAction("Milks");
         }
@@ -555,7 +528,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateMilk(Milk milk)
         {
-            await milkManager.Update(milk);
+            await manager.MilkManager.Update(milk);
 
             return RedirectToAction("Milks");
         }
@@ -567,7 +540,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> DrinksAsync()
         {
-            var drinks = await drinkManager.GetAll();
+            var drinks = await manager.DrinkManager.GetAll();
 
             return View(drinks);
         }
@@ -576,7 +549,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DrinksAsync(string name)
         {
-            var drink = await drinkManager.Filter(name);
+            var drink = await manager.DrinkManager.Filter(name);
 
             return View(drink);
         }
@@ -584,7 +557,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDrink(Drink drink)
         {
-            await drinkManager.AddDrink(drink);
+            await manager.DrinkManager.AddDrink(drink);
 
             return RedirectToAction("Drinks");
         }
@@ -592,7 +565,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteDrink(int id)
         {
-            await drinkManager.DeleteDrink(id);
+            await manager.DrinkManager.DeleteDrink(id);
 
             return RedirectToAction("Drinks");
         }
@@ -600,7 +573,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateDrink(Drink drink)
         {
-            await drinkManager.UpdateDrink(drink);
+            await manager.DrinkManager.UpdateDrink(drink);
 
             return RedirectToAction("Drinks");
         }
@@ -612,7 +585,7 @@ namespace Starbucks_Calorimeter.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> PastriesAsync()
         {
-            var dpastry = await pastryManager.GetAll();
+            var dpastry = await manager.PastryManager.GetAll();
 
             return View(dpastry);
         }
@@ -621,7 +594,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> PastriesAsync(string name)
         {
-            var pastry = await pastryManager.Filter(name);
+            var pastry = await manager.PastryManager.Filter(name);
 
             return View(pastry);
         }
@@ -629,7 +602,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPastry(Pastry pastry)
         {
-            await pastryManager.AddPastry(pastry);
+            await manager.PastryManager.AddPastry(pastry);
 
             return RedirectToAction("Pastries");
         }
@@ -637,7 +610,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletePastry(int id)
         {
-            await pastryManager.DeletePastry(id);
+            await manager.PastryManager.DeletePastry(id);
 
             return RedirectToAction("Pastries");
         }
@@ -645,7 +618,7 @@ namespace Starbucks_Calorimeter.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdatePastry(Pastry pastry)
         {
-            await pastryManager.UpdatePastry(pastry);
+            await manager.PastryManager.UpdatePastry(pastry);
 
             return RedirectToAction("Pastries");
         }

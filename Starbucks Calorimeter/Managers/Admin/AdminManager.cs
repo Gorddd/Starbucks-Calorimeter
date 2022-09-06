@@ -27,19 +27,19 @@ public class AdminManager : IAdminManager
     public IUserManager UserManager { get; }
 
 
-    public AdminManager(IApplicationBuilder app)
+    public AdminManager(IServiceProvider services)
     {
-        BottledDrinkManager = app.ApplicationServices.GetRequiredService<IBottledDrinkManager>();
-        CreamManager = app.ApplicationServices.GetRequiredService<ICreamManager>();
-        DessertManager = app.ApplicationServices.GetRequiredService<IDessertManager>();
-        DrinkManager = app.ApplicationServices.GetRequiredService<IDrinkManager>();
-        EspressoManager = app.ApplicationServices.GetRequiredService<IEspressoManager>();
-        FoodInPackageManager = app.ApplicationServices.GetRequiredService<IFoodInPackageManager>();
-        LunchAndBreakfastManager = app.ApplicationServices.GetRequiredService<ILunchAndBreakfastManager>();
-        MilkManager = app.ApplicationServices.GetRequiredService<IMilkManager>();
-        PastryManager = app.ApplicationServices.GetRequiredService<IPastryManager>();
-        SizeManager = app.ApplicationServices.GetRequiredService<ISizeManager>();
-        SyropManager = app.ApplicationServices.GetRequiredService<ISyropManager>();
-        UserManager = app.ApplicationServices.GetRequiredService<IUserManager>();
+        BottledDrinkManager = services.GetRequiredService<IBottledDrinkManager>();
+        CreamManager = services.GetRequiredService<ICreamManager>();
+        DessertManager = services.GetRequiredService<IDessertManager>();
+        DrinkManager = services.GetRequiredService<IDrinkManager>();
+        EspressoManager = services.GetRequiredService<IEspressoManager>();
+        FoodInPackageManager = services.GetRequiredService<IFoodInPackageManager>();
+        LunchAndBreakfastManager = services.GetRequiredService<ILunchAndBreakfastManager>();
+        MilkManager = services.GetRequiredService<IMilkManager>();
+        PastryManager = services.GetRequiredService<IPastryManager>();
+        SizeManager = services.GetRequiredService<ISizeManager>();
+        SyropManager = services.GetRequiredService<ISyropManager>();
+        UserManager = services.GetRequiredService<IUserManager>();
     }
 }

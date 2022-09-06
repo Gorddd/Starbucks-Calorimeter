@@ -19,5 +19,6 @@ public static class ServiceProviderExtensions
         services.AddTransient<IMilkManager, MilkManager>();
         services.AddTransient<IDrinkManager, DrinkManager>();
         services.AddTransient<IPastryManager, PastryManager>();
+        services.AddTransient<IAdminManager, AdminManager>();
     }
 }
